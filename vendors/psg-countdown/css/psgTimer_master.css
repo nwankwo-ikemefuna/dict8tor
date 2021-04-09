@@ -1,0 +1,84 @@
+.psgTimer {
+    display: table;
+    margin: 0 auto 30px auto;
+    font-size: 0;
+    font-family: Roboto, sans-serif;
+}
+.psgTimer_labels > div,
+.psgTimer_numbers > div {
+    display: inline-block;
+    font-size: 0;
+    width: 124px;
+    text-align: center;
+}
+.psgTimer_numbers > div {
+    position: relative;
+}
+.psgTimer_numbers > div:after {
+    content: ":";
+    line-height: 60px;
+    height: 60px;
+    display: block;
+    font-weight: 700;
+    font-size: 24px;
+    color: #21272c;
+    position: absolute;
+    top: 0;
+    right: -4px;
+}
+.psgTimer_numbers > div:last-child:after {
+    content: none;
+}
+.psgTimer_numbers > div > div {
+    display: inline-block;
+    vertical-align: top;
+    width: 44px;
+    height: 60px;
+    line-height: 60px;
+    background: #21272c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    color: #ffd631;
+}
+.psgTimer_numbers > div > div:first-child {
+    margin-right: 5px;
+}
+.psgTimer_labels > div {
+    padding-top: 5px !important;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #21272c;
+}
+@media screen and (max-width: 640px) {
+    .psgTimer_labels > div,
+    .psgTimer_numbers > div {
+        width: 74px;
+    }
+    .psgTimer_numbers > div {
+        position: relative;
+    }
+    .psgTimer_numbers > div:after {
+        line-height: 40px;
+        height: 40px;
+        font-size: 16px;
+        right: -2px;
+    }
+    .psgTimer_numbers > div div {
+        width: 26px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+    }
+    .psgTimer_numbers > div div:first-child {
+        margin-right: 2px;
+    }
+    .psgTimer_labels > div {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}

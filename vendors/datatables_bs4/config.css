@@ -1,0 +1,40 @@
+/*Datatables buttons*/
+.dt_buttons {
+    float: left;
+    margin-bottom: 10px;
+}
+.dt_buttons .btn-secondary {
+    background: #ecf0f5;
+    color: #000;
+}
+.dt_buttons .btn-secondary:hover {
+    background: #3c8dbc;
+    color: #fff;
+}
+/* Column Visibility dropdown */
+.dt_buttons .dt-button-collection.dropdown-menu {
+    box-shadow: 10px 10px 10px #888;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.dt_buttons .buttons-columnVisibility {
+   cursor:pointer;
+}
+.dt_buttons .buttons-columnVisibility.active {
+    background-color:transparent;
+    color:inherit; 
+}
+.dt_buttons .buttons-columnVisibility.active:hover {
+    background-color:#f5f5f5;
+    color:inherit;
+}
+.dt_buttons .buttons-columnVisibility:before {
+    width:25px;
+    font-family:"FontAwesome";
+    content:"\f00c";
+    color:transparent;
+    padding-right:10px;
+}
+.dt_buttons .buttons-columnVisibility.active:before {
+    color:inherit;
+}

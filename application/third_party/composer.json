@@ -1,0 +1,8 @@
+{
+	"require": {
+		"phpoffice/phpspreadsheet": "^1.13"
+	},
+	"require-dev": {
+        "mashape/unirest-php": "^3.0"
+    }
+}

@@ -1,0 +1,39 @@
+.psgTimer.light {
+	display: table;
+    font-size: 0;
+    font-family: Roboto, sans-serif;
+}
+.psgTimer_labels.light > div,
+.psgTimer_numbers.light > div {
+    display: inline-block;
+    font-size: 0;
+    text-align: center;
+}
+.psgTimer_numbers.light > div {
+    position: relative;
+}
+.psgTimer_numbers.light > div > div {
+    display: inline-block;
+    vertical-align: top;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    background: #21272c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: #ffd631;
+}
+.psgTimer_numbers.light > div > div:first-child {
+    margin-right: 3px;
+}
+.psgTimer_labels.light > div {
+	padding-top: 5px !important;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #21272c;
+}
