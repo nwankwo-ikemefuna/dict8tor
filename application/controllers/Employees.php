@@ -9,7 +9,6 @@ class Employees extends Core_controller {
         $this->model = 'user';
 		$this->auth->login_restricted();
 		$this->auth->def_password_restricted();
-		$this->auth->school_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
     }
 
@@ -19,10 +18,10 @@ class Employees extends Core_controller {
 		$this->butts = ['add', 'list'];
 		$this->ba_opts = ['delete'];
 		$status = xget('status');
-        $where = ['school_id' => SCHOOL_ID, inset_select('usergroup', SCHOOL_EMPLOYEES) => null];
+        $where = ['usergroup' => ADMIN];
         $where = strlen($status) ? array_merge($where, ['status' => $status]) : $where;
 		$count = $this->common_model->count_rows($this->table, $where, $this->trashed);
-		$page_title = strlen($status) ? EMP_STATUSES[$status].' Employees' : 'All Employees';
+		$page_title = 'All Users';
         $this->ajax_header($page_title, $count);
 		$this->load->view('portal/admin/employees/index');
 		$this->ajax_footer();
@@ -37,7 +36,7 @@ class Employees extends Core_controller {
         $data['row'] = '';
         $data['countries'] = $this->country_model->get_all([], "id, name");
         $data['roles'] = $this->permission_model->get_all([], "id, name");
-        $this->ajax_header('Add Employee');
+        $this->ajax_header('Add User');
         $this->load->view('portal/admin/employees/adit', $data);
 		$this->ajax_footer();
 	}
@@ -45,27 +44,31 @@ class Employees extends Core_controller {
 
 	public function edit($id) { 
 		$this->auth->module_restricted($this->module, EDIT, ADMIN);
-        $this->check_school_data($this->table, $id);
 		//buttons
 		$this->butts = ['list', 'save', 'view', 'cancel'];
-		$row = $this->user_model->get_details($id, 'id', ['d', 'p'], 'u.id, usergroup, last_name, first_name, other_name, dept_id, u.sex, username, phone, email, country, state, dob, permissions, status ## full_name, avatar, permissions_name');
+		$row = $this->user_model->get_details($id, 'id', ['p'], 'u.id, usergroup, last_name, first_name, other_name, u.sex, phone, email, dob, permissions, active ## full_name, avatar, permissions_name');
+		if (!$row) {
+			redirect('employees');
+		}
 		$data['page'] = 'edit';
 		$data['row'] = $row;
         $data['countries'] = $this->country_model->get_all([], "id, name");
         $data['roles'] = $this->permission_model->get_all([], "id, name");
-        $this->ajax_header('Edit Employee: '. $row->full_name, '', $id);
+        $this->ajax_header('Edit User: '. $row->full_name, '', $id);
         $this->load->view('portal/admin/employees/adit', $data);
 		$this->ajax_footer();
 	}
 
 
 	public function view($id) { 
-		$this->check_school_data($this->table, $id);
 		//buttons
 		$this->butts = ['list', 'add', 'edit'];
-		$row = $this->user_model->get_details($id, 'id', ['d', 'p', 'cnt'], 'u.id, last_name, first_name, other_name, username, email, phone, state, dob, status ## department, country_name, full_name, gender, age, avatar, permissions_name');
+		$row = $this->user_model->get_details($id, 'id', ['d', 'p', 'cnt'], 'u.id, last_name, first_name, other_name, email, phone, dob, active ## full_name, gender, age, avatar, permissions_name');
+		if (!$row) {
+			redirect('employees');
+		}
 		$data['row'] = $row;
-        $this->ajax_header('Employee: '.$row->full_name, '', $id);
+        $this->ajax_header($row->full_name, '', $id);
 		$this->load->view('portal/admin/employees/view', $data);
 		$this->ajax_footer();
 	}

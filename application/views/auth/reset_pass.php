@@ -1,5 +1,5 @@
 <?php
-$redirect_url = base_url($is_student ? 'studentlogin' : 'login');
+$redirect_url = base_url('login');
 $attrs = [
     'id' => 'reset_pass_form', 
     'class' => 'ajax_form material-form', 

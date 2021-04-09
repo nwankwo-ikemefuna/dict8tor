@@ -5,10 +5,9 @@ class Settings extends Core_controller {
 
 	public function __construct() {
 		parent::__construct();
-        $this->table = T_SCHOOLS;
+        $this->table = T_SETTINGS;
         $this->module = MOD_SETTINGS;
 		$this->auth->login_restricted();
-        $this->auth->school_restricted(); 
         $this->auth->module_restricted($this->module, VIEW, ADMIN);
 	}
     
@@ -30,9 +29,7 @@ class Settings extends Core_controller {
             "email"         => xpost('email'),
             "phone"         => xpost('phone'),
         ];
-        $this->common_model->update($this->table, $data, ['id' => SCHOOL_ID]);
-        //reset session data
-        $this->school_model->set_school_info(SCHOOL, true);
+        $this->common_model->update($this->table, $data, ['id' => 1]);
         json_response(['redirect' => 'settings/view']);
     }
 

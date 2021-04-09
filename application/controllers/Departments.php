@@ -9,7 +9,6 @@ class Departments extends Core_controller {
 		$this->model = 'dept';
 		$this->auth->login_restricted();
 		$this->auth->def_password_restricted();
-		$this->auth->school_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
 	}
 
@@ -18,8 +17,7 @@ class Departments extends Core_controller {
 		//buttons
 		$this->butts = ['add', 'list'];
 		$this->ba_opts = ['delete'];
-		$where = ['school_id' => SCHOOL_ID];
-		$count = $this->common_model->count_rows($this->table, $where, $this->trashed);
+		$count = $this->common_model->count_rows($this->table, [], $this->trashed);
 		$this->ajax_header('Departments', $count);
 		$this->load->view('portal/admin/departments/index');
 		$this->ajax_footer();
@@ -31,8 +29,8 @@ class Departments extends Core_controller {
 		$this->butts = ['list', 'save', 'save_more', 'cancel'];
         $data['page'] = 'add';
         $data['row'] = '';
-        $data['users'] = $this->user_model->get_all([], "u.id ## full_name", ['school_id' => SCHOOL_ID, 'usergroup' => ADMIN]);
-        $data['next_order'] = $this->common_model->next_order($this->table, ['school_id' => SCHOOL_ID]);
+        $data['users'] = $this->user_model->get_all([], "u.id ## full_name", ['usergroup' => ADMIN]);
+        $data['next_order'] = $this->common_model->next_order($this->table);
         $this->ajax_header('Add Department');
         $this->load->view('portal/admin/departments/adit', $data);
 		$this->ajax_footer();
@@ -40,13 +38,12 @@ class Departments extends Core_controller {
 
 
 	public function edit($id) { 
-		$this->check_school_data($this->table, $id);
 		//buttons
 		$this->butts = ['list', 'save', 'view', 'cancel'];
         $row = $this->dept_model->get_details($id, 'id', [], 'id, name, hod_id, order');
 		$data['page'] = 'edit';
 		$data['row'] = $row;
-		$data['users'] = $this->user_model->get_all([], "u.id ## full_name", ['school_id' => SCHOOL_ID, 'usergroup' => ADMIN]);
+		$data['users'] = $this->user_model->get_all([], "u.id ## full_name", ['usergroup' => ADMIN]);
 		$this->ajax_header('Edit Department: '.$row->name, '', $id);
 		$this->load->view('portal/admin/departments/adit', $data);
 		$this->ajax_footer();
@@ -54,7 +51,6 @@ class Departments extends Core_controller {
 
 
 	public function view($id) { 
-		$this->check_school_data($this->table, $id);
 		//buttons
 		$xtra_butts = [
             ['text' => 'Classes', 'target' => 'classes?dept_id='.$id, 'icon' => 'institution'],

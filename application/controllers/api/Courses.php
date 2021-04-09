@@ -8,7 +8,6 @@ class Courses extends Core_controller {
         $this->module = MOD_COURSES;
         $this->model = 'course';
         $this->auth->login_restricted();
-        $this->auth->school_restricted();
         $this->auth->module_restricted($this->module, VIEW, ADMIN);
         
     }
@@ -21,7 +20,7 @@ class Courses extends Core_controller {
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
         $select = "cu.id, cu.name, cu.code, cu.order, cu.dept_id, cu.total_classes, lect.last_name, lect.first_name, lect.other_name ## department, lecturer_lnames";
         $dept_id = xget('dept_id');
-        $where = ['cu.school_id' => SCHOOL_ID];
+        $where = [];
         $where = strlen($dept_id) ? array_merge($where, ['cu.dept_id' => $dept_id]) : $where;
         $group_by = 'cu.id, lect.last_name, lect.first_name, lect.other_name';
         $sql = $this->course_model->sql(['d', 'lect'], $select, $where);
@@ -41,7 +40,6 @@ class Courses extends Core_controller {
         $exists = $this->common_model->exists($this->table, ['dept_id' => xpost('dept_id'), 'code' => strtoupper(xpost('code'))], $id);
         if ($exists) json_response('Course with code ['.xpost('code').'] already exists in the selected department', false);
         $data = [
-            'school_id'     => SCHOOL_ID,
             'dept_id'       => xpost('dept_id'),
             'name'          => xpost('name'),
             'code'          => strtoupper(xpost('code')),

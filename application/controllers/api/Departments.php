@@ -8,7 +8,6 @@ class Departments extends Core_controller {
         $this->module = MOD_DEPARTMENTS;
         $this->model = 'dept';
 		$this->auth->login_restricted();
-		$this->auth->school_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
 	}
 
@@ -19,8 +18,7 @@ class Departments extends Core_controller {
         $keys = ['id'];
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
         $select = "d.id, d.name, d.order, hod.last_name, hod.first_name, hod.other_name ## hod, class_count";
-        $where = ['d.school_id' => SCHOOL_ID];
-        $sql = $this->dept_model->sql(['c', 'hod'], $select, $where);
+        $sql = $this->dept_model->sql(['c', 'hod'], $select);
         echo $this->common_model->get_rows_ajax($sql['table'], $keys, $buttons, xget('trashed'), $sql['joins'], $sql['select'], $sql['where'], $sql['order']);
     }
 
@@ -34,7 +32,6 @@ class Departments extends Core_controller {
         $exists = $this->common_model->exists($this->table, ['name' => xpost('name')], $id);
         if ($exists) json_response('Department ['.xpost('name').'] already exists', false);
         $data = [
-            'school_id' => SCHOOL_ID,
             'hod_id'    => strlen(xpost('hod_id')) ? xpost('hod_id') : NULL,
             'name'      => xpost('name'),
             'order'     => xpost('order'),

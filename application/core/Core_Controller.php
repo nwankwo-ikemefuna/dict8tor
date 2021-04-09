@@ -138,24 +138,6 @@ class Core_Controller extends CI_Controller {
         return false;
     }
 
-
-    public function disallowed_subdomains() {
-        $subdomain = xpost('subdomain');
-        $disallowed = ['eroodyte', 'www', 'wwww', 'wwwww', 'mail', 'support', 'info', 'notify', 'admin', 'super_admin', 'superadmin', 'lord', 'god', 'penis', 'pussy', 'vagina', 'fuck', 'fucker', 'boobs', 'justboobs', 'cunt', 'bitch', 'bullshit', 'motherfucker', 'school'];
-        if ( ! in_array(strtolower($subdomain), $disallowed)) return true;
-        $this->form_validation->set_message('disallowed_subdomains', "You cannot use <b>{$subdomain}</b> as subdomain. Please choose a different one.");
-        return false;
-    }
-
-
-    public function disallowed_usernames() {
-        $username = xpost('username');
-        $disallowed = ['eroodyte', 'eroodyte_admin', 'eroodyteadmin', 'admin', 'super_admin', 'superadmin', 'lord', 'god', 'penis', 'pussy', 'vagina', 'fuck', 'fucker', 'boobs', 'justboobs', 'cunt', 'bitch', 'bullshit', 'motherfucker'];
-        if ( ! in_array(strtolower($username), $disallowed)) return true;
-        $this->form_validation->set_message('disallowed_usernames', "Why would you use <b>{$username}</b> as username? Please choose a different one.");
-        return false;
-    }
-
     
     public function validate_captcha() { 
     	$input_captcha_code = $this->input->post('captcha_code', TRUE);

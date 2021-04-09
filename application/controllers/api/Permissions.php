@@ -8,7 +8,6 @@ class Permissions extends Core_controller {
         $this->module = MOD_PERMISSIONS;
         $this->model = 'permission';
 		$this->auth->login_restricted();
-		$this->auth->school_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
 	}
 
@@ -18,9 +17,8 @@ class Permissions extends Core_controller {
         $butts = ['view', 'edit', 'delete'];
         $keys = ['id'];
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
-        $select = "id, name ## employee_count";
-        $where = ['p.school_id' => SCHOOL_ID];
-        $sql = $this->permission_model->sql([], $select, $where);
+        $select = "p.id, p.name ## employee_count";
+        $sql = $this->permission_model->sql(['emp'], $select);
         echo $this->common_model->get_rows_ajax($sql['table'], $keys, $buttons, xget('trashed'), $sql['joins'], $sql['select'], $sql['where'], $sql['order']);
     }
 
@@ -31,7 +29,7 @@ class Permissions extends Core_controller {
         if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
 
         //already exists?
-        $exists = $this->common_model->exists($this->table, ['school_id' => SCHOOL_ID, 'name' => xpost('name')], $id);
+        $exists = $this->common_model->exists($this->table, ['name' => xpost('name')], $id);
         if ($exists) json_response('Role ['.xpost('name').'] already exists', false);
 
         $module_idx = (array) xpost("module_idx");
@@ -42,7 +40,6 @@ class Permissions extends Core_controller {
             $rights[$id] = array_values($role_rights);
         }
         $data = [
-            'school_id' => SCHOOL_ID,
             'name' => ucwords(xpost('name')),
             'rights' => json_encode($rights)
         ];

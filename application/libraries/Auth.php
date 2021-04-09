@@ -4,8 +4,6 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 class Auth {
 
 	private $ci;
-	private $license_enabled = TRUE;
-	private $token_enabled = TRUE;
 
 	public function __construct() {
 		$this->ci =& get_instance();

@@ -10,18 +10,12 @@ class Permission_model extends Core_Model {
 	public function sql($to_join = [], $select = "*", $where = []) {
 		$arr = sql_select_arr($select);
 		$select =  $select != '*' ? $arr['main'] : "p.*";
-		$select .= join_select($arr, 'employee_count', "COUNT(*)");
+		$select .= join_select($arr, 'employee_count', "IFNULL(COUNT(emp.id), 0)");
 		$joins = []; 
-
 		//employee count
 		if (in_array('emp', $to_join) || in_array('all', $to_join)) {
 			$joins = array_merge($joins, 
-				["(
-					SELECT `id`, `permissions`, COUNT(*) AS employee_count
-					FROM `".T_USERS."`
-					WHERE `usergroup` = ".ADMIN."
-					GROUP BY `id`
-				) `emp`" => ["FIND_IN_SET(`p`.`id`, `emp`.`permissions`) > 0", 'left', false]]
+				[T_USERS.' emp' => ['p.id IN(emp.permissions)', 'left']]
 			);
 		}
 		$order = ['p.id' => 'asc'];

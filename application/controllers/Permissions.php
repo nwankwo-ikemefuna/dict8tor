@@ -9,7 +9,6 @@ class Permissions extends Core_controller {
         $this->model = 'permission';
 		$this->auth->login_restricted();
 		$this->auth->def_password_restricted();
-		$this->auth->school_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
 	}
 
@@ -18,8 +17,7 @@ class Permissions extends Core_controller {
 		//buttons
 		$this->butts = ['add', 'list'];
 		$this->ba_opts = ['delete'];
-		$where = ['school_id' => SCHOOL_ID];
-		$count = $this->common_model->count_rows($this->table, $where, $this->trashed);
+		$count = $this->common_model->count_rows($this->table, [], $this->trashed);
 		$page_title = 'All Permissions';		
 		$this->ajax_header($page_title, $count);
 		$this->load->view('portal/admin/permissions/index');

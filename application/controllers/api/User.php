@@ -13,10 +13,6 @@ class User extends Core_controller {
         $this->form_validation->set_rules('state', 'State', 'trim');
         $this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
         $this->form_validation->set_rules('phone', 'Phone', 'trim|required|is_natural');
-        if ($this->session->user_usergroup == STUDENT) { 
-            $this->form_validation->set_rules('utme_no', 'UTME Number', 'trim');
-            $this->form_validation->set_rules('utme_score', 'UTME Score', 'trim|is_natural');
-        }
 		if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
 
         $dob = trim(xpost('dob'));
@@ -37,8 +33,6 @@ class User extends Core_controller {
             'phone'                 => xpost('phone'),
             'email'                 => strtolower(xpost('email')),
             'dob'                   => strlen($dob) ? $dob : null,
-            'utme_no'               => strlen(xpost('utme_no')) ? xpost('utme_no') : NULL,
-            'utme_score'            => strlen(xpost('utme_score')) ? xpost('utme_score') : NULL
         ];
         $this->common_model->update($this->table, $data, ['id' => $this->session->user_id]);
         //update session data
@@ -67,7 +61,7 @@ class User extends Core_controller {
 
 
     public function change_avatar() {
-        $path = 'uploads/images/users';
+        $path = 'uploads/pix/users';
         $conf = [
         	'path' => $path, 
         	'ext' => 'jpg|jpeg|png', 

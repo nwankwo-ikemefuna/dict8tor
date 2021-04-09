@@ -81,7 +81,7 @@
                         <p><?php echo $this->site_info->address; ?> &nbsp;|&nbsp; <?php echo lang_string('phone'); ?>: <span><?php echo $this->site_info->phone; ?></span> &nbsp;|&nbsp; <?php echo lang_string('email'); ?>: <a href="mailto:<?php echo $this->site_info->email; ?>" class="link-text"><?php echo $this->site_info->email; ?></a></p>
                     </div>
                     <div class="paid-by"><?php echo lang_string('powered_by'); ?> <a href="<?php echo SITE_AUTHOR_URL; ?>"><?php echo SITE_AUTHOR; ?></a></div>
-                    <p><?php echo date('Y'); ?> <?php echo SITE_NAME; ?></p>
+                    <p><?php echo date('Y'); ?>. <?php echo SITE_NAME; ?></p>
                 </div>
             </div>
         </div>

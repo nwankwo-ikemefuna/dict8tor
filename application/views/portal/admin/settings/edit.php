@@ -5,16 +5,16 @@ xform_open('api/settings/edit', xform_attrs());
 	<div class="row">
 		<div class="<?php echo grid_col(12, '', 5); ?>">
 			<?php 
-			xform_group_list('Name', 'name', 'text', $this->session->school_name, true);
-			xform_group_list('Short Name', 'short_name', 'text', $this->session->school_short_name, true);
-			xform_group_list('Motto', 'tagline', 'text', $this->session->school_tagline);
+			xform_group_list('Name', 'name', 'text', $row->name, true);
+			xform_group_list('Short Name', 'short_name', 'text', $row->short_name, true);
+			xform_group_list('Motto', 'tagline', 'text', $row->tagline);
 			?>
 		</div>
 		<div class="<?php echo grid_col(12, '', '5?2'); ?>">
 			<?php 
-			xform_group_list('Address', 'address', 'textarea', $this->session->school_address, true, ['rows' => 3]);
-			xform_group_list('Email Address', 'email', 'email', $this->session->school_email, true);
-			xform_group_list('Phone', 'phone', 'number', $this->session->school_phone, true);
+			xform_group_list('Address', 'address', 'textarea', $row->address, true, ['rows' => 3]);
+			xform_group_list('Email Address', 'email', 'email', $row->email, true);
+			xform_group_list('Phone', 'phone', 'number', $row->phone, true);
 			?>
 		</div>
 	</div>

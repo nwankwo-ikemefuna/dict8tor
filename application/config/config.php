@@ -469,20 +469,10 @@ $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = [
     'api/permissions/get',
-    'api/departments/get',
-    'api/classes/get',
-    'api/courses/get',
-    'api/students/get',
-    'api/student_import/get',
     'api/employees/get',
-    // 'api/assessment_groups/get/.*?',
-    'api/assessment_groups/get',
-    'api/assessments/get',
-    'api/assessments/get_registered_candidates',
-    'api/assessments/get_student',
-    'api/assessment_questions/get',
-    'api/assessment_submissions/get',
-    'api/assessment_submissions/get_student_results',
+    'api/language_strings/get',
+    'api/post_categories/get',
+    'api/posts/get',
 ];
 /*
 |--------------------------------------------------------------------------

@@ -17,7 +17,7 @@ class User_model extends Core_Model {
 		$select .= join_select($arr, 'age', user_age_select("u.dob"));
 		$select .= join_select($arr, 'account_status', case_map_select('u.active', ACC_STATUSES));
 		$select .= join_select($arr, 'permissions_name', "GROUP_CONCAT(DISTINCT `p`.`name` SEPARATOR ', ')");
-		$select .= join_select($arr, 'avatar', file_select('uploads/img/photo/', 'u.photo', avatar_select_default('u.sex')));
+		$select .= join_select($arr, 'avatar', file_select('uploads/pix/users/', 'u.photo', avatar_select_default('u.sex')));
 		$joins = []; 
 		//usergroups
 		if (in_array('ug', $to_join) || in_array('all', $to_join)) {

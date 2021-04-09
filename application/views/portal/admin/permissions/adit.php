@@ -8,7 +8,7 @@ xform_open('api/permissions/'.$page, xform_attrs());
 			if ($page == 'edit') { 
                 xform_input('id', 'hidden', $row->id);
             } 
-			xform_group_list('Role', 'name', 'text', adit_value($row, 'name'), true, ['class' => 'to_clear', 'placeholder' => 'Lecturer, HOD, Exam Officer, etc']);
+			xform_group_list('Role', 'name', 'text', adit_value($row, 'name'), true, ['class' => 'to_clear', 'placeholder' => 'e.g. Content Creator']);
 			?>
 		</div>
 	</div>

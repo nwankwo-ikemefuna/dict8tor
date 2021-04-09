@@ -77,18 +77,28 @@
 
                             //settings
                             side_menu_parent_open_auth(MOD_SETTINGS, VIEW, ADMIN, 'Settings', 'cog');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'School Info', 'settings/view');
-                                side_menu_auth(MOD_PERMISSIONS, VIEW, ADMIN, 'Roles & Permissions', 'permissions');
+                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Site Info', 'settings/view');
+                                side_menu_auth(MOD_LANGUAGE_STRINGS, VIEW, ADMIN, 'Language Strings', 'settings/language_strings');
+                                side_menu_auth(MOD_PERMISSIONS, VIEW, ADMIN, 'Roles & Privileges', 'permissions');
                             side_menu_parent_close_auth(MOD_SETTINGS, VIEW, ADMIN);
 
-                            //Messaging
-                            side_menu_parent_open_auth(MOD_MESSAGING, VIEW, ADMIN, 'Messaging', 'envelope-o');
-                                side_menu_auth(MOD_MESSAGING, VIEW, ADMIN, 'SMS Alerts', 'messaging/sms');
-                            side_menu_parent_close_auth(MOD_MESSAGING, VIEW, ADMIN);
+                            //candidates
+                            side_menu_parent_open_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Candidates', 'users');
+                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Main Candidate', 'candidates/1');
+                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Support Candidate', 'candidates/2');
+                            side_menu_parent_close_auth(MOD_CANDIDATES, VIEW, ADMIN);
 
-                            //employees
-                            side_menu_parent_open_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Employees', 'users');
-                                side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'All Employees', 'employees');
+                            //blog
+                            side_menu_parent_open_auth(MOD_BLOG, VIEW, ADMIN, 'Blog', 'book');
+                                side_menu_auth(MOD_BLOG, VIEW, ADMIN, 'Blog Posts', 'posts');
+                                side_menu_auth(MOD_BLOG, VIEW, ADMIN, 'Add Post', 'posts/add');
+                                side_menu_auth(MOD_BLOG_CATEGORIES, VIEW, ADMIN, 'Blog Categories', 'post_categories/index');
+                            side_menu_parent_close_auth(MOD_BLOG, VIEW, ADMIN);
+
+                            //user accounts
+                            side_menu_parent_open_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'User Accounts', 'users');
+                                side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'All Users', 'employees');
+                                side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Add User', 'employees/add');
                             side_menu_parent_close_auth(MOD_EMPLOYEES, VIEW, ADMIN);
                             
                             //general menus lower

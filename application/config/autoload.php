@@ -181,7 +181,6 @@ $autoload['model'] = [
 	'country_model', 
 	'extras_model', 
 	'module_model', 
-	'msg_model', 
 	'permission_model', 
 	'priority_model', 
 	'setting_model', 

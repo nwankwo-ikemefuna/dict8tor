@@ -10,23 +10,12 @@ Date Created: 31/12/2019
 Date Modified: 31/12/2019
 */ 
 
-// http://uniport.dev.eroodyte.com/uploads/schools/uniport/pix/info/uploads/schools/uniport/pix/info/uniport.jpg
-
 function get_file($file, $default = null) {
     return is_file($file) && file_exists($file) ? $file : $default;
 }
 
-function school_file_path($upload_dir = '', $file = '', $type = 'pix') {
-    $upload_dir = strlen($upload_dir) ? '/'.$upload_dir : '';
-    $file = strlen($file) ? '/'.$file : '';
-    if ($type == 'dox') {
-        return SCHOOL_DOX_DIR.$upload_dir.$file;
-    }
-    return SCHOOL_PIX_DIR.$upload_dir.$file;
-}
-
 function create_dir($dir) {
-    return is_dir($dir) || mkdir($dir, 0777);
+    return is_dir($dir) || mkdir($dir, 0755);
 }
 
 function upload_file($file_input, $conf) { 

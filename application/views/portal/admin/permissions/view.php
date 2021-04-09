@@ -2,7 +2,7 @@
 	<div class="<?php echo grid_col(12, 5); ?>">
 		<?php 
 		data_show_grid('Role', $row->name);
-		data_show_grid('Employee Count', $row->employee_count);
+		data_show_grid('User Count', $row->employee_count);
 		?>
 	</div>
 </div>
