@@ -29,17 +29,18 @@ class Core_Controller extends CI_Controller {
 		$this->tv_file = null;
 
 		//get site info
-		$this->site_info = $this->setting_model->get_site_info();
+		$this->site_info = $this->setting_model->get_site_language_info();
 
 		require_once 'application/config/http_codes.php';
 		require_once 'application/config/consts.php';
 
-		// $this->is_campaign_phase = ($this->site_info->active_phase == 2);
+		// $this->is_campaign_phase = ($this->site_info->phase == 2);
 		$this->is_campaign_phase = true;
 		//set language strings
 		$this->setting_model->set_lang_strings();
 
-		$this->active_language = $this->session->active_language ?? DEFAULT_LANGUAGE;
+		$this->default_language = DEFAULT_LANGUAGE;
+		$this->active_language = $this->session->active_language ?? $this->default_language;
 		$this->lang_strings = $this->session->language_strings[$this->active_language];
 
 		//get candidate info

@@ -16,11 +16,13 @@ class Settings extends Core_controller {
 	}
 
 
-	public function view() { 
+	public function view($phase) { 
 		//buttons
 		$this->butts = ['edit'];
+		$data['row'] = $this->info_model->get_details($phase, 'phase');
+		$data['setting'] = $this->setting_model->get_details(1, 'id', [], 's.phase, s.logo, s.logo_portal, s.email, s.phone, s.address');
         $this->ajax_header('Site Info');
-		$this->load->view('portal/admin/settings/view');
+		$this->load->view('portal/admin/settings/view', $data);
 		$this->ajax_footer();
 	}
 

@@ -10,20 +10,18 @@ class Blog_model extends Core_Model {
 	public function sql($to_join = [], $select = "*", $where = []) {
 		$arr = sql_select_arr($select);
 		$select =  $select != '*' ? $arr['main'] : "b.*";
-        $cat_title = json_extract_select('cat.title', $this->active_language);
-        $cat_slug = json_extract_select('cat.slug', $this->active_language);
-        $cat_slug_default = json_extract_select('cat.slug', DEFAULT_LANGUAGE);
-        $uncategorized = lang_string('uncategorized');
-		$select .= join_select($arr, 'category_title', "IFNULL(NULLIF({$cat_title}, ''), '{$uncategorized}')");
-		$select .= join_select($arr, 'category_slug', "IFNULL(NULLIF({$cat_slug}, ''), {$cat_slug_default})");
+		$select .= join_select($arr, 'title', "IFNULL(NULLIF(b.title_{$this->active_language}, ''), b.title_{$this->default_language})");
+        $select .= join_select($arr, 'content', "IFNULL(NULLIF(b.content_{$this->active_language}, ''), b.content_{$this->default_language})");
+		$select .= join_select($arr, 'category_slug', "cat.slug");
+		$select .= join_select($arr, 'category_title', "IFNULL(NULLIF(cat.title_{$this->active_language}, ''), cat.title_{$this->default_language})");
 		$joins = [];
 		//categories
 		if (in_array('cat', $to_join) || in_array('all', $to_join)) {
 			$joins = array_merge($joins, 
-				[T_POST_CATEGORIES.' cat' => ['cat.id = b.category_id', 'left']] //a post may not always have a category
+				[T_POST_CATEGORIES.' cat' => ['cat.id = b.category_id', 'inner']]
 			);
 		}
-		return sql_data(T_POSTS.' b', $joins, $select, $where, ['b.date_created' => 'desc', 'b.title' => 'asc']);
+		return sql_data(T_POSTS.' b', $joins, $select, $where, ['b.date_created' => 'desc', 'b.title_'.$this->active_language => 'asc']);
 	}
 
 
@@ -31,7 +29,7 @@ class Blog_model extends Core_Model {
         //properly escape string
         $search = $this->db->escape_str($search, true);
         $where = sprintf("(
-            b.`title` LIKE '%s' OR b.`content` LIKE '%s')",
+            b.`title_{$this->active_language}` LIKE '%s' OR b.`content_{$this->active_language}` LIKE '%s')",
             "%{$search}%", "%{$search}%"
         );
         return $where;
@@ -40,15 +38,13 @@ class Blog_model extends Core_Model {
 
 	public function get_details($id, $by = 'id', $to_join = [], $select = "*", $where = [], $trashed = 0) {
 		$sql = $this->sql($to_join, $select, $where);
-		$row = $this->get_row($sql['table'], $id, $by, $trashed, $sql['joins'], $sql['select'], $sql['where'], $sql['group_by']);
-        return $row;
+		return $this->get_row($sql['table'], $id, $by, $trashed, $sql['joins'], $sql['select'], $sql['where'], $sql['group_by']);
 	}
 
 
 	public function get_all($to_join = [], $select = "", $where = [], $trashed = 0, $limit = '', $offset = 0) {
 		$sql = $this->sql($to_join, $select, $where);
-		$rows = $this->get_rows($sql['table'], $trashed, $sql['joins'], $sql['select'], $sql['where'], $sql['order'], $sql['group_by'], $limit, $offset);
-        return $rows;
+		return $this->get_rows($sql['table'], $trashed, $sql['joins'], $sql['select'], $sql['where'], $sql['order'], $sql['group_by'], $limit, $offset);
 	}
 
 

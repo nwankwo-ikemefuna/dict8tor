@@ -180,6 +180,7 @@ $autoload['model'] = [
 	'common_model', 
 	'country_model', 
 	'extras_model', 
+	'info_model', 
 	'module_model', 
 	'permission_model', 
 	'priority_model', 

@@ -3225,7 +3225,7 @@ textarea.noresize {
 /*scrollable table*/
 .table_scroll {
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 10px;
 }

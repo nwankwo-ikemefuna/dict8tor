@@ -17,7 +17,7 @@
                                 <div class="input-holder">
                                     <input type="text" name="q" placeholder="<?php echo lang_string('search'); ?>" required>
                                 </div>
-                                <em class="ajax_form_processing" data-persist="1">Searching...</em>
+                                <em class="ajax_form_processing" data-persist="1"><?php echo lang_string('searching'); ?>...</em>
                                 <?php
                             xform_close(); ?>
                         </div>
@@ -29,7 +29,7 @@
                         <ul class="custom-list type-1">
                             <?php 
                             foreach ($blog_categories as $row) { ?>
-                                <li><a href="<?php echo base_url('blog/categories/'.$row->category_slug); ?>"><?php echo $row->category_title; ?></a></li>
+                                <li><a href="<?php echo base_url('blog/categories/'.$row->slug); ?>"><?php echo $row->title; ?></a></li>
                                 <?php
                             } ?>
                         </ul>

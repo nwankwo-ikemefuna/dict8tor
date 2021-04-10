@@ -123,3 +123,11 @@ function json_extract_select($field, $key) {
 	$lookup = '$."'.$key.'"';
     return "JSON_UNQUOTE(JSON_EXTRACT({$field}, '".$lookup."'))";
 }
+
+function language_column_select($keys_arr, $language) {
+	$select = '';
+	foreach ($keys_arr as $key) {
+		$select .= "i.{$key}_{$language} AS {$key}, ";
+	}
+	return $select;
+}

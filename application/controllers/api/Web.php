@@ -12,7 +12,7 @@ class Web extends Core_controller {
         if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
         //ensure language has data for current phase
         $language = xpost('language');
-        $info = $this->setting_model->get_site_info($language);
+        $info = $this->setting_model->get_site_language_info($language);
         if (!$info) json_response('Sorry! No content for selected language!', false);
         //switch it
         $this->session->set_userdata('active_language', $language);
