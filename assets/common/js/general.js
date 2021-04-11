@@ -346,9 +346,13 @@ function status_box(selector, msg, type = 'success', selector_type = 'class', de
         </div>`;
     selector = selector_type == 'id' ? '#'+selector : '.'+selector;
     var elem = $(selector);
-    var form = $('#'+form_id);
-    if (form.length) {
-        form.find(selector).html(status_div).fadeIn('fast');
+    if (form_id.length) {
+        var form = $('#'+form_id);
+        if (form.length) {
+            form.find(selector).html(status_div).fadeIn('fast');
+        } else {
+            elem.html(status_div).fadeIn('fast');
+        }
     } else {
         elem.html(status_div).fadeIn('fast');
     }

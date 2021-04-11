@@ -37,7 +37,7 @@ class Setting_model extends Core_Model {
         }
         //language specific data
         $lang_keys_arr = array_keys($this->language_columns());
-        $info_select = language_column_select($lang_keys_arr, $active_language);
+        $info_select = language_column_select($lang_keys_arr, $active_language, 'i');
         $info_select .= 'i.poster_photo, i.about_intro_photo, i.about_family_photo, i.about_public_service_photo, i.intro_video_placeholder, i.intro_video';
         return $this->get_details(1, 'id', ['i'], "s.phase, s.logo, s.logo_portal, s.favicon, s.email, s.phone, s.address, {$info_select}");
     }
@@ -47,16 +47,12 @@ class Setting_model extends Core_Model {
         $active_language = $this->session->active_language ?? $this->default_language;
         //is it already set for active language?
         if (!$reset && $this->session->has_userdata('language_strings') && isset($this->session->language_strings[$active_language]) && $this->session->language_strings[$active_language]) {
-            return false;
+            // return false;
         }
-        $rows = $this->get_rows($this->lang_strings_table, 0, [], 'key, value');
+        $rows = $this->language_string_model->get_all([], 'ls.key ## value');
         $strings_arr = [];
         foreach ($rows as $row) {
-            $values_arr = json_decode($row->value, true) ?? [];
-            //set value in chosen language, use default if not specified
-            if ($values_arr) {
-                $strings_arr[$row->key] = $values_arr[$active_language] ?: ($values_arr[$this->default_language] ?? '');
-            }
+            $strings_arr[$row->key] = $row->value;
         }
         $lang_strings_arr[$active_language] = $strings_arr;
         $this->session->set_userdata('language_strings', $lang_strings_arr);
@@ -65,15 +61,15 @@ class Setting_model extends Core_Model {
 
     public function language_columns() {
         return [
-            'name' => 'Site Name',
-            'initials' => 'Site Short Name',
-            'tagline' => 'Tagline',
-            'campaign_line' => 'Campaign Line',
-            'description' => 'Description',
-            'intro_msg' => 'Introductory Message',
-            'about_intro' => 'About Intro',
-            'about_family' => 'About Family',
-            'about_public_service' => 'About Public Service',
+            'name' => ['title' => 'Site Name', 'input' => 'text'],
+            'initials' => ['title' => 'Site Short Name', 'input' => 'text'],
+            'tagline' => ['title' => 'Tagline', 'input' => 'text'],
+            'campaign_line' => ['title' => 'Campaign Line', 'input' => 'text'],
+            'description' => ['title' => 'Description', 'input' => 'textarea', 'rows' => 5],
+            'intro_msg' => ['title' => 'Introductory Message', 'input' => 'textarea', 'rows' => 5],
+            'about_intro' => ['title' => 'About Intro', 'input' => 'textarea', 'rows' => 8],
+            'about_family' => ['title' => 'About Family', 'input' => 'textarea', 'rows' => 8],
+            'about_public_service' => ['title' => 'About Public Service', 'input' => 'textarea', 'rows' => 8],
         ];
     }
 

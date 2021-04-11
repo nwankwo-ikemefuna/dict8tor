@@ -68,8 +68,10 @@ function web_icons() {
     return $icons;
 }
 
-function blog_article_url($date_created, $slug) {
-    return base_url('post/'.date('Y-m-d', strtotime($date_created)).'/'.$slug);
+function blog_article_url($date_created, $slug, $full_url = true) {
+    $url = 'post/'.date('Y-m-d', strtotime($date_created)).'/'.$slug;
+    if (!$full_url) return $url;
+    return base_url($url);
 }
 
 function web_share_icons($url, $snippet = '', $wrapper_class = 'share-wrap', $ul_class = 'social-icons share', $show_hint = true) { ?>
@@ -87,4 +89,24 @@ function web_share_icons($url, $snippet = '', $wrapper_class = 'share-wrap', $ul
         </ul>
     </div>
     <?php
+}
+
+function portal_image_widget($image, $title, $fieldset_class = '') { ?>
+    <fieldset class="scheduler-border image_widget <?php echo $fieldset_class; ?>">
+        <legend class="scheduler-border"><?php echo $title; ?></legend>
+        <div style="background: grey; padding: 10px;">
+            <img class="" src="<?php echo base_url($image); ?>">
+        </div>
+    </fieldset>
+    <?php 
+}
+
+function portal_video_widget($url, $title, $fieldset_class = '') { ?>
+    <fieldset class="scheduler-border video_widget <?php echo $fieldset_class; ?>">
+        <legend class="scheduler-border"><?php echo $title; ?></legend>
+        <div style="background: grey; padding: 10px;">
+            <iframe src="<?php echo $url; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+        </div>
+    </fieldset>
+    <?php 
 }

@@ -77,16 +77,29 @@
 
                             //settings
                             side_menu_parent_open_auth(MOD_SETTINGS, VIEW, ADMIN, 'Settings', 'cog');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Site Info (Phase 1)', 'settings/view/1');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Site Info (Phase 2)', 'settings/view/2');
-                                side_menu_auth(MOD_LANGUAGE_STRINGS, VIEW, ADMIN, 'Language Strings', 'settings/language_strings');
+                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'General Site Info', 'settings/view');
+                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Phase 1 Info', 'info/view/1');
+                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Phase 2 Info', 'info/view/2');
+                                side_menu_auth(MOD_LANGUAGE_STRINGS, VIEW, ADMIN, 'Language Strings', 'language_strings/view');
                             side_menu_parent_close_auth(MOD_SETTINGS, VIEW, ADMIN);
 
                             //candidates
                             side_menu_parent_open_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Candidates', 'users');
-                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Main Candidate', 'candidates/1');
-                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Support Candidate', 'candidates/2');
+                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Main Candidate', 'candidates/view/1');
+                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Support Candidate', 'candidates/view/2');
                             side_menu_parent_close_auth(MOD_CANDIDATES, VIEW, ADMIN);
+
+                            //timelines
+                            side_menu_parent_open_auth(MOD_TIMELINES, VIEW, ADMIN, 'Timelines', 'calendar');
+                                side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Main Candidate', 'timelines?type=1');
+                                side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Support Candidate', 'timelines?type=2');
+                            side_menu_parent_close_auth(MOD_TIMELINES, VIEW, ADMIN);
+
+                            //issue and priorities
+                            side_menu_parent_open_auth(MOD_PRIORITIES, VIEW, ADMIN, 'Issues & Priorities', 'tasks');
+                                side_menu_auth(MOD_PRIORITIES, VIEW, ADMIN, 'All Issues/Priorities', 'priorities');
+                                side_menu_auth(MOD_PRIORITIES, VIEW, ADMIN, 'Add Issue/Priority', 'priorities/add');
+                            side_menu_parent_close_auth(MOD_PRIORITIES, VIEW, ADMIN);
 
                             //blog
                             side_menu_parent_open_auth(MOD_BLOG, VIEW, ADMIN, 'Blog', 'book');
@@ -101,8 +114,13 @@
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Add User', 'employees/add');
                                 side_menu_auth(MOD_PERMISSIONS, VIEW, ADMIN, 'Roles & Privileges', 'permissions');
                             side_menu_parent_close_auth(MOD_EMPLOYEES, VIEW, ADMIN);
+
+                            //subscribers
+                            side_menu_parent_open_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'Subscribers', 'users');
+                                side_menu_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'All Subscribers', 'subscribers');
+                            side_menu_parent_close_auth(MOD_SUBSCRIBERS, VIEW, ADMIN);
                             
-                            //general menus lower
+                            //user
                             side_menu_parent_open('My Account', 'user');
                                 side_menu('Profile', 'user/view');
                                 side_menu('Change Password', 'user/reset_pass');

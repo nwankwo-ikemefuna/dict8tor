@@ -179,13 +179,14 @@ $autoload['model'] = [
 	'candidate_model', 
 	'common_model', 
 	'country_model', 
-	'extras_model', 
 	'info_model', 
+	'language_string_model', 
 	'module_model', 
 	'permission_model', 
 	'priority_model', 
 	'setting_model', 
 	'state_model', 
+	'subscriber_model', 
 	'timeline_model', 
 	'user_model'
 ];

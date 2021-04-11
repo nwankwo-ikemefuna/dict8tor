@@ -231,7 +231,7 @@ function link_button($text, $url, $icon = '', $bg = 'primary', $title = '', $cla
     $attrs = set_extra_attrs($extra);
     $icon = strlen($icon) ? 'fa fa-'.$icon : '';
     $url = $full_url ? $url : base_url($url);
-    return '<a class="btn btn-'.$bg.' '.$class.'" href="'.$url.'" title="'.$title.'"><i class="'.$icon.'" '.$attrs.'></i> '.$text.'</a>';
+    return '<a class="btn btn-'.$bg.' '.$class.'" href="'.$url.'" title="'.$title.'" '.$attrs.'><i class="'.$icon.'"></i> '.$text.'</a>';
 }
 
 function link_button_ajax($text, $url, $icon = '', $bg = 'primary', $title = '', $class = '', $full_url = false, $extra= []) {
@@ -501,7 +501,9 @@ function page_crud_butts($module, $usergroups, $butts, $record_id = null, $recor
                             $target = $_opt['target'] . ($with_qs ? q_string() : '');
                             $text = $_opt['text'] ?? '';
                             $icon = $_opt['icon'] ?? 'indent';
-                            if ($type == 'url') {
+                            if ($type == 'url_external') {
+                                $btn .= link_button($text, $target, $icon, $bg, '', '', false, ['target' => '_blank']) . ' ';
+                            } elseif ($type == 'url') {
                                 $btn .= link_button_ajax($text, $target, $icon, $bg) . ' ';
                             } else {
                                 $btn .= modal_button($text, $target, $icon, $bg) . ' ';

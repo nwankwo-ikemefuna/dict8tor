@@ -7,13 +7,17 @@ class Blog_model extends Core_Model {
 	}
 
 
-	public function sql($to_join = [], $select = "*", $where = []) {
+	public function sql($to_join = [], $select = "*", $where = [], $for_admin = false) {
 		$arr = sql_select_arr($select);
 		$select =  $select != '*' ? $arr['main'] : "b.*";
 		$select .= join_select($arr, 'title', "IFNULL(NULLIF(b.title_{$this->active_language}, ''), b.title_{$this->default_language})");
         $select .= join_select($arr, 'content', "IFNULL(NULLIF(b.content_{$this->active_language}, ''), b.content_{$this->default_language})");
 		$select .= join_select($arr, 'category_slug', "cat.slug");
 		$select .= join_select($arr, 'category_title', "IFNULL(NULLIF(cat.title_{$this->active_language}, ''), cat.title_{$this->default_language})");
+		$select .= join_select($arr, 'category_title_default', "cat.title_{$this->default_language}");
+		$select .= join_select($arr, 'featured_text', case_map_select('b.featured', ['No', 'Yes']));
+		$select .= join_select($arr, 'published_text', case_map_select('b.published', ['No', 'Yes']));
+		$select .= join_select($arr, 'created_on', datetime_select('b.date_created'));
 		$joins = [];
 		//categories
 		if (in_array('cat', $to_join) || in_array('all', $to_join)) {
@@ -21,7 +25,8 @@ class Blog_model extends Core_Model {
 				[T_POST_CATEGORIES.' cat' => ['cat.id = b.category_id', 'inner']]
 			);
 		}
-		return sql_data(T_POSTS.' b', $joins, $select, $where, ['b.date_created' => 'desc', 'b.title_'.$this->active_language => 'asc']);
+		$language = $for_admin ? DEFAULT_LANGUAGE : $this->active_language;
+		return sql_data(T_POSTS.' b', $joins, $select, $where, ['b.date_created' => 'desc', 'b.title_'.$language => 'asc']);
 	}
 
 
@@ -52,5 +57,13 @@ class Blog_model extends Core_Model {
         $sql = $this->sql($to_join, '*', $where);
 		return $this->count_rows($sql['table'], $sql['where'], $trashed);
 	}
+
+
+	public function language_columns() {
+        return [
+            'title' => ['title' => 'Title', 'input' => 'text'],
+            'content' => ['title' => 'Content', 'input' => 'textarea', 'rows' => 12],
+        ];
+    }
 	
 }

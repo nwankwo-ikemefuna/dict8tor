@@ -9,11 +9,13 @@ class Candidate_model extends Core_Model {
 
 	public function sql($to_join = [], $select = "*", $where = []) {
 		$arr = sql_select_arr($select);
-		$select =  $select != '*' ? $arr['main'] : "u.*";
-		$select .= join_select($arr, 'full_name', full_name_select('u', false));
-		$select .= join_select($arr, 'avatar', file_select('uploads/pix/info/', 'u.photo', avatar_select_default('u.sex')));
+		$select =  $select != '*' ? $arr['main'] : "cu.*";
+		$select .= join_select($arr, 'full_name', full_name_select('cu', false));
+		$select .= join_select($arr, 'gender', gender_select('cu.sex'));
+		$select .= join_select($arr, 'age', user_age_select("cu.dob"));
+		$select .= join_select($arr, 'avatar', file_select('uploads/pix/candidates/', 'cu.photo', avatar_select_default('cu.sex')));
 		$joins = []; 
-		return sql_data(T_CANDIDATE_PROFILE.' u', $joins, $select, $where);
+		return sql_data(T_CANDIDATES.' cu', $joins, $select, $where);
 	}
 
 

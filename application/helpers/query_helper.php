@@ -124,10 +124,11 @@ function json_extract_select($field, $key) {
     return "JSON_UNQUOTE(JSON_EXTRACT({$field}, '".$lookup."'))";
 }
 
-function language_column_select($keys_arr, $language) {
+function language_column_select($keys_arr, $language, $alias = '') {
+	$alias .= $alias ? '.' : '';
 	$select = '';
 	foreach ($keys_arr as $key) {
-		$select .= "i.{$key}_{$language} AS {$key}, ";
+		$select .= "{$alias}{$key}_{$language} AS {$key}, ";
 	}
 	return $select;
 }

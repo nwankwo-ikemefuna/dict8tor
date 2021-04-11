@@ -423,11 +423,10 @@ img.full:not(:last-child){
   width: 100%;
   height: 100%;
 }
-
-  .responsive-iframe.fix-size > iframe{
-    top: -45%;
-    height: 180%!important;
-  }
+.responsive-iframe.fix-size > iframe{
+  top: -45%;
+  height: 180%!important;
+}
 
 /* -----------------------------------
 

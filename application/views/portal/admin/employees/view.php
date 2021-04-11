@@ -11,16 +11,16 @@
 		data_show_grid('First Name', $row->first_name);
 		data_show_grid('Last Name', $row->last_name);
 		data_show_grid('Other Name', $row->other_name);
-		data_show_grid('Sex ', $row->gender);
-		data_show_grid('Roles ', $row->permissions_name);
+		data_show_grid('Sex', $row->gender);
+		data_show_grid('Roles', $row->permissions_name);
 		?>
 	</div>
 	<div class="<?php echo grid_col(12, '5?2'); ?>">
 		<?php 
 		data_show_grid('Email', $row->email);
 		data_show_grid('Phone', $row->phone);
-		data_show_grid('Date of Birth ', x_date($row->dob));
-		data_show_grid('Age ', $row->age);
+		data_show_grid('Date of Birth', x_date($row->dob));
+		data_show_grid('Age', $row->age);
 		data_show_grid('Account Status', ACC_STATUSES_STYLED[$row->active]);
 		?>
 	</div>

@@ -7,13 +7,13 @@ class Blog_category_model extends Core_Model {
     }
 
 
-    public function sql($to_join = [], $select = "*", $where = []) {
+    public function sql($to_join = [], $select = "*", $where = [], $for_admin = false) {
 		$arr = sql_select_arr($select);
 		$select =  $select != '*' ? $arr['main'] : "cat.*";
-        $uncategorized = lang_string('uncategorized');
         $select .= join_select($arr, 'title', "IFNULL(NULLIF(cat.title_{$this->active_language}, ''), cat.title_{$this->default_language})");
 		$joins = [];
-		return sql_data(T_POST_CATEGORIES.' cat', $joins, $select, $where, ['cat.order' => 'asc']);
+		$language = $for_admin ? DEFAULT_LANGUAGE : $this->active_language;
+		return sql_data(T_POST_CATEGORIES.' cat', $joins, $select, $where, ['cat.order' => 'asc', 'cat.title_'.$language => 'asc']);
 	}
 
 
@@ -27,5 +27,12 @@ class Blog_category_model extends Core_Model {
 		$sql = $this->sql($to_join, $select, $where);
 		return $this->get_rows($sql['table'], $trashed, $sql['joins'], $sql['select'], $sql['where'], $sql['order'], $sql['group_by'], $limit, $offset);
 	}
+
+
+	public function language_columns() {
+        return [
+            'title' => ['title' => 'Title', 'input' => 'text']
+        ];
+    }
 
 }

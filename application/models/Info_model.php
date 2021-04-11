@@ -20,4 +20,14 @@ class Info_model extends Core_Model {
 		return $this->get_row($sql['table'], $id, $by, $trashed, $sql['joins'], $sql['select'], $sql['where'], $sql['group_by']);
 	}
 
+    public function image_columns() {
+        return [
+			'poster_photo' => ['title' => 'Poster Photo', 'dimension' => '1920x1050', 'max' => 300],
+			'about_intro_photo' => ['title' => 'About Intro Photo', 'dimension' => '960x600', 'max' => 300],
+			'about_family_photo' => ['title' => 'About Family Photo', 'dimension' => '960x600', 'max' => 300],
+			'about_public_service_photo' => ['title' => 'About Public Service Photo', 'dimension' => '960x600', 'max' => 300],
+			'intro_video_placeholder' => ['title' => 'Intro Video Placeholder Photo', 'dimension' => '768x432', 'max' => 300],
+		];
+    }
+
 }

@@ -19,7 +19,7 @@ class Blog extends Core_controller {
 	protected function footer() {
         $featured_posts_where = ['b.published' => 1, 'b.featured' => 1];
         $data['featured_posts'] = $this->blog_model->get_all([], 'b.slug, b.date_created ## title', $featured_posts_where, 0, 4);
-        $data['blog_categories'] = $this->blog_category_model->get_all([], 'slug ## title', [], 0, 4);
+        $data['blog_categories'] = $this->blog_category_model->get_all([], 'slug ## title');
 		$this->load->view('blog/layout/footer', $data);
         return $this->web_footer();
 	}
@@ -73,7 +73,7 @@ class Blog extends Core_controller {
             redirect('blog'); //all posts 
         }
         $where = ['DATE(b.date_created)' => $date, 'b.published' => 1];
-        $row = $this->blog_model->get_details($slug, 'slug', ['cat'], 'b.id, b.slug, b.featured_item_type, b.featured_item, b.date_created, b.published ## title, content, category_title, category_slug', $where);
+        $row = $this->blog_model->get_details($slug, 'slug', ['cat'], 'b.id, b.category_id, b.slug, b.featured_item_type, b.featured_item, b.date_created, b.published ## title, content, category_title, category_slug', $where);
         if (!$row) {
             redirect('blog'); //all posts 
         }
@@ -84,7 +84,7 @@ class Blog extends Core_controller {
             'b.category_id' => $row->category_id, //same category
             'b.id !=' => $row->id, //not this post being viewed
         ];
-        $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.title, b.slug, b.date_created, b.featured_item_type, b.featured_item, ## category_title, category_slug', $related_posts_where, 0, 3);
+        $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.slug, b.date_created, b.featured_item_type, b.featured_item, ## title, category_title, category_slug', $related_posts_where, 0, 3);
         $this->header($row->title, $breadcrumbs);
         $this->load->view('blog/view', $data);
         $this->footer();

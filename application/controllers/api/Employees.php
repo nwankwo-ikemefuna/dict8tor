@@ -17,7 +17,7 @@ class Employees extends Core_controller {
         $butts = ['view', 'edit', 'delete'];
         $keys = ['id'];
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
-        $select = "u.id, last_name, first_name, other_name, email, phone, status, ## full_name, gender, permissions_name";
+        $select = "u.id, last_name, first_name, other_name, email, phone, status ## full_name, gender, permissions_name";
         $where = ['usergroup' => ADMIN];
         //fetch
         $sql = $this->user_model->sql(['p'], $select, $where);
@@ -46,7 +46,7 @@ class Employees extends Core_controller {
         }
 
         //Email already exists?
-        $email_exists = $this->common_model->exists($this->table, ['email' => xpost('email')], $id);
+        $email_exists = $this->common_model->exists($this->table, ['email' => strtolower(xpost('email'))], $id);
         if ($email_exists) json_response('Email is already in use', false);
 
         $permissions = (array) xpost('permissions');
@@ -59,7 +59,7 @@ class Employees extends Core_controller {
             'sex'           => xpost('sex'),
             'dob'           => strlen($dob) ? $dob : null,
             'phone'         => xpost('phone'),
-            'email'         => strlen(xpost('email')) ? strtolower(xpost('email')) : NULL,
+            'email'         => strtolower(xpost('email')),
             'permissions'   => join_us($permissions),
             'active'        => xpost('active') ?? 0,
         ];
@@ -73,8 +73,8 @@ class Employees extends Core_controller {
 
     public function add() {
         $this->auth->module_restricted($this->module, ADD, ADMIN);
-        $file_path = 'uploads/pix/users';
-        $file_name = upload_photo($file_path, false);
+        $upload_conf = ['path' => 'uploads/pix/users', 'ext' => 'jpg|jpeg|png', 'size' => 100, 'required' => false];
+        $file_name = upload_image('photo', $upload_conf, false);
         $data = $this->adit();
         $data["photo"] = $file_name;
         $id = $this->common_model->insert($this->table, $data);
@@ -86,8 +86,8 @@ class Employees extends Core_controller {
         $this->auth->module_restricted($this->module, EDIT, ADMIN);
         $id = xpost('id'); 
         $row = $this->user_model->get_details($id, 'id', [], 'photo');
-        $file_path = 'uploads/pix/users';
-        $file_name = upload_photo($file_path, true, $row->photo);
+        $upload_conf = ['path' => 'uploads/pix/users', 'ext' => 'jpg|jpeg|png', 'size' => 100, 'required' => false];
+        $file_name = upload_image('photo', $upload_conf, true, $row->photo);
         $data = $this->adit($id);
         $data["photo"] = $file_name;        
         $this->common_model->update($this->table, $data, ['id' => $id]);

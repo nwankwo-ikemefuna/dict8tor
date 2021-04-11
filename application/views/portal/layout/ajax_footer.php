@@ -15,4 +15,5 @@ load_scripts($this->page_scripts, 'assets/portal/custom/js');
 <script>
     //pass vars to javascript
     var c_controller = "<?php echo $this->c_controller; ?>";
+    var current_page = "<?php echo $current_page; ?>";
 </script>

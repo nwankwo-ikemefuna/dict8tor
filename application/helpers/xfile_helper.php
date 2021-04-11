@@ -124,11 +124,9 @@ function upload_files($file_input, $conf) {
     }
 }
 
-function upload_photo($file_path, $is_edit, $photo = null) {
+function upload_image($name, $conf, $is_edit, $photo = null) {
     $file_name = '';
-    $ext = 'jpg|jpeg|png';
-    $conf = ['path' => $file_path, 'ext' => $ext, 'size' => 100, 'required' => false];
-    $upload = upload_file('photo', $conf);
+    $upload = upload_file($name, $conf);
     //file upload fails
     if ( ! $upload['status']) 
         json_response($upload['error'], false);
@@ -136,7 +134,7 @@ function upload_photo($file_path, $is_edit, $photo = null) {
         //changing file?
         if ($upload['status'] && !empty($upload['file_name'])) {
             //unlink image
-            unlink_file($file_path, $photo);
+            unlink_file($conf['path'], $photo);
             $file_name = $upload['file_name'];
         } else {
             //file wasn't uploaded, retain current
