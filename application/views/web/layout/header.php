@@ -61,9 +61,12 @@
 										<div class="lang-section">
 											<?php
 											$site_languages = get_site_languages();
-											foreach ($site_languages as $lang) { ?>
-												<a href="javascript:;" class="switch_language <?php echo ($this->session->active_language == $lang['key']) ? 'active' : ''; ?>" data-lang="<?php echo $lang['key']; ?>"><?php echo $lang['alias']; ?></a>
-												<?php
+											$show_lang_options = false; //because why not?
+											if ($show_lang_options) {
+												foreach ($site_languages as $lang) { ?>
+													<a href="javascript:;" class="switch_language <?php echo ($this->session->active_language == $lang['key']) ? 'active' : ''; ?>" data-lang="<?php echo $lang['key']; ?>"><?php echo $lang['alias']; ?></a>
+													<?php
+												}
 											}
 											?>
 										</div>
