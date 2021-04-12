@@ -25,7 +25,7 @@ function donation_amounts() {
 }
 
 function get_currency_code() {
-    return IN_NIGERIA ? C_NIGERIA : '$';
+    return IN_NIGERIA ? CU_NAIRA : '$';
 }
 
 function web_icons() {
