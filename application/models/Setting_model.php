@@ -33,7 +33,7 @@ class Setting_model extends Core_Model {
 
     public function get_site_language_info($active_language = null) {
         if (!$active_language) {
-            $active_language = $this->session->active_language ?? $this->default_language;
+            $active_language = $this->session->active_language ?: $this->default_language;
         }
         //language specific data
         $lang_keys_arr = array_keys($this->language_columns());
@@ -44,10 +44,10 @@ class Setting_model extends Core_Model {
 
 
     public function set_lang_strings($reset = false) {
-        $active_language = $this->session->active_language ?? $this->default_language;
+        $active_language = $this->session->active_language ?: 'english';
         //is it already set for active language?
         if (!$reset && $this->session->has_userdata('language_strings') && isset($this->session->language_strings[$active_language]) && $this->session->language_strings[$active_language]) {
-            // return false;
+            return false;
         }
         $rows = $this->language_string_model->get_all([], 'ls.key ## value');
         $strings_arr = [];

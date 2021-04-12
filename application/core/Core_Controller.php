@@ -36,12 +36,12 @@ class Core_Controller extends CI_Controller {
 
 		$this->default_language = DEFAULT_LANGUAGE;
 		$this->active_language = $this->session->active_language ?? $this->default_language;
-		$this->lang_strings = $this->session->language_strings[$this->active_language];
 
 		// $this->is_campaign_phase = ($this->site_info->phase == 2);
 		$this->is_campaign_phase = true;
 		//set language strings
 		$this->setting_model->set_lang_strings();
+		$this->lang_strings = $this->session->language_strings[$this->active_language];
 
 		//get candidate info
 		$this->candidate_info = $this->candidate_model->get_details(1, 'type');

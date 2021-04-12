@@ -1,2 +1,2 @@
 # isobassey
-Iso Bassey's portfolio and campaign template
+Iso Bassey's portfolio and campaign website

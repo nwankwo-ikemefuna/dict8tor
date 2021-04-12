@@ -167,8 +167,7 @@ class Auth {
 			//get the rights...
 			$role = $this->ci->permission_model->get_details($role_id, 'id', [], 'rights');
 			$role_rights_arr = (array) json_decode($role->rights, true);
-			$role_modules_arr = array_keys($role_rights_arr);
-			if (in_array($module, $role_modules_arr)) {
+			if (array_key_exists($module, $role_rights_arr)) {
 				$module_rights_arr = $role_rights_arr[$module] ?? [];
 				//we found it, exit now...
 				break;
@@ -178,6 +177,7 @@ class Auth {
 
 		//if user does not have right permission, kick away
 	    if (!in_array($right, $module_rights_arr)) return false;
+
 	    //if they survive...
 	    return true;
 	}
