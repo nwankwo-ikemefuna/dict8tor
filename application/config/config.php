@@ -468,6 +468,7 @@ $config['csrf_cookie_name'] = 'softbytech_csrf_cookie';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = [
+    //api
     'api/permissions/get',
     'api/employees/get',
     'api/language_strings/get',
@@ -476,6 +477,9 @@ $config['csrf_exclude_uris'] = [
     'api/priorities/get',
     'api/subscribers/get',
     'api/timelines/get',
+    //others
+    'meta/pull',
+    'meta/sync',
 ];
 /*
 |--------------------------------------------------------------------------
