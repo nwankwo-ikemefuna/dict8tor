@@ -8,7 +8,7 @@
 		if ($is_ajax) {
 	        ajax_page_button('user', 'Save Me!', 'btn-info btn-rounded btn-lg');
 	    } else { ?>
-	    	<a href="<?php echo base_url(); ?>" class="btn btn-info btn-rounded btn-lg">Take Me Home</a>
+	    	<a href="<?php echo base_url('portal'); ?>" class="btn btn-info btn-rounded btn-lg">Take Me Home</a>
 	    <?php } ?>
     </div>
 </div>

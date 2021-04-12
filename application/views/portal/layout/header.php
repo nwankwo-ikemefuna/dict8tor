@@ -80,7 +80,7 @@
                                 side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'General Site Info', 'settings/view');
                                 side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Phase 1 Info', 'info/view/1');
                                 side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Phase 2 Info', 'info/view/2');
-                                side_menu_auth(MOD_LANGUAGE_STRINGS, VIEW, ADMIN, 'Language Strings', 'language_strings/view');
+                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Language Strings', 'language_strings/view');
                             side_menu_parent_close_auth(MOD_SETTINGS, VIEW, ADMIN);
 
                             //candidates
@@ -112,7 +112,7 @@
                             side_menu_parent_open_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'User Accounts', 'users');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'All Users', 'employees');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Add User', 'employees/add');
-                                side_menu_auth(MOD_PERMISSIONS, VIEW, ADMIN, 'Roles & Privileges', 'permissions');
+                                side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Roles & Privileges', 'permissions');
                             side_menu_parent_close_auth(MOD_EMPLOYEES, VIEW, ADMIN);
 
                             //subscribers

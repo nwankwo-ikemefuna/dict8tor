@@ -17,7 +17,7 @@ class Employees extends Core_controller {
         $butts = ['view', 'edit', 'delete'];
         $keys = ['id'];
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
-        $select = "u.id, last_name, first_name, other_name, email, phone, status ## full_name, gender, permissions_name";
+        $select = "u.id, last_name, first_name, other_name, email, phone, status ## full_name, gender, is_super_user_text, roles_name";
         $where = ['usergroup' => ADMIN];
         //fetch
         $sql = $this->user_model->sql(['p'], $select, $where);
@@ -36,7 +36,8 @@ class Employees extends Core_controller {
             $this->form_validation->set_rules('password', 'Default Password', 'trim|required');
             $this->form_validation->set_rules('c_password', 'Confirm Default Password', 'trim|required|matches[password]');
         }
-        $this->form_validation->set_rules('permissions[]', 'Permissions', 'trim');
+        $this->form_validation->set_rules('is_super_user', 'Super User', 'trim|in_list[0,1]');
+        $this->form_validation->set_rules('roles[]', 'Roles', 'trim');
         $this->form_validation->set_rules('active', 'Active', 'trim|in_list[0,1]');
         if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
 
@@ -49,7 +50,11 @@ class Employees extends Core_controller {
         $email_exists = $this->common_model->exists($this->table, ['email' => strtolower(xpost('email'))], $id);
         if ($email_exists) json_response('Email is already in use', false);
 
-        $permissions = (array) xpost('permissions');
+        $is_super_user = xpost('is_super_user') ?: 0;
+        $roles = join_us((array) xpost('roles'));
+        if ($is_super_user) {
+            $roles = null;
+        }
 
         $data = [
             'usergroup'     => xpost('usergroup'),
@@ -60,8 +65,9 @@ class Employees extends Core_controller {
             'dob'           => strlen($dob) ? $dob : null,
             'phone'         => xpost('phone'),
             'email'         => strtolower(xpost('email')),
-            'permissions'   => join_us($permissions),
-            'active'        => xpost('active') ?? 0,
+            'is_super_user' => $is_super_user,
+            'roles'         => $roles,
+            'active'        => xpost('active') ?: 0,
         ];
         if (!$id) {
             $data['password'] = password_hash(xpost('password'), PASSWORD_DEFAULT);

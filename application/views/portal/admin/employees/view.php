@@ -12,7 +12,8 @@
 		data_show_grid('Last Name', $row->last_name);
 		data_show_grid('Other Name', $row->other_name);
 		data_show_grid('Sex', $row->gender);
-		data_show_grid('Roles', $row->permissions_name);
+		data_show_grid('Super User', $row->is_super_user_text);
+		data_show_grid('Roles', $row->roles_name);
 		?>
 	</div>
 	<div class="<?php echo grid_col(12, '5?2'); ?>">

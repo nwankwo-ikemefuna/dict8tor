@@ -15,7 +15,7 @@ class Permission_model extends Core_Model {
 		//employee count
 		if (in_array('emp', $to_join) || in_array('all', $to_join)) {
 			$joins = array_merge($joins, 
-				[T_USERS.' emp' => ['p.id IN(emp.permissions)', 'left']]
+				[T_USERS.' emp' => ['p.id IN(emp.roles)', 'left']]
 			);
 		}
 		$order = ['p.id' => 'asc'];

@@ -143,41 +143,44 @@ class Auth {
 		//module access is open?
 		if ($module == MOD_ALL_ACCESS) return true;
 
-		//level 1 user here?
-		if (intval($this->ci->session->user_level) === 1) return true;
+		//super user here?
+		if (intval($this->ci->session->user_is_super_user) === 1) return true;
 		//user group 
 		$group = $this->ci->session->user_usergroup;
-		//is usergroup an array? Cast into array if not
-		$usergroups = is_array($usergroups) ? $usergroups : (array) $usergroups;
+		//get usergroup as array
+		if ($usergroups) {
+			$usergroups = is_array($usergroups) ? $usergroups : [$usergroups];
+		}
 		if ( !empty($usergroups) && ! in_array($group, $usergroups) ) return false;
 
 		//module access is open to a particular usergroup?
 		if ($module == MOD_GROUP_ACCESS && in_array($group, $usergroups)) return true;
 		
-		//user permissions
-		$permissions = $this->ci->session->user_permissions;
-	    if ( ! strlen($permissions)) return false;
-	    //let's work on the permissions
-	    // json example
-	    // [
-	    // 	{1: [1,2,3]},
-	    // 	{6: [2,4]},
-	    // ]
-	    // where 1 and 6 are module Ids
-	    // 1,2,3 and 2,4 are CRUD rights
-	    $perms_arr = (array) json_decode($permissions, true);
-	    if (empty($perms_arr)) return false;
-	    $perm_modules = array_keys($perms_arr);
-	    //if user does not have module permission, kick away
-	    if (!in_array($module, $perm_modules)) return false;
-	    //rights
-	    $perm_rights = (array) $perms_arr[$module];
-	    //if user does not have right permission, kick away
-	    if (!in_array($right, $perm_rights)) return false;
-	    //if they survive all this...
+		//user roles
+		$user_roles = $this->ci->session->user_roles;
+	    if ( ! $user_roles) return false;
+
+		$roles_arr = explode(',', $user_roles);
+
+		$module_rights_arr = null;
+		foreach ($roles_arr as $role_id) {
+			//get the rights...
+			$role = $this->ci->permission_model->get_details($role_id, 'id', [], 'rights');
+			$role_rights_arr = (array) json_decode($role->rights, true);
+			$role_modules_arr = array_keys($role_rights_arr);
+			if (in_array($module, $role_modules_arr)) {
+				$module_rights_arr = $role_rights_arr[$module] ?? [];
+				//we found it, exit now...
+				break;
+			}
+		}
+		if ( ! $module_rights_arr) return false;
+
+		//if user does not have right permission, kick away
+	    if (!in_array($right, $module_rights_arr)) return false;
+	    //if they survive...
 	    return true;
 	}
-
 	
 
 	/**

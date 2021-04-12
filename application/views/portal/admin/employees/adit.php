@@ -16,8 +16,10 @@ xform_open('api/employees/'.$page, xform_attrs());
 			xform_group_list('Usergroup', 'usergroup', 'select', adit_value($row, 'usergroup'), true, 
 				['options' => [ADMIN => 'Admin'], 'blank' => true]
 			); 
-			xform_group_list('Roles', 'permissions[]', 'select', '', false, 
-				['options' => $roles, 'text_col' => 'name', 'blank' => true, 'selected' => json_encode(split_us(adit_value($row, 'permissions'))), 'extra' => ['class' => 'select_mult', 'multiple' => '']]
+			xform_check('Super User (<small>to have access to all modules</small>)', 'is_super_user', 'checkbox', 'is_super_user', 1, ($page == 'edit' && $row->is_super_user == 1), false, false, ['gclass' => 'mt-2']);
+			xform_group_list('Roles', 'roles[]', 'select', '', false, 
+				['options' => $roles, 'text_col' => 'name', 'blank' => true, 'selected' => json_encode(split_us(adit_value($row, 'roles'))), 'extra' => ['class' => 'select_mult', 'multiple' => '']],
+				[], ['id' => 'roles_section']
 			);
 			xform_group_html_datepicker_list('Date Of Birth', 'dob', 'date', adit_value($row, 'dob', date('Y-m-d')), false, false);
 			?>

@@ -38,42 +38,5 @@ class Web extends Core_controller {
         $this->common_model->insert(T_SUBSCRIBERS, $data);
         json_response('Successful');
     }
-
-
-    public function contact() {
-        $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
-        $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('phone', 'Phone', 'trim|required|is_natural');
-        $this->form_validation->set_rules('message', 'Message', 'trim|required');
-        $this->form_validation->set_rules('captcha_code', 'Captcha', 'trim|required|callback_validate_captcha');
-
-        if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
-        $data = [
-            'first_name' => ucfirst(xpost('first_name')),
-            'last_name' => ucfirst(xpost('last_name')),
-            'email' => strtolower(xpost('email')),
-            'phone' => xpost('phone'),
-            'message' => xpost_txt('message')
-        ];
-        $this->common_model->insert(T_CONTACTS, $data);
-        $this->notify_vendors($data);
-        json_response('Successful');
-    }
-
-
-    private function notify_vendors($data) {
-        $where = ['usergroup' => ADMIN, 'level' => 1];
-        $vendors = $this->user_model->get_all([], 'email', $where);
-        $emails = extract_emails($vendors);
-		$message = 	"Hi admin, <br />
-					You have a new contact message from ".SITE_NAME.". <br />
-					<b>Contact Details:</b><br /> 
-					Name: {$data['first_name']} {$data['last_name']}<br />
-					Email: {$data['email']} <br />
-					Phone: {$data['phone']} <br /><br />
-                    {$data['message']}";
-		@send_mail(SITE_NOTIF_MAIL, $emails, 'New Contact Message', $message);
-	}
     
 }

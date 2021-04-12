@@ -10,6 +10,8 @@ class Employees extends Core_controller {
 		$this->auth->login_restricted();
 		$this->auth->def_password_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
+
+		$this->page_scripts = ['employees'];
     }
 
 
@@ -46,7 +48,7 @@ class Employees extends Core_controller {
 		$this->auth->module_restricted($this->module, EDIT, ADMIN);
 		//buttons
 		$this->butts = ['list', 'save', 'view', 'cancel'];
-		$row = $this->user_model->get_details($id, 'id', ['p'], 'u.id, usergroup, last_name, first_name, other_name, u.sex, phone, email, dob, permissions, active ## full_name, avatar, permissions_name');
+		$row = $this->user_model->get_details($id, 'id', ['p'], 'u.id, usergroup, last_name, first_name, other_name, u.sex, phone, email, dob, roles, active, is_super_user ## full_name, avatar, roles_name');
 		if (!$row) {
 			redirect('employees');
 		}
@@ -63,7 +65,7 @@ class Employees extends Core_controller {
 	public function view($id) { 
 		//buttons
 		$this->butts = ['list', 'add', 'edit'];
-		$row = $this->user_model->get_details($id, 'id', ['d', 'p', 'cnt'], 'u.id, last_name, first_name, other_name, email, phone, dob, active ## full_name, gender, age, avatar, permissions_name');
+		$row = $this->user_model->get_details($id, 'id', ['d', 'p', 'cnt'], 'u.id, last_name, first_name, other_name, email, phone, dob, active ## full_name, gender, age, avatar, is_super_user_text, roles_name');
 		if (!$row) {
 			redirect('employees');
 		}
