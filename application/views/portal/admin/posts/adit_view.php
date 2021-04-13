@@ -46,7 +46,7 @@ xform_open('api/posts/'.$page, xform_attrs());
 			}
 			if (!$is_view) { ?>
 				<div id="featured_item_section_image" class="featured_item_section">
-					<?php xform_group_list('Featured Image', 'featured_item_image', 'file', '', false, ['help' => "Allowed types: png|jpg, Max 1MB. Ideal dimension: 750x450"]); ?>
+					<?php xform_group_list('Featured Image', 'featured_item_image', 'file', '', false, ['help' => file_upload_info('png|jpg|jpeg', '750x450', '1', 'MB', false)]); ?>
 				</div>
 				<div id="featured_item_section_video"  class="featured_item_section" style="display: none;">
 					<?php

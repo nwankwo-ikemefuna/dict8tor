@@ -75,7 +75,7 @@ xform_open('api/timelines/'.$page, xform_attrs());
 				echo portal_image_widget('uploads/pix/timelines/'.$row->photo, 'Photo');
 			}
 			if (!$is_view) {
-				xform_input('photo', 'file', '', ($page != 'edit'), ['help' => "Allowed types: png|jpg, Max 300KB. <br />Ideal dimension: 448x350"]);
+				xform_input('photo', 'file', '', ($page != 'edit'), ['help' => file_upload_info('png|jpg|jpeg', '448x350', '300', 'KB', true)]);
 			}
 			?>
 		</div>

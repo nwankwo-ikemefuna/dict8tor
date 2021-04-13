@@ -20,7 +20,7 @@ class Info extends Core_controller {
 		//buttons
 		$this->butts = ['edit'];
 		$data['row'] = $this->info_model->get_details($phase, 'phase');
-		$data['language_columns'] = $this->setting_model->language_columns();
+		$data['language_columns'] = $this->info_model->language_columns();
         $data['image_columns'] = $this->info_model->image_columns();
         $data['is_edit'] = false;
         $this->ajax_header("Phase {$phase} Info", '', $phase);
@@ -34,7 +34,7 @@ class Info extends Core_controller {
 		//buttons
 		$this->butts = ['save', 'view', 'cancel'];
         $data['row'] = $this->info_model->get_details($phase, 'phase');
-		$data['language_columns'] = $this->setting_model->language_columns();
+		$data['language_columns'] = $this->info_model->language_columns();
         $data['image_columns'] = $this->info_model->image_columns();
 		$data['is_edit'] = true;
         $this->ajax_header("Edit Phase {$phase} Info", '', $phase);

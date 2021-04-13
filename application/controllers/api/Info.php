@@ -16,7 +16,7 @@ class Info extends Core_controller {
         $this->auth->module_restricted($this->module, EDIT, ADMIN);
         $phase = xpost('phase');
         $languages = get_site_languages();
-        $language_columns = $this->setting_model->language_columns();
+        $language_columns = $this->info_model->language_columns();
         $data = [];
         foreach ($language_columns as $key => $arr) {
             foreach ($languages as $lang) {
@@ -32,7 +32,7 @@ class Info extends Core_controller {
         $image_columns_select = implode(', ', array_keys($image_columns));
         $row = $this->info_model->get_details($phase, 'phase', [], $image_columns_select);
         foreach ($image_columns as $key => $arr) {
-            $upload_conf = ['path' => 'uploads/pix/logo', 'ext' => 'png|svg|jpg|jpeg', 'size' => $arr['max'], 'required' => false];
+            $upload_conf = ['path' => 'uploads/pix/info', 'ext' => 'png|svg|jpg|jpeg', 'size' => $arr['max'], 'required' => false];
             $file_name = upload_image($key, $upload_conf, true, $row->$key);
             $data[$key] = $file_name;
         }

@@ -19,7 +19,8 @@ class Settings extends Core_controller {
 	public function view() { 
 		//buttons
 		$this->butts = ['edit'];
-		$data['row'] = $this->setting_model->get_details(1, 'id', [], 's.phase, s.logo, s.logo_portal, s.email, s.phone, s.address');
+		$data['row'] = $this->setting_model->get_details(1, 'id', [], 's.phase, s.logo, s.logo_portal, s.favicon, s.email, s.phone, s.address, s.show_language_options');
+		$data['image_columns'] = $this->setting_model->image_columns();
         $this->ajax_header('Site Info');
 		$this->load->view('portal/admin/settings/view', $data);
 		$this->ajax_footer();
@@ -30,7 +31,8 @@ class Settings extends Core_controller {
 		$this->auth->module_restricted($this->module, EDIT, ADMIN);
 		//buttons
 		$this->butts = ['save', 'view', 'cancel'];
-		$data['row'] = $this->setting_model->get_details(1, 'id', [], 's.phase, s.logo, s.logo_portal, s.email, s.phone, s.address');
+		$data['row'] = $this->setting_model->get_details(1, 'id', [], 's.phase, s.logo, s.logo_portal, s.favicon, s.email, s.phone, s.address, s.show_language_options');
+		$data['image_columns'] = $this->setting_model->image_columns();
         $this->ajax_header('Edit Site Info');
 		$this->load->view('portal/admin/settings/edit', $data);
 		$this->ajax_footer();

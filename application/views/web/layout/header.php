@@ -57,20 +57,21 @@
 									<li class="current"><a href="<?php echo base_url(); ?>"><?php echo lang_string('home'); ?></a></li>
 									<li><a href="<?php echo base_url('about'); ?>"><?php echo lang_string('about'); ?></a></li>
 									<li><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
-									<li>
-										<div class="lang-section">
-											<?php
-											$site_languages = get_site_languages();
-											$show_lang_options = false; //because why not?
-											if ($show_lang_options) {
+									<?php
+									if ($this->site_info->show_language_options) { ?>
+										<li>
+											<div class="lang-section">
+												<?php
+												$site_languages = get_site_languages();
 												foreach ($site_languages as $lang) { ?>
 													<a href="javascript:;" class="switch_language <?php echo ($this->session->active_language == $lang['key']) ? 'active' : ''; ?>" data-lang="<?php echo $lang['key']; ?>"><?php echo $lang['alias']; ?></a>
 													<?php
 												}
-											}
-											?>
-										</div>
-									</li>
+												?>
+											</div>
+										</li>
+										<?php
+									} ?>
 								</ul>
 							</nav>
 							<?php

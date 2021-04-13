@@ -63,7 +63,7 @@ xform_open_multipart('api/info/edit', xform_attrs());
 				<?php 
 				echo portal_image_widget('uploads/pix/info/'.$row->$key, $arr['title']); 
 				if ($is_edit) {
-					xform_input($key, 'file', '', false, ['help' => "Allowed types: png|svg|jpg, Max {$arr['max']}KB. <br />Ideal dimension: {$arr['dimension']}"]);
+					xform_input($key, 'file', '', false, ['help' => file_upload_info($arr['ext'], $arr['dimension'], $arr['max'], $arr['unit'], true)]);
 				}
 				?>
 			</div>

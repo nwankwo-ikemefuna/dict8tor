@@ -33,7 +33,7 @@ xform_open('api/employees/'.$page, xform_attrs());
 				xform_group_list('Confirm Default Password', 'c_password', 'password', '', true, ['class' => 'to_clear']); 
             }
 			xform_check('Active', 'active', 'checkbox', 'active', 1, ($page == 'edit' && $row->active == 1), false, false, ['gclass' => 'mt-2']);
-			xform_group_list('Passport', 'photo', 'file', '', false, ['help' => 'Allowed types: jpg, jpeg, png, Max 100KB. <br />Ideal dimension: 150x150', 'current_file' => adit_value($row, 'avatar')]);
+			xform_group_list('Passport', 'photo', 'file', '', false, ['help' => file_upload_info('png|jpg|jpeg', '150x150', '100', 'KB', true),'current_file' => adit_value($row, 'avatar')]);
 			?>
 		</div>
 	</div>

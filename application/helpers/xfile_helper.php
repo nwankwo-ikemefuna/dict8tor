@@ -221,3 +221,14 @@ function current_file_preview($file) {
         </div>';
     return $elem;
 }
+
+function file_upload_info($ext, $dimension, $max, $max_unit = 'KB', $dimension_new_line = false) {
+    $info = "Allowed types: {$ext}. Max {$max}{$max_unit}.";
+    if ($dimension_new_line) {
+        $info .= '<br />';
+    } else {
+        $info .= ' ';
+    }
+    $info .= "Ideal dimension: {$dimension}";
+    return $info;
+}
