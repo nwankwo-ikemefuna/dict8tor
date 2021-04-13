@@ -474,8 +474,8 @@
 
 		/* if($('.loader').length){
         	$("body").queryLoader2({
-		        backgroundColor: '#14468c',
-		        barColor : '#bf0d3e',
+		        backgroundColor: '#41730a',
+		        barColor : '#d48b05',
 		        barHeight: 4,
 		        deepSearch:true,
 		        minimumTime:1000,

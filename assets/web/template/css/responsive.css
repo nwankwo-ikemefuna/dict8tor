@@ -427,12 +427,12 @@
 
   .mobile-advanced > ul > li.current > a,
   .mobile-advanced > ul > li:hover > a {
-    background-color: #bf0d3e;
+    background-color: #d48b05;
   }
 
   .mobile-advanced ul ul li.current > a,
   .sub-menu-wrap > ul > li:hover > a {
-    color: #bf0d3e;
+    color: #d48b05;
     background: transparent;
   }
 
@@ -501,7 +501,7 @@
   }
 
   #advanced-menu-hide:hover {
-    color: #bf0d3e;
+    color: #d48b05;
   }
 
   .mobile-advanced > ul > li.dropdown .sub-menu-wrap,
@@ -1241,7 +1241,7 @@
   }
 
   .tabs.vertical.style-2 .tabs-nav li.ui-tabs-active a {
-    border-bottom: 2px solid #bf0d3e;
+    border-bottom: 2px solid #d48b05;
     border-right: none;
   }
 

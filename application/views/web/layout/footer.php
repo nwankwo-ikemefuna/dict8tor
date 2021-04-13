@@ -32,7 +32,7 @@
                                         <input type="text" name="phone" placeholder="<?php echo lang_string('phone'); ?>" required>
                                     </div>
                                     <?php xform_notice('status_msg', '', false); ?>
-                                    <button type="submit" class="btn btn-style-4 btn-big"><?php echo lang_string('subscribe'); ?></button>
+                                    <button type="submit" class="btn btn-style-6 btn-big"><?php echo lang_string('subscribe'); ?></button>
                                     <?php
                                 xform_close(); ?>
                             </div>
