@@ -255,3 +255,7 @@ function toggle_password_visibility() {
     <span id="hide_password_icon" style="display: none"><a id="hide_password" title="Hide password" style="cursor: pointer"><i class="fa fa-eye-slash"></i></a></span>
    <?php
 }
+
+function active_link($current_page, $page, $class = 'active') {
+    return ($current_page === $page) ? $class : '';
+}
