@@ -368,11 +368,9 @@
 		/* ---------------------------------------------------- */
 
 	    if ($('.media-holder.full-src').length) {
-
 	    	$(window).on('load resize',function(){
 		        $('.media-holder').css('height', window.innerHeight+'px');
 		    });
-
 	    }
 
 		/* ---------------------------------------------------- */

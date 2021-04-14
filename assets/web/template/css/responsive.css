@@ -1315,6 +1315,10 @@
     max-width: 100%;
   }
 
+  .media-holder.full-src {
+    margin-top: 150px;
+  }
+
   .media-inner h1,
   .media-holder.style-2 .media-inner h1 {
     font-size: 28px;
