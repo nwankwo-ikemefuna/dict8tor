@@ -700,7 +700,7 @@
 				var $this = $(this),
 					bg = $this.data('bg');
 
-				if(bg) $this.css('background-image', 'url('+bg+')');
+				if(bg) $this.css('background-image', 'linear-gradient(rgb(255 255 255 / 20%), rgb(0 0 0 / 60%)), url('+bg+')');
 
 			});
 
