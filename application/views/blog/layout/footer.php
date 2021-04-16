@@ -40,7 +40,7 @@
                         <div class="widget-youtube">
                             <h5 class="wt-title"><?php echo lang_string('featured_video'); ?></h5>
                             <div class="responsive-iframe">
-                                <iframe src="<?php echo $this->site_info->intro_video; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+                                <iframe src="<?php echo youtube_embed_url($this->site_info->intro_video); ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
                             </div>
                         </div>
                     </div>

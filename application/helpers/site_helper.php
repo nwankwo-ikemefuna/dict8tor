@@ -105,7 +105,7 @@ function portal_video_widget($url, $title, $fieldset_class = '') { ?>
     <fieldset class="scheduler-border video_widget <?php echo $fieldset_class; ?>">
         <legend class="scheduler-border"><?php echo $title; ?></legend>
         <div style="background: grey; padding: 10px;">
-            <iframe src="<?php echo $url; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+            <iframe src="<?php echo youtube_embed_url($url); ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
         </div>
     </fieldset>
     <?php 
