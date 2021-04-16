@@ -17,7 +17,7 @@ function site_meta($page_title = '', $meta_info = [], $show_analytics = false) {
     <meta property="og:description" content="<?php echo SITE_DESCRIPTION; ?>" />
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="<?php echo time(); ?>" />
-    <meta property="og:image" itemprop="image" content="<?php echo $meta_info['image'] ?: base_url(SITE_LOGO); ?>" />
+    <meta property="og:image" itemprop="image" content="<?php echo $meta_info['image'] ?? base_url(SITE_LOGO); ?>" />
 
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url(SITE_FAVICON); ?>" />
     <?php
