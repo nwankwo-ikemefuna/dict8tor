@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <?php echo site_meta($page_title); ?>
+    <?php echo site_meta($page_title, $meta_info); ?>
 
 	<!-- Google Web Fonts
 	================================================== -->

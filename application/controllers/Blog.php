@@ -8,10 +8,10 @@ class Blog extends Core_controller {
     }
 
 
-    protected function header($page_title, $current_page = '', $breadcrumbs = []) {
+    protected function header($page_title, $current_page = '', $meta = [], $breadcrumbs = []) {
 		$data['page_title'] = $page_title;
 		$data['breadcrumbs'] = $breadcrumbs;
-        $this->web_header(lang_string('blog'), $current_page);
+        $this->web_header($page_title, $current_page, $meta);
 		return $this->load->view('blog/layout/header', $data);
 	}
 	
@@ -41,7 +41,7 @@ class Blog extends Core_controller {
         $total_records = $this->blog_model->get_total_record([], $where);
         $data = paginate($records, $total_records, $per_page, 'blog', $uri_segment);
         $breadcrumbs = [lang_string('home') => '', lang_string('blog') => '*'];
-        $this->header(lang_string('blog'), 'blog', $breadcrumbs);
+        $this->header(lang_string('blog'), 'blog', [], $breadcrumbs);
         $this->load->view('blog/index', $data);
         $this->footer();
     }
@@ -62,7 +62,7 @@ class Blog extends Core_controller {
         $total_records = $this->blog_model->get_total_record([], $where);
         $data = paginate($records, $total_records, $per_page, 'blog/categories/'.$slug, $uri_segment);
         $breadcrumbs = [lang_string('home') => '', lang_string('blog') => 'blog', lang_string('blog_category') => '*'];
-        $this->header($cat_details->title, 'blog', $breadcrumbs);
+        $this->header($cat_details->title, 'blog', [], $breadcrumbs);
         $this->load->view('blog/index', $data);
         $this->footer();
     }
@@ -85,7 +85,12 @@ class Blog extends Core_controller {
             'b.id !=' => $row->id, //not this post being viewed
         ];
         $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.slug, b.date_created, b.featured_item_type, b.featured_item, ## title, category_title, category_slug', $related_posts_where, 0, 3);
-        $this->header($row->title, 'blog', $breadcrumbs);
+        if ($row->featured_item_type == 'image') {
+            $meta_image = 'uploads/pix/blog/'.$row->featured_item;
+        } else {
+            $meta_image = '';
+        }
+        $this->header($row->title, 'blog', ['image' => $meta_image], $breadcrumbs);
         $this->load->view('blog/view', $data);
         $this->footer();
     }
