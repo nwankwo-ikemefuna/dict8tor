@@ -10039,3 +10039,12 @@ iframe::scrollbar {
   background-color: #d48b05;
   border-color: #d48b05;
 }
+
+.intro_video_section {
+  position: relative;
+}
+.intro_video_section img.play_icon {
+  position: absolute;
+  top: 42%;
+  left: 42%;
+}
