@@ -1,6 +1,5 @@
 <?php 
 function site_meta($page_title = '', $meta_info = [], $show_analytics = false) { 
-    var_dump($meta_info); die;
     ?>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title><?php echo $page_title; ?> :: <?php echo SITE_NAME; ?></title>
