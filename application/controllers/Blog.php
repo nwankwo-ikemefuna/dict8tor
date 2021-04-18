@@ -86,7 +86,7 @@ class Blog extends Core_controller {
         ];
         $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.slug, b.date_created, b.featured_item_type, b.featured_item, ## title, category_title, category_slug', $related_posts_where, 0, 3);
         if ($row->featured_item_type == 'image') {
-            $meta_image = 'uploads/pix/blog/'.$row->featured_item;
+            $meta_image = base_url('uploads/pix/blog/'.$row->featured_item);
         } else {
             $meta_image = '';
         }

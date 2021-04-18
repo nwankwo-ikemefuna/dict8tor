@@ -1,6 +1,6 @@
 <?php 
 function site_meta($page_title = '', $meta_info = [], $show_analytics = false) { 
-    $ci =& get_instance();
+    var_dump($meta_info); die;
     ?>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title><?php echo $page_title; ?> :: <?php echo SITE_NAME; ?></title>
@@ -17,7 +17,7 @@ function site_meta($page_title = '', $meta_info = [], $show_analytics = false) {
     <meta property="og:description" content="<?php echo SITE_DESCRIPTION; ?>" />
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="<?php echo time(); ?>" />
-    <meta property="og:image" itemprop="image" content="<?php echo $meta_info['image'] ?? base_url(SITE_LOGO); ?>?v=<?php echo time(); ?>" />
+    <meta property="og:image:secure_url" itemprop="image" content="<?php echo $meta_info['image'] ?? base_url(SITE_LOGO); ?>?v=<?php echo time(); ?>" />
 
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url(SITE_FAVICON); ?>" />
     <?php
