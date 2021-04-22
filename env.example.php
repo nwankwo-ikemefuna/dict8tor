@@ -19,7 +19,7 @@ define('LOCAL_DB_CONFIG', [
 	'database' => 'db_name',
 	'username' => 'db_username',
 	'password' => 'db_password',
-	'db_debug' => $show_db_errors,
+	'db_debug' => $show_db_errors, 
 ]);
 
 //SMS lib config
