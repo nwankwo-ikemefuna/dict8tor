@@ -37,6 +37,7 @@ class Timelines extends Core_controller {
         $data['row'] = '';
         $data['language_columns'] = $this->timeline_model->language_columns();
         $data['next_order'] = $this->common_model->next_order($this->table, ['candidate_type' => $type]);
+		$data['timeline_groups'] = $this->timeline_group_model->get_all([], 'id ## title');
         $this->ajax_header('Add Timeline');
         $this->load->view('portal/admin/timelines/adit_view', $data);
 		$this->ajax_footer();
@@ -47,10 +48,11 @@ class Timelines extends Core_controller {
 		$this->auth->module_restricted($this->module, EDIT, ADMIN);
 		//buttons
 		$this->butts = ['list', 'save', 'view', 'cancel'];
-        $row = $this->timeline_model->get_details($id, 'id');
+        $row = $this->timeline_model->get_details($id, 'id', ['tg']);
 		$data['page'] = 'edit';
 		$data['row'] = $row;
         $data['language_columns'] = $this->timeline_model->language_columns();
+		$data['timeline_groups'] = $this->timeline_group_model->get_all([], 'id ## title');
         $this->ajax_header('Edit Timeline: '.$row->{'title_'.DEFAULT_LANGUAGE}, '', $id);
 		$this->load->view('portal/admin/timelines/adit_view', $data);
 		$this->ajax_footer();
@@ -59,7 +61,7 @@ class Timelines extends Core_controller {
 
 	public function view($id) { 
 		//buttons
-		$row = $this->timeline_model->get_details($id, 'id');
+		$row = $this->timeline_model->get_details($id, 'id', ['tg']);
 		$xtra_butts = [
             ['text' => 'Candidate', 'target' => 'candidates/view/'.$row->candidate_type, 'icon' => 'user']
         ];

@@ -16,8 +16,12 @@ xform_open('api/timelines/'.$page, xform_attrs());
 		<div class="<?php echo grid_col(12, '', 5); ?>">
 			<?php
 			if ($is_view) {
+				data_show_grid('Group', $row->group_title); 
 				data_show_grid('Order', $row->order); 
 			} else {
+				xform_group_grid('Group', 'group_id', 'select', adit_value($row, 'group_id'), true, 
+					['options' => $timeline_groups, 'text_col' => 'title', 'blank' => true]
+				); 
 				xform_group_grid('Order', 'order', 'number', adit_value($row, 'order', $next_order ?? ''), true); 
 			} ?>
 		</div>

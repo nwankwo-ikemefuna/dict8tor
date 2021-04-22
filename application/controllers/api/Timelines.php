@@ -18,11 +18,11 @@ class Timelines extends Core_controller {
         $butts = ['view', 'edit', 'delete'];
         $keys = ['id'];
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
-        $select = 't.id, t.title_'.DEFAULT_LANGUAGE.' AS title, t.order ## published_text';
+        $select = 't.id, t.title_'.DEFAULT_LANGUAGE.' AS title, t.order ## group_title_default, published_text';
         $type = xget('type');
         $where = ['candidate_type' => $type];
         $group_by = 't.id';
-        $sql = $this->timeline_model->sql([], $select, $where, true);
+        $sql = $this->timeline_model->sql(['tg'], $select, $where, true);
         echo $this->common_model->get_rows_ajax($sql['table'], $keys, $buttons, xget('trashed'), $sql['joins'], $sql['select'], $sql['where'], $sql['order'], $group_by);
     }
 
@@ -32,10 +32,12 @@ class Timelines extends Core_controller {
         $language_columns = $this->timeline_model->language_columns();
         $data = [
             'candidate_type' => xpost('candidate_type'), 
+            'group_id' => xpost('group_id'), 
             'order' => xpost('order'),
             'published' => xpost('published') ?: 0
         ];
-        
+
+        $this->form_validation->set_rules('group_id', 'Group', 'trim|required|is_natural');
         $this->form_validation->set_rules('candidate_type', 'Candidate Type', 'trim|required|is_natural|in_list[1,2]');
         $this->form_validation->set_rules('order', 'Order', 'trim|required|is_natural');
         $this->form_validation->set_rules('published', 'Published', 'trim|is_natural|in_list[0,1]');

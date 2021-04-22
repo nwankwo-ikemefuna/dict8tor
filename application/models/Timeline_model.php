@@ -12,8 +12,16 @@ class Timeline_model extends Core_Model {
 		$select =  $select != '*' ? $arr['main'] : "t.*";
         $select .= join_select($arr, 'title', "IFNULL(NULLIF(t.title_{$this->active_language}, ''), t.title_{$this->default_language})");
         $select .= join_select($arr, 'content', "IFNULL(NULLIF(t.content_{$this->active_language}, ''), t.content_{$this->default_language})");
+		$select .= join_select($arr, 'group_title', "IFNULL(NULLIF(tg.title_{$this->active_language}, ''), tg.title_{$this->default_language})");
+		$select .= join_select($arr, 'group_title_default', "tg.title_{$this->default_language}");
 		$select .= join_select($arr, 'published_text', case_map_select('t.published', ['No', 'Yes']));
 		$joins = []; 
+		//groups
+		if (in_array('tg', $to_join) || in_array('all', $to_join)) {
+			$joins = array_merge($joins, 
+				[T_TIMELINE_GROUPS.' tg' => ['tg.id = t.group_id', 'left']]
+			);
+		}
 		$language = $for_admin ? DEFAULT_LANGUAGE : $this->active_language;
 		return sql_data(T_TIMELINES.' t', $joins, $select, $where, ['t.order' => 'asc', "t.title_{$language}" => 'asc']);
 	}

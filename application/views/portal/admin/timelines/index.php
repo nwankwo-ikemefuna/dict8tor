@@ -1,7 +1,8 @@
 <?php
-$headers = ['Title' => ['class' => 'min-w-200'], 'Order', 'Published'];
+$headers = ['Title' => ['class' => 'min-w-200'], 'Group', 'Order', 'Published'];
 $columns = [
 	'title',
+	'group_title_default',
 	'order',
 	dt_dumb_column('published_text'),
 ];

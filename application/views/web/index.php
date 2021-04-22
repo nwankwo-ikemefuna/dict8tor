@@ -142,7 +142,10 @@ if ($timelines) { ?>
 				<!--tabs navigation-->
 				<ul class="tabs-nav clearfix">
 					<?php
-					foreach ($timeline_groups as $grow) { ?>
+					foreach ($timeline_groups as $grow) { 
+						$group_timelines = $timelines[$grow->id] ?? [];
+						if (!$group_timelines) continue;
+						?>
 						<li><a href="#timeline_group_tab_<?php echo $grow->id; ?>"><?php echo $grow->title; ?></a></li>
 						<?php
 					} ?>
@@ -151,7 +154,8 @@ if ($timelines) { ?>
 				<div class="tabs-content">
 					<?php
 					foreach ($timeline_groups as $grow) { 
-						$group_timelines = $timelines[$grow->id];
+						$group_timelines = $timelines[$grow->id] ?? [];
+						if (!$group_timelines) continue;
 						?>
 						<div id="timeline_group_tab_<?php echo $grow->id; ?>">
 							<div class="tabs tabs-section type-2 vertical clearfix">
