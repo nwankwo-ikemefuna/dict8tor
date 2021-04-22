@@ -476,6 +476,7 @@ $config['csrf_exclude_uris'] = [
     'api/posts/get',
     'api/priorities/get',
     'api/subscribers/get',
+    'api/timeline_groups/get',
     'api/timelines/get',
     //others
     'meta/pull',

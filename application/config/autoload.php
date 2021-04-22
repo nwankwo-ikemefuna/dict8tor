@@ -187,6 +187,7 @@ $autoload['model'] = [
 	'setting_model', 
 	'state_model', 
 	'subscriber_model', 
+	'timeline_group_model',
 	'timeline_model', 
 	'user_model'
 ];

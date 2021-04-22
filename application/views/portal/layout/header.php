@@ -93,6 +93,7 @@
                             side_menu_parent_open_auth(MOD_TIMELINES, VIEW, ADMIN, 'Timelines', 'calendar');
                                 side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Main Candidate', 'timelines?type=1');
                                 side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Support Candidate', 'timelines?type=2');
+                                side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Timeline Groups', 'timeline_groups');
                             side_menu_parent_close_auth(MOD_TIMELINES, VIEW, ADMIN);
 
                             //issue and priorities

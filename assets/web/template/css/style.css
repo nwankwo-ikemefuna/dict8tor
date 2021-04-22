@@ -7567,8 +7567,7 @@ h6.event-title {
   display: block;
   padding: 40px 30px;
   border-radius: 5px;
-  background: #fff;
-
+  background: #f2f2f2;
   -webkit-box-shadow: 0px 5px 25px 0px rgba(187, 187, 187, 0.43);
   -moz-box-shadow: 0px 5px 25px 0px rgba(187, 187, 187, 0.43);
   box-shadow: 0px 5px 25px 0px rgba(187, 187, 187, 0.43);
@@ -7595,7 +7594,7 @@ h6.event-title {
   font-family: "Lato", sans-serif;
   font-weight: 900;
   font-size: 14px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   padding: 8px 30px;
   letter-spacing: 0.8px;
   color: #41730a;
@@ -7630,7 +7629,11 @@ h6.event-title {
   box-shadow: -5px 5px 25px 0px rgba(187, 187, 187, 0.43);
 }
 
-.tabs .tabs-nav > li.ui-tabs-active a {
+.tabs.horizontal .tabs-nav > li.ui-tabs-active a {
+  background-color: #d48b05; 
+  color: #fff;
+}
+.tabs.vertical .tabs-nav > li.ui-tabs-active a {
   background-color: #41730a;
   color: #fff;
 }
