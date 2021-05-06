@@ -22,7 +22,14 @@ class Web extends Core_controller {
     public function about() {
         $this->web_header(lang_string('about'), 'about');
         $this->load->view('web/about');
-        $this->web_footer('home');
+        $this->web_footer('about');
+    }
+
+
+    public function videos() {
+        $this->web_header(lang_string('videos'), 'videos');
+        $this->load->view('web/videos');
+        $this->web_footer('videos');
     }
 
 }

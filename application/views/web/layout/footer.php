@@ -3,9 +3,10 @@
         <div class="top-footer">
             <div class="container">
                 <ul class="top-footer-menu">
-                    <li><a href="<?php echo base_url(); ?>"><?php echo lang_string('home'); ?></a></li>
-                    <li><a href="<?php echo base_url('about'); ?>"><?php echo lang_string('about'); ?></a></li>
-                    <li><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
+                    <li class="<?php echo active_link($current_page, 'home', 'current'); ?>"><a href="<?php echo base_url(); ?>"><?php echo lang_string('home'); ?></a></li>
+                    <li class="<?php echo active_link($current_page, 'about', 'current'); ?>"><a href="<?php echo base_url('about'); ?>"><?php echo lang_string('about'); ?></a></li>
+                    <li class="<?php echo active_link($current_page, 'videos', 'current'); ?>"><a href="<?php echo base_url('videos'); ?>"><?php echo lang_string('videos'); ?></a></li>
+                    <li class="<?php echo active_link($current_page, 'blog', 'current'); ?>"><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
                 </ul>
             </div>
         </div>

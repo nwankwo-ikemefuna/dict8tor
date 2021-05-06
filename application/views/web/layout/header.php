@@ -56,6 +56,7 @@
 								<ul id="menu" class="clearfix">
 									<li class="<?php echo active_link($current_page, 'home', 'current'); ?>"><a href="<?php echo base_url(); ?>"><?php echo lang_string('home'); ?></a></li>
 									<li class="<?php echo active_link($current_page, 'about', 'current'); ?>"><a href="<?php echo base_url('about'); ?>"><?php echo lang_string('about'); ?></a></li>
+									<li class="<?php echo active_link($current_page, 'videos', 'current'); ?>"><a href="<?php echo base_url('videos'); ?>"><?php echo lang_string('videos'); ?></a></li>
 									<li class="<?php echo active_link($current_page, 'blog', 'current'); ?>"><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
 									<?php
 									if ($this->site_info->show_language_options) { ?>

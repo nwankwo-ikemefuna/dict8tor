@@ -125,6 +125,7 @@ $autoload['helper'] = [
     'location', 
     'pagination', 
     'query', 
+    'sandbox', 
     'site', 
     'template', 
     'user', 
