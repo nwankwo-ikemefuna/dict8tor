@@ -2406,12 +2406,7 @@ button.search-button:hover,
 }
 
 .about-page {
-  margin-top: 160px;
-}
-@media only screen and (max-width: 480px) {
-  .about-page {
-    margin-top: 220px;
-  }
+  margin-top: -40px;
 }
 
 /* Half column section */
