@@ -67,8 +67,11 @@ input:read-only {
 	margin: 15px 0;
 }
 
-.image_widget img,
-.video_widget iframe {
+.image_widget img {
 	width: 100%;
     height: auto;
+}
+.video_widget iframe {
+	width: 100%;
+    min-height: 250px;
 }

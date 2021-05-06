@@ -109,6 +109,12 @@
                                 side_menu_auth(MOD_BLOG_CATEGORIES, VIEW, ADMIN, 'Blog Categories', 'post_categories/index');
                             side_menu_parent_close_auth(MOD_BLOG, VIEW, ADMIN);
 
+                            //videos
+                            side_menu_parent_open_auth(MOD_VIDEOS, VIEW, ADMIN, 'Videos', 'video-camera');
+                                side_menu_auth(MOD_VIDEOS, VIEW, ADMIN, 'Videos', 'videoz');
+                                side_menu_auth(MOD_VIDEOS, VIEW, ADMIN, 'Add Video', 'videoz/add');
+                            side_menu_parent_close_auth(MOD_VIDEOS, VIEW, ADMIN);
+
                             //user accounts
                             side_menu_parent_open_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'User Accounts', 'users');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'All Users', 'employees');

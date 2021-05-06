@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 //web pages
 $route['about'] = 'web/about';
+$route['videos/(:num)'] = 'web/videos/$1'; //videos index with pagination
+$route['videos'] = 'web/videos';
 $route['issues'] = 'web/issues';
 
 //blog

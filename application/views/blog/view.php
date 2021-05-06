@@ -1,15 +1,6 @@
 <div class="event-item single-event">
     <div class="entry-attachment">
-        <?php 
-        if ($row->featured_item_type == 'video') { ?>
-            <div class="responsive-iframe">
-                <iframe src="<?php echo $row->featured_item; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
-            </div>
-            <?php
-        } else { ?>
-            <img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_item); ?>" alt="<?php echo $row->title; ?>">
-            <?php
-        } ?>
+        <img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
     </div>
     <div class="event-info">
         <div class="entry-meta">
@@ -17,6 +8,13 @@
             <span class="entry-cat"><?php echo lang_string('posted_in'); ?> <a href="<?php echo base_url('blog/categories/'.$row->category_slug); ?>"><?php echo $row->category_title; ?></a></span>
         </div>
         <?php echo $row->content; ?>
+        <?php 
+        if ($row->featured_video) { ?>
+            <div class="responsive-iframe m-t-30">
+                <iframe src="<?php echo $row->featured_video; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+            </div>
+            <?php
+        } ?>
     </div>
     <div class="content-element4">
         <?php echo web_share_icons(blog_article_url($row->date_created, $row->slug), $row->title, 'share-wrap'); ?>
@@ -35,13 +33,13 @@ if ($related_posts) { ?>
                         <div class="event-item">
                             <div class="entry-attachment">
                                 <?php 
-                                if ($rel_row->featured_item_type == 'video') { ?>
+                                if ($rel_row->featured_video) { ?>
                                     <div class="responsive-iframe">
-                                        <iframe src="<?php echo $rel_row->featured_item; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+                                        <iframe src="<?php echo $rel_row->featured_video; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
                                     </div>
                                     <?php
                                 } else { ?>
-                                    <img src="<?php echo base_url('uploads/pix/blog/'.$rel_row->featured_item); ?>" alt="<?php echo $rel_row->title; ?>">
+                                    <img src="<?php echo base_url('uploads/pix/blog/'.$rel_row->featured_image); ?>" alt="<?php echo $rel_row->title; ?>">
                                     <?php
                                 } ?>
                             </div>

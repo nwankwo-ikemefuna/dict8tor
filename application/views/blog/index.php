@@ -1,4 +1,5 @@
 <?php
+//search?
 if (xget('q')) { ?>
     <h5><?php echo lang_string('showing_posts_having'); ?> <em><?php echo urldecode(xget('q')); ?></em></h5>
     <?php
@@ -11,13 +12,13 @@ if (xget('q')) { ?>
         <div class="event-item">
             <div class="entry-attachment">
                 <?php 
-                if ($row->featured_item_type == 'video') { ?>
+                if ($row->featured_video) { ?>
                     <div class="responsive-iframe">
-                        <iframe src="<?php echo $row->featured_item; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+                        <iframe src="<?php echo $row->featured_video; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
                     </div>
                     <?php
                 } else { ?>
-                    <img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_item); ?>" alt="<?php echo $row->title; ?>">
+                    <img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
                     <?php
                 } ?>
             </div>

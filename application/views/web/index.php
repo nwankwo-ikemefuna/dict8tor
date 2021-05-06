@@ -197,9 +197,7 @@ if ($timelines) { ?>
 	</div>
 	<?php 
 }
-?>
 
-<?php
 if ($recent_posts) { ?>
 	<div class="page-section">
 		<div class="container extra-size2">
@@ -219,13 +217,13 @@ if ($recent_posts) { ?>
 										<div class="col-md-3 col-sm-12 col-md-push-9">
 											<div class="entry-attachment" style="margin-bottom: -30px;">
 												<?php 
-												if ($row->featured_item_type == 'video') { ?>
+												if ($row->featured_video) { ?>
 													<div class="responsive-iframe">
-														<iframe src="<?php echo $row->featured_item; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
+														<iframe src="<?php echo $row->featured_video; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0"></iframe>
 													</div>
 													<?php
 												} else { ?>
-													<img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_item); ?>" alt="<?php echo $row->title; ?>">
+													<img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
 													<?php
 												} ?>
 											</div>
@@ -252,4 +250,36 @@ if ($recent_posts) { ?>
 	</div>
 	<?php 
 }
-?>
+
+if ($recent_videos) { ?>
+	<div class="page-section-bg3">
+		<div class="container extra-size2">
+			<h2 class="section-title"><?php echo lang_string('recent_videos'); ?></h2>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="isotope two-collumn clearfix portfolio-holder" data-isotope-options='{"itemSelector" : ".item","layoutMode" : "fitRows","transitionDuration":"0.7s","fitRows" : {"columnWidth":".item"}}'>
+						<?php
+						foreach ($recent_videos as $row) { ?>
+							<div class="item">
+								<div class="project">
+									<div class="project-image">
+										<div class="responsive-iframe">
+											<iframe src="<?php echo $row->content; ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0" allowfullscreen="true"></iframe>
+										</div>
+									</div>
+								</div>
+							</div>
+							<?php
+						} ?>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="align-center m-t-30">
+						<a href="<?php echo base_url('videos'); ?>" class="btn"><?php echo lang_string('more_videos'); ?></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php 
+} 

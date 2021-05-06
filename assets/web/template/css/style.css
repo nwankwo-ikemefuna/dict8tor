@@ -2563,11 +2563,19 @@ button.search-button:hover,
 
 .breadcrumbs-wrap {
   padding: 60px 20px;
-  margin: 100px 0 35px 0;
   background-size: cover;
 }
+.breadcrumbs-wrap.with-bg {
+  margin: 150px 0 35px 0;
+}
+.breadcrumbs-wrap.with-bg2 {
+  margin: 100px 0 35px 0;
+}
 @media only screen and (max-width: 480px) {
-  .breadcrumbs-wrap {
+  .breadcrumbs-wrap.with-bg {
+    margin: 200px 0 35px 0;
+  }
+  .breadcrumbs-wrap.with-bg2 {
     margin: 150px 0 35px 0;
   }
 }

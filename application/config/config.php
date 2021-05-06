@@ -478,6 +478,7 @@ $config['csrf_exclude_uris'] = [
     'api/subscribers/get',
     'api/timeline_groups/get',
     'api/timelines/get',
+    'api/videoz/get',
     //others
     'meta/pull',
     'meta/sync',

@@ -108,6 +108,7 @@ ajax_overlay_loader(); ?>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/instafeed.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/twitter/jquery.tweet.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/jquery.queryloader2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/web/template/plugins/isotope.pkgd.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/fancybox/jquery.fancybox.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/bootstrap/js/bootstrap.min.js"></script>

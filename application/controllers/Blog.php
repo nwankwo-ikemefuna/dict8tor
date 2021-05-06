@@ -34,10 +34,10 @@ class Blog extends Core_controller {
             $where = array_merge($where, [$this_where => null]);
         }
         $uri_segment = 2;
-        $per_page = 3;
+        $per_page = 4;
         $page = $this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 0;
         $offset = paginate_offset($page, $per_page);
-        $records = $this->blog_model->get_all(['cat'], 'b.slug, b.featured_item_type, b.featured_item, b.date_created, b.published ## title, content, category_title, category_slug', $where, 0, $per_page, $offset);
+        $records = $this->blog_model->get_all(['cat'], 'b.slug, b.featured_image, b.featured_video, b.date_created, b.published ## title, content, category_title, category_slug', $where, 0, $per_page, $offset);
         $total_records = $this->blog_model->get_total_record([], $where);
         $data = paginate($records, $total_records, $per_page, 'blog', $uri_segment);
         $breadcrumbs = [lang_string('home') => '', lang_string('blog') => '*'];
@@ -54,11 +54,11 @@ class Blog extends Core_controller {
             redirect('blog'); //all posts 
         }
         $uri_segment = 4;
-        $per_page = 3;
+        $per_page = 4;
         $page = $this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 0;
         $offset = paginate_offset($page, $per_page);
         $where = ['b.category_id' => $cat_details->id, 'b.published' => 1];
-        $records = $this->blog_model->get_all(['cat'], 'b.slug, b.featured_item_type, b.featured_item, b.date_created, b.published ## title, content, category_title, category_slug', $where, 0, $per_page, $offset);
+        $records = $this->blog_model->get_all(['cat'], 'b.slug, b.featured_image, b.featured_video, b.date_created, b.published ## title, content, category_title, category_slug', $where, 0, $per_page, $offset);
         $total_records = $this->blog_model->get_total_record([], $where);
         $data = paginate($records, $total_records, $per_page, 'blog/categories/'.$slug, $uri_segment);
         $breadcrumbs = [lang_string('home') => '', lang_string('blog') => 'blog', lang_string('blog_category') => '*'];
@@ -73,7 +73,7 @@ class Blog extends Core_controller {
             redirect('blog'); //all posts 
         }
         $where = ['DATE(b.date_created)' => $date, 'b.published' => 1];
-        $row = $this->blog_model->get_details($slug, 'slug', ['cat'], 'b.id, b.category_id, b.slug, b.featured_item_type, b.featured_item, b.date_created, b.published ## title, content, category_title, category_slug', $where);
+        $row = $this->blog_model->get_details($slug, 'slug', ['cat'], 'b.id, b.category_id, b.slug, b.featured_image, b.featured_video, b.date_created, b.published ## title, content, category_title, category_slug', $where);
         if (!$row) {
             redirect('blog'); //all posts 
         }
@@ -84,12 +84,8 @@ class Blog extends Core_controller {
             'b.category_id' => $row->category_id, //same category
             'b.id !=' => $row->id, //not this post being viewed
         ];
-        $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.slug, b.date_created, b.featured_item_type, b.featured_item, ## title, category_title, category_slug', $related_posts_where, 0, 3);
-        if ($row->featured_item_type == 'image') {
-            $meta_image = base_url('uploads/pix/blog/'.$row->featured_item);
-        } else {
-            $meta_image = '';
-        }
+        $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.slug, b.date_created, b.featured_image, b.featured_video ## title, category_title, category_slug', $related_posts_where, 0, 3);
+        $meta_image = base_url('uploads/pix/blog/'.$row->featured_image);
         $this->header($row->title, 'blog', ['image' => $meta_image], $breadcrumbs);
         $this->load->view('blog/view', $data);
         $this->footer();

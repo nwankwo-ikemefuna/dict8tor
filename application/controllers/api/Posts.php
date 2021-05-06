@@ -32,18 +32,15 @@ class Posts extends Core_controller {
         $data = [
             'slug' => $slug, 
             'category_id' => xpost('category_id'),
-            'featured_item_type' => xpost('featured_item_type'),
+            'featured_video' => xpost('featured_video') ?: null,
             'published' => xpost('published') ?: 0,
             'featured' => xpost('featured') ?: 0,
         ];
 
         $this->form_validation->set_rules('category_id', 'Category', 'trim|required|is_natural');
-        $this->form_validation->set_rules('featured_item_type', 'Featured Item Type', 'trim|required|in_list[image,video]');
         $this->form_validation->set_rules('published', 'Published', 'trim|is_natural|in_list[0,1]');
         $this->form_validation->set_rules('featured', 'Featured Post', 'trim|is_natural|in_list[0,1]');
-        if ($data['featured_item_type'] == 'video') {
-            $this->form_validation->set_rules('featured_item_video', 'Featured Video URL', 'trim|required|valid_url');
-        }
+        $this->form_validation->set_rules('featured_video', 'Featured Video URL', 'trim|valid_url');
         foreach ($language_columns as $key => $arr) {
             foreach ($languages as $lang) {
                 $input_field = $key.'_'.$lang['key'];
@@ -64,12 +61,12 @@ class Posts extends Core_controller {
     public function add() {
         $this->auth->module_restricted($this->module, ADD, ADMIN);
         $data = $this->adit();
-        $upload_conf = ['path' => 'uploads/pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => true];
-        if ($data['featured_item_type'] == 'image') {
-            $file_name = upload_image('featured_item_image', $upload_conf, false);
-            $data['featured_item'] = $file_name;
-        } else {
-            $data['featured_item'] = xpost('featured_item_video');
+        // $required = (strlen(trim($data['featured_video'])) === 0); //must upload featured image if no video url
+        $upload_conf = ['path' => 'uploads/pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => false];
+        $file_name = upload_image('featured_image', $upload_conf, false);
+        $data['featured_image'] = $file_name;
+        if (!$data['featured_image'] && !$data['featured_video']) {
+            json_response('Post must have either featured image or video or both', false);
         }
         $id = $this->common_model->insert($this->table, $data);
         json_response(['redirect' => 'posts/view/'.$id]);
@@ -79,15 +76,13 @@ class Posts extends Core_controller {
     public function edit() {
         $this->auth->module_restricted($this->module, EDIT, ADMIN);
         $id = xpost('id');
-        $row = $this->blog_model->get_details($id, 'id', [], 'featured_item');
+        $row = $this->blog_model->get_details($id, 'id', [], 'featured_image');
         $data = $this->adit($id);
         $upload_conf = ['path' => 'uploads/pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => false];
-        if ($data['featured_item_type'] == 'image') {
-            $file_name = upload_image('featured_item_image', $upload_conf, true, $row->featured_item);
-            $data['featured_item'] = $file_name;
-        } else {
-            unlink_file($upload_conf['path'], $row->featured_item);
-            $data['featured_item'] = xpost('featured_item_video');
+        $file_name = upload_image('featured_image', $upload_conf, true, $row->featured_image);
+        $data['featured_image'] = $file_name;
+        if (!$data['featured_image'] && !$data['featured_video']) {
+            json_response('Post must have either featured image or video or both', false);
         }
         $this->common_model->update($this->table, $data, ['id' => $id]);
         json_response(['redirect' => 'posts/view/'.$id]);

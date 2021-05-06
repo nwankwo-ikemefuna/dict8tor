@@ -11,7 +11,7 @@ class Posts extends Core_controller {
 		$this->auth->def_password_restricted();
 		$this->auth->module_restricted($this->module, VIEW, ADMIN);
 
-        $this->page_scripts = ['posts'];
+        $this->page_scripts = [];
 	}
 
 	
@@ -61,9 +61,12 @@ class Posts extends Core_controller {
 	public function view($id) { 
 		//buttons
 		$row = $this->blog_model->get_details($id, 'id', ['cat']);
-        $xtra_butts = [
-            ['type' => 'url_external', 'text' => 'View in Blog', 'target' => blog_article_url($row->date_created, $row->slug, false), 'icon' => 'eye']
-        ];
+		$xtra_butts = [];
+		if ($row->published) {
+			$xtra_butts = [
+				['type' => 'url_external', 'text' => 'View in Blog', 'target' => blog_article_url($row->date_created, $row->slug, false), 'icon' => 'eye']
+			];
+		}
         $this->butts = ['list', 'add', 'edit', 'xtra_butts' => $xtra_butts];
         $data['page'] = 'view';
 		$data['row'] = $row;

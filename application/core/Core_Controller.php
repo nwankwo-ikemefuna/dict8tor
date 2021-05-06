@@ -47,10 +47,11 @@ class Core_Controller extends CI_Controller {
 	}
 
 
-	protected function web_header($page_title, $current_page = '', $meta_info = []) {
+	protected function web_header($page_title, $current_page = '', $meta_info = [], $breadcrumbs = []) {
 		$data['page_title'] = $page_title;
 		$data['current_page'] = $current_page;
 		$data['meta_info'] = $meta_info;
+		$data['breadcrumbs'] = $breadcrumbs;
 		return $this->load->view('web/layout/header', $data);
 	}
 	

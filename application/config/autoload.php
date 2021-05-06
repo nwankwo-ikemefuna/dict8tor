@@ -190,5 +190,6 @@ $autoload['model'] = [
 	'subscriber_model', 
 	'timeline_group_model',
 	'timeline_model', 
-	'user_model'
+	'user_model',
+	'video_model'
 ];
