@@ -9910,6 +9910,9 @@ iframe::scrollbar {
   text-transform: uppercase;
   display: inline-block;
 }
+.copyright .paid-by a {
+  color: inherit;
+}
 
 .widget p > a {
   text-transform: none;
