@@ -46,7 +46,7 @@ xform_open('api/videoz/'.$page, xform_attrs());
 							<div class="<?php echo grid_col(12, '', floor(12/count($languages))); ?>">
 								<?php 
 								if ($is_view_edit) {
-									$video_iframe = '<iframe width="100%" height="300px" src="'.$row->{'content_'.$lang['key']}.'?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0&amp;" allowfullscreen="true"></iframe>';
+									$video_iframe = '<iframe width="100%" height="300px" src="'.youtube_embed_url($row->{'content_'.$lang['key']}).'?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0&amp;" allowfullscreen="true"></iframe>';
 								}
 								if ($is_view) {
 									if ($key == 'content') { 
