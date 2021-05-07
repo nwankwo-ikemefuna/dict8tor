@@ -10048,6 +10048,11 @@ iframe::scrollbar {
 
 .intro_video_section {
   position: relative;
+  text-align: center;
+}
+.intro_video_section img.intro_video_placeholder {
+  width: 100%;
+  height: auto;
 }
 .intro_video_section img.play_icon {
   position: absolute;

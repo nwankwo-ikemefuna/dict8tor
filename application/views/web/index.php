@@ -89,7 +89,7 @@ if ($this->is_campaign_phase && $priorities) { ?>
 			<div class="col-md-6 col-sm-12">
 				<div class="intro_video_section">
 					<a href="<?php echo youtube_embed_url($this->site_info->intro_video); ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0" data-fancybox="video" title="Click to play video">
-						<img src="<?php echo base_url('uploads/pix/info/'.$this->site_info->intro_video_placeholder); ?>" alt="<?php echo SITE_NAME; ?>"> 
+						<img class="intro_video_placeholder" src="<?php echo base_url('uploads/pix/info/'.$this->site_info->intro_video_placeholder); ?>" alt="<?php echo SITE_NAME; ?>"> 
 						<img class="play_icon" src="<?php echo base_url('assets/common/img/icons/play.jpg'); ?>" alt="Play icon">
 					</a>
 				</div>
