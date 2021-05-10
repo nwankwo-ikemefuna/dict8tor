@@ -66,7 +66,8 @@ define('ACC_STATUSES_STYLED', [0 => '<span class="text-danger">Inactive</span>',
 //misc
 define('SEX_MALE', 1);
 define('SEX_FEMALE', 2);
-define('C_NIGERIA', 135);
+define('C_NIGERIA_ID', 135); //countries.id (Nigeria)
+define('CRS_ID', 10); //states.id (Cross River)
 define('SMS_RATE', 3.5);
 define('CU_NAIRA', '&#8358;');
 define('VISITOR_COUNTRY', ip_info_safe("Visitor", "Country"));

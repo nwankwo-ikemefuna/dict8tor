@@ -73,5 +73,14 @@ class Common extends Core_controller {
     public function delete_smt_image() { 
         $this->summernote->delete();
     }
+
+
+    public function get_state_lgas() {
+        $this->form_validation->set_rules('state', 'State', 'trim|required');
+        if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
+        $state = (int) xpost('state');
+        $lgas = $this->lga_model->get_all([], "lga.id, lga.name", ['lga.state' => $state]);
+        json_response($lgas);
+    }
     
 }

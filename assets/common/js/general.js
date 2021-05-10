@@ -137,7 +137,7 @@ function toggle_elem_val_trigger(elem, targets_show, targets_hide, val, event = 
     });
 }
 
-function set_select_options(selectfield, data, id_col = 'id', text_col = 'name', empty_msg = 'No data to render') {
+function set_select_options(selectfield, data, id_col = 'id', text_col = 'name', empty_msg = 'No data to render', $using_selectpicker = true) {
     selectfield.empty(); 
     var options = '<option value="">Select</option>';
     if (data.length) {
@@ -147,8 +147,12 @@ function set_select_options(selectfield, data, id_col = 'id', text_col = 'name',
     } else {
         options += `<option value="" style="color: red">${empty_msg}</option>`;
     }
-    //append the options to the select field and refresh
-    selectfield.append(options).selectpicker('refresh');
+    //append the options to the select field
+    selectfield.append(options);
+    if ($using_selectpicker) {
+        //refresh
+        selectfield.selectpicker('refresh');
+    }
 }
 
 function clear_form_fields(form_id, clear_all = false) {

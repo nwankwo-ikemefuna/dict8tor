@@ -19,7 +19,6 @@ class User extends Core_controller {
 
 	public function view() { 
 		$this->auth->def_password_restricted();
-		// $this->sandbox_model->get_question_options("mathematics_questions");
 		//buttons
 		$xtra_butts = [
             ['text' => 'Change Password', 'type' => 'url', 'target' => 'user/reset_pass', 'icon' => 'key']

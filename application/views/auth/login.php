@@ -17,6 +17,6 @@ xform_close();
 
 <div class="form-group mt-3 mb-0">
     <div class="text-center form-bottom">
-    	<p>Forgot Password? <a href="<?php echo base_url('forgot_pass'); ?>" class="text-theme m-l-5"><b>Recover</b></a></p>
+    	<p>Forgot Password? <a href="<?php echo base_url('forgot-pass'); ?>" class="text-theme m-l-5"><b>Recover</b></a></p>
     </div>
 </div>

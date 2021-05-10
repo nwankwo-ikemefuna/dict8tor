@@ -28,7 +28,7 @@ class Account extends Core_controller {
         //update code
         $this->common_model->update(T_USERS, $data, ['email' => xpost('email')]);
         //send email
-        $reset_url = base_url('account/reset_pass/'.$row->username.'/'.$reset_code);
+        $reset_url = base_url('account/reset-pass/'.$row->username.'/'.$reset_code);
         $anchor_link = email_call2action_blue($reset_url, 'Reset Password');
         $message = "Hi <b>{$row->username}!</b> <br />
             You requested for password reset for your account. <br />

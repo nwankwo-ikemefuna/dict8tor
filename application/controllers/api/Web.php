@@ -38,5 +38,36 @@ class Web extends Core_controller {
         $this->common_model->insert(T_SUBSCRIBERS, $data);
         json_response('Successful');
     }
+
+
+    public function hands_on() {
+        $states = $this->state_model->get_all([], "stt.id, stt.name", ['stt.country' => C_NIGERIA_ID]);
+        $lgas = $this->lga_model->get_all([], "lga.id, lga.name", ['lga.state' => CRS_ID]);
+        $form_elements_applicant = $this->hands_on_application_model->form_elements_applicant($states, $lgas);
+        $form_elements_grant = $this->hands_on_application_model->form_elements_grant($lgas);
+        $form_elements_ngo = $this->hands_on_application_model->form_elements_ngo();
+        $form_elements = array_merge($form_elements_applicant, $form_elements_grant, $form_elements_ngo);
+
+        $data = [];
+        foreach ($form_elements as $arr) {
+            $input_field = $arr['name'];
+            $rules = 'trim';
+            if ($arr['required']) {
+                $rules .= '|required';
+            }
+            if ($arr['type'] == 'email') {
+                $rules .= '|valid_email';
+            }
+            if ($arr['type'] == 'url') {
+                $rules .= '|valid_url';
+            }
+            $this->form_validation->set_rules($input_field, $arr['title'], $rules);
+            $data[$input_field] = ($arr['type'] == 'textarea') ? xpost_txt($input_field) : ($arr['type'] == 'url' ? xpost($input_field) : ucwords(xpost($input_field)));
+        }
+        if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
+        // var_dump($data); die;
+        $this->common_model->insert(T_HANDS_ON_APPLICATIONS, $data);
+        json_response('Application submitted successfully');
+    }
     
 }

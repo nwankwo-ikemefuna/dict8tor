@@ -106,7 +106,6 @@ jQuery(document).ready(function ($) {
             }
         };
         var theme = JSON.parse($('.captcha_theme').val());
-        console.log(theme);
         fetch_data_ajax(base_url+'api/common/regenerate_captcha', {theme}, 'POST', success_callback);
     });
 });

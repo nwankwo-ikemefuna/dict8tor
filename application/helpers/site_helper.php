@@ -110,3 +110,18 @@ function portal_video_widget($url, $title, $fieldset_class = '') { ?>
     </fieldset>
     <?php 
 }
+
+function educational_qualifications() {
+    $arr = [
+        'FSLC',
+        'SSCE',
+        'NCE',
+        'OND',
+        'Degree',
+        'Masters',
+        'PhD',
+        'Other',
+        'None',
+    ];
+    return $arr;
+}

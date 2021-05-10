@@ -112,7 +112,8 @@ ajax_overlay_loader(); ?>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/fancybox/jquery.fancybox.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/bootstrap/js/bootstrap.min.js"></script>
-<!-- <script src="<?php //echo base_url(); ?>assets/web/template/plugins/bootstrap.js"></script> -->
+<!-- Selectpicker -->
+<!-- <script src="<?php //echo base_url(); ?>vendors/selectpicker/js/bootstrap-select.min.js"></script> -->
 
 <!-- Template scripts -->
 <script src="<?php echo base_url(); ?>assets/web/template/js/plugins.js"></script>

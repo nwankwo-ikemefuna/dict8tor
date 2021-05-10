@@ -43,4 +43,18 @@ class Web extends Core_controller {
         $this->web_footer('videos');
     }
 
+
+    public function hands_on() {
+        $states = $this->state_model->get_all([], "stt.id, stt.name", ['stt.country' => C_NIGERIA_ID]);
+        $lgas = $this->lga_model->get_all([], "lga.id, lga.name", ['lga.state' => CRS_ID]);
+        $data['row'] = $this->hands_on_info_model->get_details(1, 'id', [], "## title, content");
+        $data['form_elements_applicant'] = $this->hands_on_application_model->form_elements_applicant($states, $lgas);
+        $data['form_elements_grant'] = $this->hands_on_application_model->form_elements_grant($lgas);
+        $data['form_elements_ngo'] = $this->hands_on_application_model->form_elements_ngo();
+        $breadcrumbs = [lang_string('home') => '', lang_string('hands_on_nigeria') => '*'];
+        $this->web_header(lang_string('hands_on_nigeria'), 'hands_on', [], $breadcrumbs);
+        $this->load->view('web/hands_on', $data);
+        $this->web_footer('hands_on');
+    }
+
 }

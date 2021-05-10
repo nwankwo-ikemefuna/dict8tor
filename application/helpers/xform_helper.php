@@ -97,6 +97,7 @@ function xform_input($name, $type = 'text', $value = '', $required = false, $ext
     if ( ! in_array($type, ['checkbox', 'radio', 'file'])) {
         $extra['class'] = 'form-control '.input_key_isset($extra, 'class', '');
     }
+    // var_dump($extra); 
     $attrs = set_extra_attrs($extra);
     $required = $required ? 'required' : '';
     if ($type == 'textarea') {
@@ -131,7 +132,7 @@ function xform_select($name, $value = '', $required = false, $extra = [], $retur
         if (array_key_exists('text_col', $extra) && strlen($extra['text_col'])) {
             //value column
             $val_col = input_key_isset($extra, 'val_col', 'id');
-            $text_col = input_key_isset($extra, 'text_col', 'Not set!');
+            $text_col = input_key_isset($extra, 'text_col', 'text');
             $options = select_options_db($extra['options'], $val_col, $text_col, $value, true);
         } else {
             //just a regular array

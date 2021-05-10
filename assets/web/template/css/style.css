@@ -3797,13 +3797,19 @@ fieldset:not(:last-child) {
   display: block;
 }
 
-.join-us.style-4 .join-form input {
+.join-us.style-4 .join-form input,
+.join-us.style-4 .join-form select {
   border: 2px solid #eee;
   border-radius: 3px;
   width: 100% !important;
   padding: 10px 20px;
   height: 50px;
   background: #fff;
+}
+.join-us.style-4 .join-form select {
+  width: 100% !important;
+  padding: 10px 20px;
+  height: 50px;
 }
 
 .join-us.style-4 .join-form input:not(:last-child) {

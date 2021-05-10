@@ -59,6 +59,7 @@ $route['about'] = 'web/about';
 $route['videos/(:num)'] = 'web/videos/$1'; //videos index with pagination
 $route['videos'] = 'web/videos';
 $route['issues'] = 'web/issues';
+$route['hands-on'] = 'web/hands_on';
 
 //blog
 $route['post/(:any)/(:any)'] = 'blog/view/$1/$2'; //blog post view
@@ -67,5 +68,5 @@ $route['blog/(:num)'] = 'blog/index/$1'; //blog index with pagination
 //auth pages
 $route['login'] = 'account/login';
 $route['logout'] = 'account/logout';
-$route['forgot_pass'] = 'account/forgot_pass';
-$route['reset_pass/(:any)/(:any)'] = 'account/reset_pass/$1/$2';
+$route['forgot-pass'] = 'account/forgot_pass';
+$route['reset-pass/(:any)/(:any)'] = 'account/reset_pass/$1/$2';

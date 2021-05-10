@@ -139,7 +139,6 @@ if ($timelines) { ?>
 		<div class="container extra-size2 <?php echo $this->is_campaign_phase ? 'm-t-100' : ''; ?>">
 			<h2 class="section-title"><?php echo $this->candidate_info->display_name_short; ?><?php echo lang_string('s_ownership'); ?> <?php echo lang_string('timeline'); ?></h2>
 			<div class="tabs tabs-section type-2 horizontal clearfix">
-				<!--tabs navigation-->
 				<ul class="tabs-nav clearfix">
 					<?php
 					foreach ($timeline_groups as $grow) { 
@@ -149,8 +148,7 @@ if ($timelines) { ?>
 						<li><a href="#timeline_group_tab_<?php echo $grow->id; ?>"><?php echo $grow->title; ?></a></li>
 						<?php
 					} ?>
-				</ul>
-				<!--tabs content-->                 
+				</ul>           
 				<div class="tabs-content">
 					<?php
 					foreach ($timeline_groups as $grow) { 
@@ -159,15 +157,13 @@ if ($timelines) { ?>
 						?>
 						<div id="timeline_group_tab_<?php echo $grow->id; ?>">
 							<div class="tabs tabs-section type-2 vertical clearfix">
-								<!--tabs navigation-->
 								<ul class="tabs-nav clearfix">
 									<?php
 									foreach ($group_timelines as $row) { ?>
 										<li><a href="#timeline_tab_<?php echo $row->id; ?>"><?php echo $row->title; ?></a></li>
 										<?php
 									} ?>
-								</ul>
-								<!--tabs content-->                 
+								</ul>              
 								<div class="tabs-content">
 									<?php
 									foreach ($group_timelines as $row) { 
