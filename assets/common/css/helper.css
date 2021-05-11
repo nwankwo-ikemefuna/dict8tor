@@ -3456,3 +3456,7 @@ legend.scheduler-border {
     padding: 10px;
     min-height: 100px;
 }
+.wysiwyg_content a {
+  text-decoration: underline;
+  color: #237690;
+}

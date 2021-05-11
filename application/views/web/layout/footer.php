@@ -6,6 +6,11 @@
                     <li class="<?php echo active_link($current_page, 'home', 'current'); ?>"><a href="<?php echo base_url(); ?>"><?php echo lang_string('home'); ?></a></li>
                     <li class="<?php echo active_link($current_page, 'about', 'current'); ?>"><a href="<?php echo base_url('about'); ?>"><?php echo lang_string('about'); ?></a></li>
                     <li class="<?php echo active_link($current_page, 'videos', 'current'); ?>"><a href="<?php echo base_url('videos'); ?>"><?php echo lang_string('videos'); ?></a></li>
+                    <?php
+                    if ($this->hands_on_info->published) { ?>
+                        <li class="<?php echo active_link($current_page, 'hands_on', 'current'); ?>"><a href="<?php echo base_url('hands-on'); ?>"><?php echo lang_string('hands_on_nigeria'); ?></a></li>
+                        <?php
+                    } ?>
                     <li class="<?php echo active_link($current_page, 'blog', 'current'); ?>"><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
                 </ul>
             </div>

@@ -1,31 +1,14 @@
 <?php
 $languages = get_site_languages();
 $is_view = ($page == 'view');
+$is_edit = ($page == 'edit');
 $is_view_edit = (in_array($page, ['view', 'edit']));
 
-xform_open('api/timelines/'.$page, xform_attrs());
-	xform_notice();
-	if ($page == 'edit') { 
-		xform_input('id', 'hidden', $row->id);
-		xform_input('candidate_type', 'hidden', $row->candidate_type);
-	} else {
-		xform_input('candidate_type', 'hidden', xget('type'));
-	}
-	?>
+xform_open('api/hands_on_info/'.$page, xform_attrs());
+	xform_notice(); ?>
+
 	<div class="row">
 		<div class="<?php echo grid_col(12, '', 5); ?>">
-			<?php
-			if ($is_view) {
-				data_show_grid('Group', $row->group_title); 
-				data_show_grid('Order', $row->order); 
-			} else {
-				xform_group_grid('Group', 'group_id', 'select', adit_value($row, 'group_id'), true, 
-					['options' => $timeline_groups, 'text_col' => 'title', 'blank' => true]
-				); 
-				xform_group_grid('Order', 'order', 'number', adit_value($row, 'order', $next_order ?? ''), true); 
-			} ?>
-		</div>
-		<div class="<?php echo grid_col(12, '', '5?2'); ?>">
 			<?php
 			if ($is_view) {
 				data_show_grid('Published', ['No', 'Yes'][$row->published]);
@@ -64,7 +47,7 @@ xform_open('api/timelines/'.$page, xform_attrs());
 										data_show_grid($lang['title'], $row->$input_field);
 									}
 								} else {
-									xform_group_list($lang['title'], $input_field, $arr['input'], adit_value($row, $input_field, '', true), $required, $input_attrs); 
+									xform_group_list($lang['title'], $input_field, $arr['input'], adit_value($row, $input_field), $required, $input_attrs); 
 								} ?>
 							</div>
 							<?php
@@ -73,18 +56,6 @@ xform_open('api/timelines/'.$page, xform_attrs());
 				</fieldset>
 				<?php 
 			} ?>
-		</div>
-	</div>
-	<div class="row">
-		<div class="<?php echo grid_col(12, 6, 4); ?>">
-			<?php
-			if ($is_view_edit) {
-				echo portal_image_widget('uploads/pix/timelines/'.$row->photo, 'Photo');
-			}
-			if (!$is_view) {
-				xform_input('photo', 'file', '', ($page != 'edit'), ['help' => file_upload_info('png|jpg|jpeg', '448x350', '300', 'KB', true)]);
-			}
-			?>
 		</div>
 	</div>
 	<?php

@@ -54,5 +54,7 @@ jQuery(document).ready(function ($) {
             ajax_data_table(table, url, cols, col_defs, per_page);
         }
     }
+    
+    summernote_init(".summernote_simple", {picture: false}, {height: 300});
 
 });

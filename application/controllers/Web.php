@@ -45,9 +45,11 @@ class Web extends Core_controller {
 
 
     public function hands_on() {
+        if (!$this->hands_on_info->published) {
+            redirect('');
+        }
         $states = $this->state_model->get_all([], "stt.id, stt.name", ['stt.country' => C_NIGERIA_ID]);
         $lgas = $this->lga_model->get_all([], "lga.id, lga.name", ['lga.state' => CRS_ID]);
-        $data['row'] = $this->hands_on_info_model->get_details(1, 'id', [], "## title, content");
         $data['form_elements_applicant'] = $this->hands_on_application_model->form_elements_applicant($states, $lgas);
         $data['form_elements_grant'] = $this->hands_on_application_model->form_elements_grant($lgas);
         $data['form_elements_ngo'] = $this->hands_on_application_model->form_elements_ngo();

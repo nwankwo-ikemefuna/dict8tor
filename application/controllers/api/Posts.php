@@ -9,7 +9,6 @@ class Posts extends Core_controller {
 		$this->model = 'blog';
         $this->auth->login_restricted();
         $this->auth->module_restricted($this->module, VIEW, ADMIN);
-        
     }
 
 

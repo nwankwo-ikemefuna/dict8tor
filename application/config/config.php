@@ -471,6 +471,7 @@ $config['csrf_exclude_uris'] = [
     //api
     'api/permissions/get',
     'api/employees/get',
+    'api/hands_on_applications/get',
     'api/language_strings/get',
     'api/post_categories/get',
     'api/posts/get',

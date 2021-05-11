@@ -115,17 +115,23 @@
                                 side_menu_auth(MOD_VIDEOS, VIEW, ADMIN, 'Add Video', 'videoz/add');
                             side_menu_parent_close_auth(MOD_VIDEOS, VIEW, ADMIN);
 
+                            //hands-on
+                            side_menu_parent_open_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Hands-on-Nigeria', 'support');
+                                side_menu_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Applications', 'hands_on_applications');
+                                side_menu_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Grant Info', 'hands_on_info/view');
+                            side_menu_parent_close_auth(MOD_HANDS_ON, VIEW, ADMIN);
+
+                            //subscribers
+                            side_menu_parent_open_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'Subscribers', 'users');
+                                side_menu_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'All Subscribers', 'subscribers');
+                            side_menu_parent_close_auth(MOD_SUBSCRIBERS, VIEW, ADMIN);
+
                             //user accounts
                             side_menu_parent_open_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'User Accounts', 'users');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'All Users', 'employees');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Add User', 'employees/add');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'Roles & Privileges', 'permissions');
                             side_menu_parent_close_auth(MOD_EMPLOYEES, VIEW, ADMIN);
-
-                            //subscribers
-                            side_menu_parent_open_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'Subscribers', 'users');
-                                side_menu_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'All Subscribers', 'subscribers');
-                            side_menu_parent_close_auth(MOD_SUBSCRIBERS, VIEW, ADMIN);
                             
                             //user
                             side_menu_parent_open('My Account', 'user');

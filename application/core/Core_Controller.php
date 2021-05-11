@@ -44,6 +44,11 @@ class Core_Controller extends CI_Controller {
 
 		//get candidate info
 		$this->candidate_info = $this->candidate_model->get_details(1, 'type');
+
+		//hands on 
+		$this->hands_on_info = $this->hands_on_info_model->get_details(1, 'id', [], "hof.published ## title, content");
+
+		$this->local_currency_code = CU_NAIRA;
 	}
 
 

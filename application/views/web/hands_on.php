@@ -6,7 +6,8 @@
 				<main id="main" class="col-md-12">
 
 					<div class="content-element4 m-t-30">
-						<p><?php echo $row->content; ?></p>
+						<h3><?php echo $this->hands_on_info->title; ?></h3>
+						<p><?php echo $this->hands_on_info->content; ?></p>
 					</div>
 
 					<div class="join-us style-4">
@@ -65,7 +66,7 @@
 							'data-redirect' => '_void',
 							'data-msg' => lang_string('hands_on_thank_you')
 						];
-						xform_open('api/web/hands_on', $attrs); ?>			
+						xform_open('api/web/hands_on_grant_application', $attrs); ?>			
 
 							<div class="tabs tabs-section type-2 horizontal clearfix">
 								<ul class="tabs-nav clearfix">

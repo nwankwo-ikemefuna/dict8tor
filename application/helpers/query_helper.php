@@ -63,8 +63,20 @@ function datetime_select($field, $alias = '', $full_month = false) {
 	return "DATE_FORMAT({$field}, '%D %{$month}, %Y at %h:%i %p') {$as_alias}";
 }
 
-function price_select($code_col, $price_col, $alias = 'amount', $precision = 0) {
-	return "CONCAT('&#', {$code_col}, ';', CONVERT(FORMAT({$price_col}, {$precision}) using utf8)) AS {$alias}";
+function price_select($code_col, $price_col, $alias = '', $precision = 0) {
+	$query = "CONCAT('&#', {$code_col}, ';', CONVERT(FORMAT({$price_col}, {$precision}) using utf8))";
+	if ($alias) {
+		$query .= " AS {$alias}";
+	}
+	return $query;
+}
+
+function price_select2($code, $price_col, $alias = '', $precision = 0) {
+	$query = "CONCAT('{$code}', CONVERT(FORMAT({$price_col}, {$precision}) using utf8))";
+	if ($alias) {
+		$query .= " AS {$alias}";
+	}
+	return $query;
 }
 
 function file_select($path, $file_col, $default = '') {

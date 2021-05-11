@@ -7,7 +7,9 @@
             <time class="entry-date" datetime="<?php echo date('Y-m-d', strtotime($row->date_created)); ?>"><?php echo date('M d, Y', strtotime($row->date_created)); ?></time>
             <span class="entry-cat"><?php echo lang_string('posted_in'); ?> <a href="<?php echo base_url('blog/categories/'.$row->category_slug); ?>"><?php echo $row->category_title; ?></a></span>
         </div>
-        <?php echo $row->content; ?>
+        <div class="wysiwyg_content">
+            <?php echo $row->content; ?>
+        </div>
         <?php 
         if ($row->featured_video) { ?>
             <div class="responsive-iframe m-t-30">
