@@ -10,7 +10,9 @@
 							<img class="m-b-10" src="<?php echo base_url('uploads/pix/info/'.$this->hands_on_info->featured_image); ?>">
 							<h3><?php echo $this->hands_on_info->title; ?></h3>
 						</div>
-						<p><?php echo $this->hands_on_info->content; ?></p>
+						<div class="wysiwyg_content">
+							<?php echo $this->hands_on_info->content; ?>
+						</div>
 					</div>
 
 					<div class="join-us style-4">
