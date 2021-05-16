@@ -8,7 +8,7 @@
                     <li class="<?php echo active_link($current_page, 'videos', 'current'); ?>"><a href="<?php echo base_url('videos'); ?>"><?php echo lang_string('videos'); ?></a></li>
                     <?php
                     if ($this->hands_on_info->published) { ?>
-                        <li class="<?php echo active_link($current_page, 'hands_on', 'current'); ?>"><a href="<?php echo base_url('hands-on'); ?>"><?php echo lang_string('hands_on_nigeria'); ?></a></li>
+                        <li class="<?php echo active_link($current_page, 'hands_on', 'current'); ?>"><a href="<?php echo base_url('hands-on'); ?>"><?php echo lang_string('hands_on'); ?></a></li>
                         <?php
                     } ?>
                     <li class="<?php echo active_link($current_page, 'blog', 'current'); ?>"><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
@@ -117,8 +117,9 @@ ajax_overlay_loader(); ?>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/fancybox/jquery.fancybox.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/web/template/plugins/bootstrap/js/bootstrap.min.js"></script>
-<!-- Selectpicker -->
-<!-- <script src="<?php //echo base_url(); ?>vendors/selectpicker/js/bootstrap-select.min.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/vendors/jquery-validate/jquery.validate.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/jquery-steps/js/jquery.steps.min.js"></script>
+<!-- <script src="<?php //echo base_url(); ?>assets/vendors/selectpicker/js/bootstrap-select.min.js"></script> -->
 
 <!-- Template scripts -->
 <script src="<?php echo base_url(); ?>assets/web/template/js/plugins.js"></script>

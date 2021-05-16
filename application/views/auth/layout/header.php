@@ -6,9 +6,9 @@
 
     <!-- Vendors -->
     <!-- Bootstrap -->
-    <link href="<?php echo base_url(); ?>vendors/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Font Awesome 4.7 -->
-    <link href="<?php echo base_url(); ?>vendors/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
     
     <!-- Template styles -->
     <link href="<?php echo base_url(); ?>assets/portal/template/css/main.css" rel="stylesheet" type="text/css" media="all" />

@@ -7,9 +7,9 @@
 
 <!-- Vendors -->
 <!-- Regular guys -->
-<script src="<?php echo base_url(); ?>vendors/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url(); ?>vendors/popper.min.js"></script>
-<script src="<?php echo base_url(); ?>vendors/bootstrap/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/popper.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/bootstrap.min.js"></script>
 
 <!-- General Custom scripts -->
 <script src="<?php echo base_url(); ?>assets/common/js/general.js"></script>

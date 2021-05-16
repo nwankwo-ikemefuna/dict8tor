@@ -41,23 +41,23 @@ ajax_overlay_loader(); ?>
 
 <!-- Vendors -->
 <!-- Regular guys -->
-<script src="<?php echo base_url(); ?>vendors/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url(); ?>vendors/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url(); ?>vendors/popper.min.js"></script>
-<script src="<?php echo base_url(); ?>vendors/bootstrap/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/popper.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/bootstrap/bootstrap.min.js"></script>
 <!-- Selectpicker -->
-<script src="<?php echo base_url(); ?>vendors/selectpicker/js/bootstrap-select.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/selectpicker/js/bootstrap-select.min.js"></script>
 <!-- Moment -->
-<script src="<?php echo base_url(); ?>vendors/moment/moment.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/moment/moment.js"></script>
 <!-- Tempus Dominus Datetimepicker -->
-<script src="<?php echo base_url(); ?>vendors/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="<?php echo base_url(); ?>vendors/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/datepicker/js/bootstrap-datepicker.min.js"></script>
 <!-- Datatables BS 4 -->
-<script src="<?php echo base_url(); ?>vendors/datatables_bs4/datatables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/datatables_bs4/datatables.min.js"></script>
 <!-- Summernote-->
-<script src="<?php echo base_url(); ?>vendors/summernote/summernote-bs4.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/summernote/summernote-bs4.min.js" type="text/javascript"></script>
 <!-- PSG Countdown Timer-->
-<script src="<?php echo base_url(); ?>vendors/psg-countdown/js/jquery.psgTimer.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/psg-countdown/js/jquery.psgTimer.js" type="text/javascript"></script>
 <!-- Template scripts -->
 <script src="<?php echo base_url(); ?>assets/portal/template/js/main.js"></script>
 

@@ -15,8 +15,9 @@ class Hands_on_info extends Core_controller {
 
     public function edit() {
         $this->auth->module_restricted($this->module, EDIT, ADMIN);
+        $id = 1;
         $languages = get_site_languages();
-        $language_columns = $this->priority_model->language_columns();
+        $language_columns = $this->hands_on_info_model->language_columns();
         $data['published'] = xpost('published');
         $this->form_validation->set_rules('published', 'Published', 'trim|is_natural|in_list[0,1]');
         foreach ($language_columns as $key => $arr) {
@@ -27,7 +28,16 @@ class Hands_on_info extends Core_controller {
             }
         }
         if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);
-        $this->common_model->update($this->table, $data, ['id' => 1]);
+        //images
+        $image_columns = $this->hands_on_info_model->image_columns();
+        $image_columns_select = implode(', ', array_keys($image_columns));
+        $row = $this->hands_on_info_model->get_details($id, 'id', [], $image_columns_select);
+        foreach ($image_columns as $key => $arr) {
+            $upload_conf = ['path' => 'uploads/pix/info', 'ext' => 'png|svg|jpg|jpeg', 'size' => $arr['max'], 'required' => false];
+            $file_name = upload_image($key, $upload_conf, true, $row->$key);
+            $data[$key] = $file_name;
+        }
+        $this->common_model->update($this->table, $data, ['id' => $id]);
         json_response(['redirect' => 'hands_on_info/view']);
     }
     

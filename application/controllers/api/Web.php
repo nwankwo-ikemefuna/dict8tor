@@ -52,6 +52,7 @@ class Web extends Core_controller {
         $data = [];
         foreach ($form_elements as $arr) {
             $input_field = $arr['name'];
+            $error_msgs_arr = [];
             $rules = 'trim';
             if ($arr['required']) {
                 $rules .= '|required';
@@ -59,10 +60,15 @@ class Web extends Core_controller {
             if ($arr['type'] == 'email') {
                 $rules .= '|valid_email';
             }
+            if ($arr['name'] == 'email') {
+                $email = xpost('email');
+                $rules .= '|is_unique['.T_HANDS_ON_APPLICATIONS.'.email]';
+                $error_msgs_arr = ['is_unique' => "This email [<strong>{$email}</strong>] has previously applied."];
+            }
             if ($arr['type'] == 'url') {
                 $rules .= '|valid_url';
             }
-            $this->form_validation->set_rules($input_field, $arr['title'], $rules);
+            $this->form_validation->set_rules($input_field, $arr['title'], $rules, $error_msgs_arr);
             $data[$input_field] = ($arr['type'] == 'textarea') ? xpost_txt($input_field) : ($arr['type'] == 'url' ? xpost($input_field) : ucwords(xpost($input_field)));
         }
         if ($this->form_validation->run() === FALSE) json_response(validation_errors(), false);

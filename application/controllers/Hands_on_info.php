@@ -26,6 +26,7 @@ class Hands_on_info extends Core_controller {
 		$data['page'] = 'edit';
 		$data['row'] = $row;
 		$data['language_columns'] = $this->hands_on_info_model->language_columns();
+		$data['image_columns'] = $this->hands_on_info_model->image_columns();
         $this->ajax_header('Edit Hands-On-Nigeria Info');
 		$this->load->view('portal/admin/hands_on/info/edit_view', $data);
 		$this->ajax_footer('edit');
@@ -39,6 +40,7 @@ class Hands_on_info extends Core_controller {
         $data['page'] = 'view';
 		$data['row'] = $row;
         $data['language_columns'] = $this->hands_on_info_model->language_columns();
+		$data['image_columns'] = $this->hands_on_info_model->image_columns();
 		$this->ajax_header('Hands-On-Nigeria Info');
 		$this->load->view('portal/admin/hands_on/info/edit_view', $data);
 		$this->ajax_footer('view');

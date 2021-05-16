@@ -6,23 +6,23 @@
     
     <!-- Vendors -->
     <!-- Bootstrap -->
-    <link href="<?php echo base_url(); ?>vendors/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Jquery ui -->
     <link href="<?php //echo base_url(); ?>vendors/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Font Awesome 4.7 -->
-    <link href="<?php echo base_url(); ?>vendors/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Datatables BS 4 -->
-    <link href="<?php echo base_url(); ?>vendors/datatables_bs4/datatables.min.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<?php echo base_url(); ?>vendors/datatables_bs4/config.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables_bs4/datatables.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/datatables_bs4/config.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Tempus Dominus Datetimepicker -->
-    <link href="<?php echo base_url(); ?>vendors/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<?php echo base_url(); ?>vendors/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Selectpicker -->
-    <link href="<?php echo base_url(); ?>vendors/selectpicker/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/selectpicker/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Summernote -->
-    <link href="<?php echo base_url(); ?>vendors/summernote/summernote-bs4.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/summernote/summernote-bs4.css" rel="stylesheet" type="text/css" media="all"/>
     <!--  PSG Countdown Timer -->
-    <link href="<?php echo base_url(); ?>vendors/psg-countdown/css/psgTimer.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/psg-countdown/css/psgTimer.css" rel="stylesheet" type="text/css" media="all"/>
 
     <!-- Template styles -->
     <link href="<?php echo base_url(); ?>assets/portal/template/css/main.css" rel="stylesheet" type="text/css" media="all" />
@@ -116,7 +116,7 @@
                             side_menu_parent_close_auth(MOD_VIDEOS, VIEW, ADMIN);
 
                             //hands-on
-                            side_menu_parent_open_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Hands-on-Nigeria', 'support');
+                            side_menu_parent_open_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Hands-On', 'support');
                                 side_menu_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Applications', 'hands_on_applications');
                                 side_menu_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Grant Info', 'hands_on_info/view');
                             side_menu_parent_close_auth(MOD_HANDS_ON, VIEW, ADMIN);

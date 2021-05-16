@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/web/template/css/owl.carousel.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/web/template/css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/web/template/css/responsive.css">
-	<!-- Selectpicker -->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/jquery-steps/css/jquery.steps.css">
     <!-- <link href="<?php //echo base_url(); ?>vendors/selectpicker/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" media="all"/> -->
     
     <!-- Custom styles -->
@@ -62,7 +62,7 @@
 									<li class="<?php echo active_link($current_page, 'blog', 'current'); ?>"><a href="<?php echo base_url('blog'); ?>"><?php echo lang_string('blog'); ?></a></li>
 									<?php
 									if ($this->hands_on_info->published) { ?>
-										<li class="<?php echo active_link($current_page, 'hands_on', 'current'); ?>"><a href="<?php echo base_url('hands-on'); ?>"><?php echo lang_string('hands_on_nigeria'); ?></a></li>
+										<li class="<?php echo active_link($current_page, 'hands_on', 'current'); ?>"><a href="<?php echo base_url('hands-on'); ?>"><?php echo lang_string('hands_on'); ?></a></li>
 										<?php
 									} ?>
 									<?php

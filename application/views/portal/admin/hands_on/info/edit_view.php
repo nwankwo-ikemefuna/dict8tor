@@ -58,5 +58,21 @@ xform_open('api/hands_on_info/'.$page, xform_attrs());
 			} ?>
 		</div>
 	</div>
+	<div class="row m-t-30">
+		<div class="<?php echo grid_col(12, 6, 4); ?>">
+			<?php
+			foreach ($image_columns as $key => $arr) { ?>
+				<div class="<?php echo grid_col(12, 6); ?>">
+					<?php 
+					echo portal_image_widget('uploads/pix/info/'.$row->$key, $arr['title'], '', 'width: 300px;'); 
+					if ($is_edit) {
+						xform_input($key, 'file', '', false, ['help' => file_upload_info($arr['ext'], $arr['dimension'], $arr['max'], $arr['unit'], false)]);
+					}
+					?>
+				</div>
+				<?php
+			} ?>
+		</div>
+	</div>
 	<?php
 xform_close();

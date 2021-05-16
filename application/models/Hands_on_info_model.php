@@ -30,5 +30,12 @@ class Hands_on_info_model extends Core_Model {
             'content' => ['title' => 'Content', 'input' => 'textarea', 'rows' => 12],
         ];
     }
+
+
+	public function image_columns() {
+        return [
+			'featured_image' => ['title' => 'Featured Logo', 'dimension' => '303x90', 'ext' => 'png|jpg|jpeg', 'max' => 300, 'unit' => 'KB'],
+		];
+    }
 	
 }

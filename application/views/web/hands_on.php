@@ -5,8 +5,11 @@
 			<div class="row">
 				<main id="main" class="col-md-12">
 
-					<div class="content-element4 m-t-30">
-						<h3><?php echo $this->hands_on_info->title; ?></h3>
+					<div class="content-element4 hands_on_info m-t-30">
+						<div class="text-center">
+							<img class="m-b-10" src="<?php echo base_url('uploads/pix/info/'.$this->hands_on_info->featured_image); ?>">
+							<h3><?php echo $this->hands_on_info->title; ?></h3>
+						</div>
 						<p><?php echo $this->hands_on_info->content; ?></p>
 					</div>
 
@@ -68,42 +71,36 @@
 						];
 						xform_open('api/web/hands_on_grant_application', $attrs); ?>			
 
-							<div class="tabs tabs-section type-2 horizontal clearfix">
-								<ul class="tabs-nav clearfix">
-									<li><a href="#tab_applicant">Applicant Details</a></li>
-									<li><a href="#tab_grant">Grant Details</a></li>
-									<li><a href="#tab_ngo">Organisation Details (Not-for-profit, if available)</a></li>
-								</ul>
-								<div class="tabs-content">
+							<div id="hands_on_form_wizard">
 
-									<div id="tab_applicant">
-										<?php echo xform_pre_notice(); ?>
-										<div class="row">
-											<?php _hands_on_form($form_elements_applicant); ?>
-										</div>
+								<h3>Applicant Details</h3>
+								<section>
+									<?php echo xform_pre_notice(); ?>
+									<div class="row">
+										<?php _hands_on_form($form_elements_applicant); ?>
 									</div>
+								</section>
 
-									<div id="tab_grant">
-										<?php echo xform_pre_notice(); ?>
-										<div class="row">
-											<?php _hands_on_form($form_elements_grant); ?>
-											<!-- <div class="col-sm-12">
-												<div class="responsive-iframe">
-													<iframe id="grant_project_video_preview" src="" allowfullscreen="true"></iframe>
-												</div>
-											</div> -->
-										</div>
+								<h3>Grant Details</h3>
+								<section>
+									<?php echo xform_pre_notice(); ?>
+									<div class="row">
+										<?php _hands_on_form($form_elements_grant); ?>
 									</div>
+									<?php xform_notice('status_msg', '', false); ?>
+									<button type="submit" class="btn btn-style-4" data-type="submit">Submit</button>
+								</section>
 
-									<div id="tab_ngo">
-										<div class="row">
-											<?php _hands_on_form($form_elements_ngo); ?>
-										</div>
-										<?php xform_notice('status_msg', '', false); ?>
-										<button type="submit" class="btn btn-style-4" data-type="submit">Submit</button>
+								<h3>Organisation Details (Not-for-profit, if available)</h3>
+								<section>
+									<?php echo xform_pre_notice(); ?>
+									<div class="row">
+										<?php _hands_on_form($form_elements_ngo); ?>
 									</div>
+									<?php xform_notice('status_msg', '', false); ?>
+									<button type="submit" class="btn btn-style-4" data-type="submit">Submit</button>
+								</section>
 
-								</div>
 							</div>
 
 							<?php

@@ -91,8 +91,8 @@ function web_share_icons($url, $snippet = '', $wrapper_class = 'share-wrap', $ul
     <?php
 }
 
-function portal_image_widget($image, $title, $fieldset_class = '') { ?>
-    <fieldset class="scheduler-border image_widget <?php echo $fieldset_class; ?>">
+function portal_image_widget($image, $title, $fieldset_class = '', $fieldset_inline_style = '') { ?>
+    <fieldset class="scheduler-border image_widget <?php echo $fieldset_class; ?>" style="<?php echo $fieldset_inline_style; ?>">
         <legend class="scheduler-border"><?php echo $title; ?></legend>
         <div style="background: grey; padding: 10px;">
             <img class="" src="<?php echo base_url($image); ?>">
