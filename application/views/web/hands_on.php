@@ -110,6 +110,10 @@
 
 					</div>
 
+					<div class="extra-size m-t-20">
+						<?php echo web_share_icons(base_url('hands-on'), $this->hands_on_info->title, 'share-wrap style-2'); ?>
+					</div>
+
 				</main>
 			</div>
 		</div>
