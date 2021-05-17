@@ -430,7 +430,6 @@ function xform($action, $fields, $attrs = [], $butt_text = 'Save', $butt_form = 
 }
 
 function adit_value($row, $field, $default = '', $strip_tags = false, $allow_tags = '') {
-    $ci =& get_instance();
     if ( !empty($row)) {
         return $strip_tags ? strip_tags($row->$field, $allow_tags) : $row->$field;
     }

@@ -64,7 +64,7 @@ xform_open('api/timelines/'.$page, xform_attrs());
 										data_show_grid($lang['title'], $row->$input_field);
 									}
 								} else {
-									xform_group_list($lang['title'], $input_field, $arr['input'], adit_value($row, $input_field, '', true), $required, $input_attrs); 
+									xform_group_list($lang['title'], $input_field, $arr['input'], adit_value($row, $input_field), $required, $input_attrs); 
 								} ?>
 							</div>
 							<?php
