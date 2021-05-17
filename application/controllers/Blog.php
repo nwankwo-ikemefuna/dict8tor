@@ -49,7 +49,7 @@ class Blog extends Core_controller {
 
     public function categories($slug) {
         //category details
-        $cat_details = $this->blog_category_model->get_details($slug, 'slug', 'cat.id ## title');
+        $cat_details = $this->blog_category_model->get_details($slug, 'slug', [], 'cat.id ## title');
         if (!$cat_details->id) {
             redirect('blog'); //all posts 
         }
