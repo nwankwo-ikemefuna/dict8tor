@@ -18,9 +18,9 @@ class Post_categories extends Core_controller {
         $butts = ['view', 'edit', 'delete'];
         $keys = ['id'];
         $buttons = table_crud_butts($this->module, $this->model, ADMIN, $this->table, xget('trashed'), $keys, $butts);
-        $select = 'cat.id, cat.slug, cat.title_'.DEFAULT_LANGUAGE.' AS title, cat.order';
+        $select = 'cat.id, cat.slug, cat.title_'.DEFAULT_LANGUAGE.' AS title, cat.order ## post_count';
         $group_by = 'cat.id';
-        $sql = $this->blog_category_model->sql([], $select, [], true);
+        $sql = $this->blog_category_model->sql(['b'], $select, [], true);
         echo $this->common_model->get_rows_ajax($sql['table'], $keys, $buttons, xget('trashed'), $sql['joins'], $sql['select'], $sql['where'], $sql['order'], $group_by);
     }
 

@@ -29,7 +29,7 @@
                         <ul class="custom-list type-1">
                             <?php 
                             foreach ($blog_categories as $row) { ?>
-                                <li><a href="<?php echo base_url('blog/categories/'.$row->slug); ?>"><?php echo $row->title; ?></a></li>
+                                <li><a href="<?php echo base_url('blog/categories/'.$row->slug); ?>"><?php echo $row->title . ' ('.number_format($row->pub_post_count).')'; ?></a></li>
                                 <?php
                             } ?>
                         </ul>

@@ -19,7 +19,7 @@ class Blog extends Core_controller {
 	protected function footer() {
         $featured_posts_where = ['b.published' => 1, 'b.featured' => 1];
         $data['featured_posts'] = $this->blog_model->get_all([], 'b.slug, b.date_created ## title', $featured_posts_where, 0, 4);
-        $data['blog_categories'] = $this->blog_category_model->get_all([], 'slug ## title');
+        $data['blog_categories'] = $this->blog_category_model->get_all(['bp'], 'cat.slug ## title, pub_post_count');
 		$this->load->view('blog/layout/footer', $data);
         return $this->web_footer();
 	}
