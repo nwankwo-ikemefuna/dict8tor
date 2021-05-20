@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //general app config
 define('LOCAL_APP_CONFIG', [
-	'base_url' 			=> 'http://dev.qsm.com/', //with trailing slash
+	'base_url' 			=> 'http://dev.isobassey.com/', //with trailing slash
 	'sess_expiration' 	=> 60*60*2, //session time to live => 2 hours
 	'git_branch' 		=> 'dev', //git branch from which updates are pulled automatically using web hooks (for production server only)
 	'sync_key' 			=> 'anything*but*ampersand', //passkey used for database sync: should NOT contain & symbol as this will be passed to url as GET param
