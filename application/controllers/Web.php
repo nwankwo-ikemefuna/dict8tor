@@ -55,7 +55,7 @@ class Web extends Core_controller {
         $data['form_elements_grant'] = $this->hands_on_application_model->form_elements_grant($lgas);
         $data['form_elements_ngo'] = $this->hands_on_application_model->form_elements_ngo();
         $breadcrumbs = [lang_string('home') => '', lang_string('hands_on') => '*'];
-        $meta_image = base_url('uploads/pix/info/'.$this->hands_on_info->featured_image);
+        $meta_image = get_uploaded_file('pix/info/'.$this->hands_on_info->featured_image);
         $this->web_header(lang_string('hands_on'), 'hands_on', ['image' => $meta_image], $breadcrumbs);
         $this->load->view('web/hands_on', $data);
         $this->web_footer('hands_on');

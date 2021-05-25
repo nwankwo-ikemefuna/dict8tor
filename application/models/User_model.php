@@ -18,7 +18,7 @@ class User_model extends Core_Model {
 		$select .= join_select($arr, 'account_status', case_map_select('u.active', ACC_STATUSES));
 		$select .= join_select($arr, 'is_super_user_text', case_map_select('u.is_super_user', ['No', 'Yes']));
 		$select .= join_select($arr, 'roles_name', "IF(u.is_super_user = 1, '<i>All Roles</i>', GROUP_CONCAT(DISTINCT `p`.`name` SEPARATOR ', '))");
-		$select .= join_select($arr, 'avatar', file_select('uploads/pix/users/', 'u.photo', avatar_select_default('u.sex')));
+		$select .= join_select($arr, 'avatar', file_select('pix/users/', 'u.photo', avatar_select_default('u.sex')));
 		$joins = []; 
 		//usergroups
 		if (in_array('ug', $to_join) || in_array('all', $to_join)) {

@@ -47,7 +47,7 @@
                     <div class="col-md-4 col-sm-12">
                         <div class="widget">
                             <div class="align-center">
-                                <a href="<?php echo base_url(); ?>" class="logo"><img src="<?php echo base_url(SITE_LOGO_WEB); ?>" alt="<?php echo SITE_NAME; ?>"></a>
+                                <a href="<?php echo base_url(); ?>" class="logo"><img src="<?php echo SITE_LOGO_WEB; ?>" alt="<?php echo SITE_NAME; ?>"></a>
                             </div>
                         </div>
                     </div>

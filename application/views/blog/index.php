@@ -18,7 +18,7 @@ if (xget('q')) { ?>
                     </div>
                     <?php
                 } else { ?>
-                    <img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
+                    <img src="<?php echo get_uploaded_file('pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
                     <?php
                 } ?>
             </div>

@@ -61,7 +61,7 @@ class User extends Core_controller {
 
 
     public function change_avatar() {
-        $path = 'uploads/pix/users';
+        $path = 'pix/users';
         $conf = [
         	'path' => $path, 
         	'ext' => 'jpg|jpeg|png', 

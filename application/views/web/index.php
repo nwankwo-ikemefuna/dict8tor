@@ -1,4 +1,4 @@
-<div class="media-holder full-src style-2" data-bg="<?php echo base_url('uploads/pix/info/'.$this->site_info->poster_photo); ?>">
+<div class="media-holder full-src style-2" data-bg="<?php echo get_uploaded_file('pix/info/'.$this->site_info->poster_photo); ?>">
 	<div class="media-inner">
 		<h1><span class="media-inner-title"><?php echo $this->site_info->campaign_line; ?></span></h1>
 		<div class="join-us style-3">
@@ -89,7 +89,7 @@ if ($this->is_campaign_phase && $priorities) { ?>
 			<div class="col-md-6 col-sm-12">
 				<div class="intro_video_section">
 					<a href="<?php echo youtube_embed_url($this->site_info->intro_video); ?>?rel=0&amp;showinfo=0&amp;autohide=2&amp;controls=0" data-fancybox="video" title="Click to play video">
-						<img class="intro_video_placeholder" src="<?php echo base_url('uploads/pix/info/'.$this->site_info->intro_video_placeholder); ?>" alt="<?php echo SITE_NAME; ?>"> 
+						<img class="intro_video_placeholder" src="<?php echo get_uploaded_file('pix/info/'.$this->site_info->intro_video_placeholder); ?>" alt="<?php echo SITE_NAME; ?>"> 
 						<img class="play_icon" src="<?php echo base_url('assets/common/img/icons/play.jpg'); ?>" alt="Play icon">
 					</a>
 				</div>
@@ -167,12 +167,12 @@ if ($timelines) { ?>
 								<div class="tabs-content">
 									<?php
 									foreach ($group_timelines as $row) { 
-										$photo = $row->photo ? 'uploads/pix/timelines/'.$row->photo : 'uploads/pix/info/'.$this->site_info->about_intro_photo;
+										$photo = $row->photo ? 'pix/timelines/'.$row->photo : 'pix/info/'.$this->site_info->about_intro_photo;
 										?>
 										<div id="timeline_tab_<?php echo $row->id; ?>">
 											<div class="row">
 												<div class="col-md-6 col-sm-12">
-													<img src="<?php echo base_url($photo); ?>" alt="<?php echo $row->title; ?>">
+													<img src="<?php echo get_uploaded_file($photo); ?>" alt="<?php echo $row->title; ?>">
 												</div>
 												<div class="col-md-6 col-sm-12">
 													<?php echo $row->content; ?>
@@ -219,7 +219,7 @@ if ($recent_posts) { ?>
 													</div>
 													<?php
 												} else { ?>
-													<img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
+													<img src="<?php echo get_uploaded_file('pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
 													<?php
 												} ?>
 											</div>

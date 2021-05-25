@@ -32,3 +32,13 @@ define('LOCAL_SMS_CONFIG', [
 		'channel' 	=> 'dnd', //generic, dnd, whatsapp
 	]
 ]);
+
+//AWS s3 config
+define('AWS_S3_CONFIG', [
+	'enabled' 		=> true, //if disabled, files will be uploaded and served from local
+	'region' 		=> 'eu-central-1', //frankfurt
+	'bucket' 		=> 'my-bucket',
+	'access_key' 	=> 'my-acccess-key',
+	'secret_key' 	=> 'my-secret-key',
+	'upload_dir' 	=> 'project-name', //eg qsm
+]);

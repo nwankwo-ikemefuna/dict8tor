@@ -71,6 +71,7 @@ $autoload['libraries'] = [
 	'crud', 
 	'datatables', 
 	'rest', 
+	's3_upload',
 	'sms',
 	'summernote'
 ];

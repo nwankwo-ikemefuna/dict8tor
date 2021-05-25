@@ -5,7 +5,7 @@
         <?php
         if ($this->site_info->about_intro) { ?>
             <div class="page-section type5 half-bg-col">
-                <div class="img-col-left"><div class="col-bg" data-bg="<?php echo base_url('uploads/pix/info/'.$this->site_info->about_intro_photo); ?>"></div></div>
+                <div class="img-col-left"><div class="col-bg" data-bg="<?php echo get_uploaded_file('pix/info/'.$this->site_info->about_intro_photo); ?>"></div></div>
                 <div class="container extra-size">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-6" style="padding: 20px;">
@@ -22,7 +22,7 @@
 
         if ($this->site_info->about_public_service) { ?>
             <div class="page-section-bg type5 half-bg-col">
-                <div class="img-col-right"><div class="col-bg" data-bg="<?php echo base_url('uploads/pix/info/'.$this->site_info->about_public_service_photo); ?>"></div></div>
+                <div class="img-col-right"><div class="col-bg" data-bg="<?php echo get_uploaded_file('pix/info/'.$this->site_info->about_public_service_photo); ?>"></div></div>
                 <div class="container extra-size">
                     <div class="row">
                         <div class="col-md-6" style="padding: 20px;">
@@ -39,7 +39,7 @@
 
         if ($this->site_info->about_family) { ?>
             <div class="page-section type5 half-bg-col content-element7">
-                <div class="img-col-left"><div class="col-bg" data-bg="<?php echo base_url('uploads/pix/info/'.$this->site_info->about_family_photo); ?>"></div></div>
+                <div class="img-col-left"><div class="col-bg" data-bg="<?php echo get_uploaded_file('pix/info/'.$this->site_info->about_family_photo); ?>"></div></div>
                 <div class="container extra-size">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-6" style="padding: 20px;">

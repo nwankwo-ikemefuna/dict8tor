@@ -28,7 +28,7 @@ function email_call2action_blue($url, $caption) {
 function email_header($subject) {
 	return 	'<center>
 				<a href="' . base_url() . '">
-					<img src="' . base_url(SITE_LOGO) .'">
+					<img src="' . SITE_LOGO .'">
 				</a>
 			</center>';
 }
@@ -62,7 +62,7 @@ function invoice_header($recipient_name, $recipient_email, $recipient_address, $
 						<table style="'.$table_style.'">
 							<tr>
 								<td style="font-size: 45px; line-height: 45px; color: #333;">
-									<img src="'.base_url(SITE_LOGO).'" style="width:100%; max-width:160px;">
+									<img src="'.SITE_LOGO.'" style="width:100%; max-width:160px;">
 								</td>
 								<td style="padding-bottom: 20px; text-align: right;">
 									Invoice #: '.$id.'<br>

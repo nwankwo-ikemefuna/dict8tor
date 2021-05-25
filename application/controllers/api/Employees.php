@@ -79,7 +79,7 @@ class Employees extends Core_controller {
 
     public function add() {
         $this->auth->module_restricted($this->module, ADD, ADMIN);
-        $upload_conf = ['path' => 'uploads/pix/users', 'ext' => 'jpg|jpeg|png', 'size' => 100, 'required' => false];
+        $upload_conf = ['path' => 'pix/users', 'ext' => 'jpg|jpeg|png', 'size' => 100, 'required' => false];
         $file_name = upload_image('photo', $upload_conf, false);
         $data = $this->adit();
         $data["photo"] = $file_name;
@@ -92,7 +92,7 @@ class Employees extends Core_controller {
         $this->auth->module_restricted($this->module, EDIT, ADMIN);
         $id = xpost('id'); 
         $row = $this->user_model->get_details($id, 'id', [], 'photo');
-        $upload_conf = ['path' => 'uploads/pix/users', 'ext' => 'jpg|jpeg|png', 'size' => 100, 'required' => false];
+        $upload_conf = ['path' => 'pix/users', 'ext' => 'jpg|jpeg|png', 'size' => 100, 'required' => false];
         $file_name = upload_image('photo', $upload_conf, true, $row->photo);
         $data = $this->adit($id);
         $data["photo"] = $file_name;        

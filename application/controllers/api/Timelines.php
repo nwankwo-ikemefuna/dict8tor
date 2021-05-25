@@ -61,7 +61,7 @@ class Timelines extends Core_controller {
     public function add() {
         $this->auth->module_restricted($this->module, ADD, ADMIN);
         $data = $this->adit();
-        $upload_conf = ['path' => 'uploads/pix/timelines', 'ext' => 'png|jpg|jpeg', 'size' => 300, 'required' => true];
+        $upload_conf = ['path' => 'pix/timelines', 'ext' => 'png|jpg|jpeg', 'size' => 300, 'required' => true];
         $file_name = upload_image('photo', $upload_conf, false);
         $data['photo'] = $file_name;
         $id = $this->common_model->insert($this->table, $data);
@@ -74,7 +74,7 @@ class Timelines extends Core_controller {
         $id = xpost('id');
         $row = $this->timeline_model->get_details($id, 'id', [], 'photo');
         $data = $this->adit($id);
-        $upload_conf = ['path' => 'uploads/pix/timelines', 'ext' => 'png|jpg|jpeg', 'size' => 300, 'required' => false];
+        $upload_conf = ['path' => 'pix/timelines', 'ext' => 'png|jpg|jpeg', 'size' => 300, 'required' => false];
         $file_name = upload_image('photo', $upload_conf, true, $row->photo);
         $data['photo'] = $file_name;
         $this->common_model->update($this->table, $data, ['id' => $id]);

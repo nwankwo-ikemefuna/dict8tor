@@ -61,7 +61,7 @@ class Posts extends Core_controller {
         $this->auth->module_restricted($this->module, ADD, ADMIN);
         $data = $this->adit();
         // $required = (strlen(trim($data['featured_video'])) === 0); //must upload featured image if no video url
-        $upload_conf = ['path' => 'uploads/pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => false];
+        $upload_conf = ['path' => 'pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => false];
         $file_name = upload_image('featured_image', $upload_conf, false);
         $data['featured_image'] = $file_name;
         if (!$data['featured_image'] && !$data['featured_video']) {
@@ -77,7 +77,7 @@ class Posts extends Core_controller {
         $id = xpost('id');
         $row = $this->blog_model->get_details($id, 'id', [], 'featured_image');
         $data = $this->adit($id);
-        $upload_conf = ['path' => 'uploads/pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => false];
+        $upload_conf = ['path' => 'pix/blog', 'ext' => 'png|jpg|jpeg', 'size' => 1024, 'required' => false];
         $file_name = upload_image('featured_image', $upload_conf, true, $row->featured_image);
         $data['featured_image'] = $file_name;
         if (!$data['featured_image'] && !$data['featured_video']) {

@@ -23,10 +23,10 @@ foreach ($modules as $module) {
 $site_info = $CI->site_info;
 define('SITE_NAME', $site_info->name);
 define('SITE_SHORT_NAME', $site_info->initials);
-define('SITE_LOGO', 'uploads/pix/logo/'.$site_info->logo);
-define('SITE_LOGO_PORTAL', 'uploads/pix/logo/'.$site_info->logo_portal);
-define('SITE_LOGO_WEB', 'uploads/pix/logo/'.$site_info->logo);
-define('SITE_FAVICON', 'uploads/pix/logo/'.$site_info->favicon);
+define('SITE_LOGO', get_uploaded_file('pix/logo/'.$site_info->logo));
+define('SITE_LOGO_PORTAL', get_uploaded_file('pix/logo/'.$site_info->logo_portal));
+define('SITE_LOGO_WEB', get_uploaded_file('pix/logo/'.$site_info->logo));
+define('SITE_FAVICON', get_uploaded_file('pix/logo/'.$site_info->favicon));
 define('SITE_LOCATION', $site_info->address);
 define('SITE_TAGLINE', $site_info->tagline);
 define('SITE_DESCRIPTION', $site_info->description);

@@ -33,7 +33,7 @@ class Settings extends Core_controller {
         $image_columns_select = implode(', ', array_keys($image_columns));
         $row = $this->setting_model->get_details(1, 'id', [], $image_columns_select);
         foreach ($image_columns as $key => $arr) {
-            $upload_conf = ['path' => 'uploads/pix/logo', 'ext' => 'png|ico|jpg|jpeg', 'size' => $arr['max'], 'required' => false];
+            $upload_conf = ['path' => 'pix/logo', 'ext' => 'png|ico|jpg|jpeg', 'size' => $arr['max'], 'required' => false];
             $file_name = upload_image($key, $upload_conf, true, $row->$key);
             $data[$key] = $file_name;
         }

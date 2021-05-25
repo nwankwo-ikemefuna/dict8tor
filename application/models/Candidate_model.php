@@ -13,7 +13,7 @@ class Candidate_model extends Core_Model {
 		$select .= join_select($arr, 'full_name', full_name_select('cu', false));
 		$select .= join_select($arr, 'gender', gender_select('cu.sex'));
 		$select .= join_select($arr, 'age', user_age_select("cu.dob"));
-		$select .= join_select($arr, 'avatar', file_select('uploads/pix/candidates/', 'cu.photo', avatar_select_default('cu.sex')));
+		$select .= join_select($arr, 'avatar', file_select('pix/candidates/', 'cu.photo', avatar_select_default('cu.sex')));
 		$joins = []; 
 		return sql_data(T_CANDIDATES.' cu', $joins, $select, $where);
 	}

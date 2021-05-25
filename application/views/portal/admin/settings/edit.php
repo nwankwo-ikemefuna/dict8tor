@@ -25,7 +25,7 @@ xform_open_multipart('api/settings/edit', xform_attrs());
 		foreach ($image_columns as $key => $arr) { ?>
 			<div class="<?php echo grid_col(12, 6, 4); ?>">
 				<?php 
-				echo portal_image_widget('uploads/pix/logo/'.$row->$key, $arr['title']);
+				echo portal_image_widget('pix/logo/'.$row->$key, $arr['title']);
 				xform_input($key, 'file', '', false, ['help' => file_upload_info($arr['ext'], $arr['dimension'], $arr['max'], $arr['unit'], true)]);
 				?>
 			</div>

@@ -95,7 +95,7 @@ function portal_image_widget($image, $title, $fieldset_class = '', $fieldset_inl
     <fieldset class="scheduler-border image_widget <?php echo $fieldset_class; ?>" style="<?php echo $fieldset_inline_style; ?>">
         <legend class="scheduler-border"><?php echo $title; ?></legend>
         <div style="background: grey; padding: 10px;">
-            <img class="" src="<?php echo base_url($image); ?>">
+            <img class="" src="<?php echo get_uploaded_file($image); ?>">
         </div>
     </fieldset>
     <?php 

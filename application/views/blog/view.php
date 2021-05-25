@@ -1,6 +1,6 @@
 <div class="event-item single-event">
     <div class="entry-attachment">
-        <img src="<?php echo base_url('uploads/pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
+        <img src="<?php echo get_uploaded_file('pix/blog/'.$row->featured_image); ?>" alt="<?php echo $row->title; ?>">
     </div>
     <div class="event-info">
         <div class="entry-meta">
@@ -41,7 +41,7 @@ if ($related_posts) { ?>
                                     </div>
                                     <?php
                                 } else { ?>
-                                    <img src="<?php echo base_url('uploads/pix/blog/'.$rel_row->featured_image); ?>" alt="<?php echo $rel_row->title; ?>">
+                                    <img src="<?php echo get_uploaded_file('pix/blog/'.$rel_row->featured_image); ?>" alt="<?php echo $rel_row->title; ?>">
                                     <?php
                                 } ?>
                             </div>

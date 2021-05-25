@@ -19,12 +19,13 @@ function create_dir($dir) {
 }
 
 function upload_file($file_input, $conf) { 
+    $upload_path = 'uploads/'.$conf['path'];
     //make the dir if it doesn't exist
-    create_dir($conf['path']);
+    create_dir($upload_path);
 
     $ci =& get_instance(); 
     //config for file uploads
-    $config['upload_path']          = $conf['path']; //path to save the file
+    $config['upload_path']          = $upload_path; //path to save the file
     $config['allowed_types']        = $conf['ext'];  //extensions which are allowed
     $config['max_size']             = $conf['size']; //image size cannot exceed this in kilobytes
     $config['file_ext_tolower']     = TRUE; //force file extension to lower case
@@ -44,6 +45,7 @@ function upload_file($file_input, $conf) {
         $file_name = $ci->upload->data('file_name');
         //are we resizing?
         $resize = isset($conf['resize']) ? $conf['resize'] : false;
+        $delete_thumb = true;
         if ($resize) {
             $width = $conf['resize_width'] ?? 500;
             $height = $conf['resize_height'] ?? 500;
@@ -51,16 +53,28 @@ function upload_file($file_input, $conf) {
             //are we deleting original
             if (isset($conf['delete_origin']) && $conf['delete_origin']) {
                 //delete original and return resized version
-                unlink_file($conf['path'], $file_name, false);
-                return ['status' => true, 'file_name' => $thumb];
+                $delete_thumb = false;
+                unlink_file($conf['path'], $file_name, $delete_thumb);
+                $file_name = $thumb;
+                return ['status' => true, 'file_name' => $file_name];
             }
+        }
+        if (AWS_S3_CONFIG['enabled']) {
+            $s3_upload = $ci->s3_upload->upload($upload_path, $file_name);
+            if ($s3_upload['status']) {
+                //delete local file
+                unlink_file($conf['path'], $file_name, $delete_thumb, true);
+            }
+            return $s3_upload;
         }
         return ['status' => true, 'file_name' => $file_name];
     }
 }
 
 function upload_files($file_input, $conf) { 
-    create_dir($conf['path']);
+    $upload_path = 'uploads/'.$conf['path'];
+    create_dir($upload_path);
+
     $ci =& get_instance(); 
     //nothing selected
     if ($_FILES[$file_input]['name'][0] == "") {
@@ -90,8 +104,9 @@ function upload_files($file_input, $conf) {
         $_FILES['file']['tmp_name'] = $_FILES[$file_input]['tmp_name'][$i];
         $_FILES['file']['error']    = $_FILES[$file_input]['error'][$i];
         $_FILES['file']['size']     = $_FILES[$file_input]['size'][$i];     
+
         //config for file uploads
-        $config['upload_path']          = $conf['path']; //path to save the file
+        $config['upload_path']          = $upload_path; //path to save the file
         $config['allowed_types']        = $conf['ext'];  //extensions which are allowed
         $config['max_size']             = $conf['size']; //image size cannot exceed 64KB
         $config['file_ext_tolower']     = TRUE; //force file extension to lower case
@@ -124,7 +139,18 @@ function upload_files($file_input, $conf) {
     }
 }
 
-function upload_image($name, $conf, $is_edit, $photo = null) {
+function get_uploaded_file($path) {
+    if (AWS_S3_CONFIG['enabled']) {
+        $file = AWS_S3_CONFIG['upload_dir'].'/uploads/'.$path;
+        $file_url = 'https://'.AWS_S3_CONFIG['bucket'].'.s3.amazonaws.com/'.$file;
+    } else {
+        $file = 'uploads/'.$path;
+        $file_url = base_url($file);
+    }
+    return $file_url;
+}
+
+function upload_image($name, $conf, $is_edit, $current_image = null) {
     $file_name = '';
     $upload = upload_file($name, $conf);
     //file upload fails
@@ -134,11 +160,11 @@ function upload_image($name, $conf, $is_edit, $photo = null) {
         //changing file?
         if ($upload['status'] && !empty($upload['file_name'])) {
             //unlink image
-            unlink_file($conf['path'], $photo);
+            unlink_file($conf['path'], $current_image);
             $file_name = $upload['file_name'];
         } else {
             //file wasn't uploaded, retain current
-            $file_name = $photo;
+            $file_name = $current_image;
         }
     } else {
         $file_name = $upload['file_name'];
@@ -150,7 +176,7 @@ function resize_image($path, $file_name, $width, $height) {
     $ci =& get_instance(); 
     //config for image library
     $config['image_library'] = 'gd2';
-    $config['source_image'] = $path.'/'.$file_name;
+    $config['source_image'] = 'uploads/'.$path.'/'.$file_name;
     $config['create_thumb'] = TRUE;
     $config['maintain_ratio'] = TRUE;
     $config['width'] = $width;
@@ -167,31 +193,43 @@ function resize_image($path, $file_name, $width, $height) {
     }
 }
 
-function unlink_file(string $path, $file = '', $delete_thumb = true) {
+function unlink_file(string $path, $file = '', $delete_thumb = true, $is_local = false) {
     //if file is not supplied, path is a complete file path
     $file_path = strlen($file) ? $path.'/'.$file : $path;
-    if (is_file($file_path) && file_exists($file_path)) {
-        //delete thumbnail (if any) and allowed
-        if ($delete_thumb) {
-            delete_thumbnail($file_path);
-        }
-        //delete file
-        return unlink($file_path);
-    }
-    return false;
-}
-
-function unlink_files(string $path, array $files, $delete_thumb = true) {
-    if (is_array($files) && !empty($files)) {
-        foreach ($files as $file) {
-            $file_path = $path.'/'.$file;
-            if ( ! is_file($file_path) || ! file_exists($file_path)) continue;
+    if (AWS_S3_CONFIG['enabled'] && !$is_local) {
+        $ci =& get_instance();
+        return $ci->s3_upload->delete($file_path, $delete_thumb);
+    } else {
+        $file_path = 'uploads/'.$file_path;
+        if (is_file($file_path) && file_exists($file_path)) {
             //delete thumbnail (if any) and allowed
             if ($delete_thumb) {
                 delete_thumbnail($file_path);
             }
             //delete file
-            unlink($file_path);
+            return unlink($file_path);
+        }
+    }
+    return false;
+}
+
+function unlink_files(string $path, array $files, $delete_thumb = true) {
+    $ci =& get_instance();
+    if (is_array($files) && !empty($files)) {
+        foreach ($files as $file) {
+            $file_path = $path.'/'.$file;
+            if (AWS_S3_CONFIG['enabled']) {
+                $ci->s3_upload->delete($file_path, $delete_thumb);
+            } else {
+                $file_path = 'uploads/'.$file_path;
+                if ( ! is_file($file_path) || ! file_exists($file_path)) continue;
+                //delete thumbnail (if any) and allowed
+                if ($delete_thumb) {
+                    delete_thumbnail($file_path);
+                }
+                //delete file
+                unlink($file_path);
+            }
         }
     }
 }
@@ -210,7 +248,7 @@ function image_thumb($file) {
     return $thumb;
 }
 
-function download_file($file_path, $file_name) { 
+function download_file($file_path) { 
     force_download($file_path, NULL);
 }
 

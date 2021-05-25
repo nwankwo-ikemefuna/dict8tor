@@ -85,7 +85,7 @@ class Blog extends Core_controller {
             'b.id !=' => $row->id, //not this post being viewed
         ];
         $data['related_posts'] = $this->blog_model->get_all(['cat'], 'b.slug, b.date_created, b.featured_image, b.featured_video ## title, category_title, category_slug', $related_posts_where, 0, 3);
-        $meta_image = base_url('uploads/pix/blog/'.$row->featured_image);
+        $meta_image = get_uploaded_file('pix/blog/'.$row->featured_image);
         $this->header($row->title, 'blog', ['image' => $meta_image], $breadcrumbs);
         $this->load->view('blog/view', $data);
         $this->footer();

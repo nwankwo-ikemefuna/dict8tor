@@ -26,7 +26,7 @@
             <div class="login-container">
                 <div class="form-container">
                     <div class="text-center">
-                        <a class="site-title navbar-brand site-logo" title="<?php echo SITE_NAME; ?>" href="<?php echo base_url(); ?>"><img class="login_logo" alt="<?php echo SITE_NAME; ?>" src="<?php echo base_url(SITE_LOGO_PORTAL); ?>"></a>
+                        <a class="site-title navbar-brand site-logo" title="<?php echo SITE_NAME; ?>" href="<?php echo base_url(); ?>"><img class="login_logo" alt="<?php echo SITE_NAME; ?>" src="<?php echo SITE_LOGO_PORTAL; ?>"></a>
                     </div>
                     <h5 class="text-center text-bold"><?php echo $page_title; ?></h5>
                     <?php echo flash_message('success_msg'); ?>

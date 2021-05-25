@@ -42,7 +42,7 @@ xform_open('api/posts/'.$page, xform_attrs());
 		<div class="<?php echo grid_col(12, '', 6); ?>">
 			<?php
 			if ($is_view_edit && $row->featured_image) { 
-				echo portal_image_widget('uploads/pix/blog/'.$row->featured_image, 'Featured Image', 'featured_item_widget');
+				echo portal_image_widget('pix/blog/'.$row->featured_image, 'Featured Image', 'featured_item_widget');
 			} 
 			if (!$is_view) { 
 				xform_group_list('Featured Image', 'featured_image', 'file', '', false, ['help' => file_upload_info('png|jpg|jpeg', '750x450', '1', 'MB', false)]); 

@@ -49,6 +49,8 @@ class Core_Controller extends CI_Controller {
 		$this->hands_on_info = $this->hands_on_info_model->get_details(1, 'id', [], "hof.published, hof.featured_image ## title, content");
 
 		$this->local_currency_code = CU_NAIRA;
+
+		// $this->s3_upload->listObjects(AWS_S3_CONFIG['upload_dir']);
 	}
 
 

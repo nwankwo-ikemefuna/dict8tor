@@ -7,7 +7,7 @@
 
 					<div class="content-element4 hands_on_info m-t-30">
 						<div class="text-center">
-							<img class="m-b-10" src="<?php echo base_url('uploads/pix/info/'.$this->hands_on_info->featured_image); ?>">
+							<img class="m-b-10" src="<?php echo get_uploaded_file('pix/info/'.$this->hands_on_info->featured_image); ?>">
 							<h3><?php echo $this->hands_on_info->title; ?></h3>
 						</div>
 						<div class="wysiwyg_content">

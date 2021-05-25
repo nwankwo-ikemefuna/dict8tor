@@ -19,7 +19,7 @@
 	<?php 
 	foreach ($image_columns as $key => $arr) { ?>
 		<div class="<?php echo grid_col(12, 6, 4); ?>">
-			<?php echo portal_image_widget('uploads/pix/logo/'.$row->$key, $arr['title']); ?>
+			<?php echo portal_image_widget('pix/logo/'.$row->$key, $arr['title']); ?>
 		</div>
 		<?php
 	} ?>

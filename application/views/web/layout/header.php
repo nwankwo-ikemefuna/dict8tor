@@ -47,7 +47,7 @@
 
 				<!-- logo -->		
 				<div class="logo-wrap">
-					<a href="<?php echo base_url(); ?>" class="logo"><img src="<?php echo base_url(SITE_LOGO_WEB); ?>" alt="<?php echo SITE_NAME; ?>"></a>
+					<a href="<?php echo base_url(); ?>" class="logo"><img src="<?php echo SITE_LOGO_WEB; ?>" alt="<?php echo SITE_NAME; ?>"></a>
 				</div>
 
 				<!--main menu-->

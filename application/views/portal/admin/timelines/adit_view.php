@@ -79,7 +79,7 @@ xform_open('api/timelines/'.$page, xform_attrs());
 		<div class="<?php echo grid_col(12, 6, 4); ?>">
 			<?php
 			if ($is_view_edit) {
-				echo portal_image_widget('uploads/pix/timelines/'.$row->photo, 'Photo');
+				echo portal_image_widget('pix/timelines/'.$row->photo, 'Photo');
 			}
 			if (!$is_view) {
 				xform_input('photo', 'file', '', ($page != 'edit'), ['help' => file_upload_info('png|jpg|jpeg', '448x350', '300', 'KB', true)]);

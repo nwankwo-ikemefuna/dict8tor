@@ -19,7 +19,7 @@ class Summernote {
         //is upload path set?
         if ( ! strlen($path)) 
             json_response('Upload path not specified', false);
-        $path = 'uploads/images/'.$path;
+        $path = 'images/'.$path;
         $conf = [
         	'path' => $path, 
         	'ext' => 'jpg|jpeg|png|gif', 

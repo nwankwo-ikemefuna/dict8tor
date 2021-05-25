@@ -41,7 +41,7 @@
         <div class="sidebar">
             <div class="scroll-wrapper">
                 <div class="navbar nav-title">
-                    <a class="site-title navbar-brand site-logo" title="<?php echo site_name(); ?>" href="<?php echo base_url(); ?>"><img alt="<?php echo site_name(); ?> logo" src="<?php echo base_url(SITE_LOGO_PORTAL); ?>"></a> 
+                    <a class="site-title navbar-brand site-logo" title="<?php echo site_name(); ?>" href="<?php echo base_url(); ?>"><img alt="<?php echo site_name(); ?> logo" src="<?php echo SITE_LOGO_PORTAL; ?>"></a> 
                     <a href="<?php echo base_url(); ?>" class="text-white hide">
                         <h5><?php echo site_name('short_name'); ?></h5>
                     </a>
