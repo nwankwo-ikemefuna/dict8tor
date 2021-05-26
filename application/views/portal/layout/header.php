@@ -74,58 +74,7 @@
 
                             //sync data
                             side_menu('Sync Dashboard', 'portal', 'refresh', '', '', false);
-
-                            //settings
-                            side_menu_parent_open_auth(MOD_SETTINGS, VIEW, ADMIN, 'Settings', 'cog');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'General Site Info', 'settings/view');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Phase 1 Info', 'info/view/1');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Phase 2 Info', 'info/view/2');
-                                side_menu_auth(MOD_SETTINGS, VIEW, ADMIN, 'Language Strings', 'language_strings/view');
-                            side_menu_parent_close_auth(MOD_SETTINGS, VIEW, ADMIN);
-
-                            //candidates
-                            side_menu_parent_open_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Candidates', 'users');
-                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Main Candidate', 'candidates/view/1');
-                                side_menu_auth(MOD_CANDIDATES, VIEW, ADMIN, 'Support Candidate', 'candidates/view/2');
-                            side_menu_parent_close_auth(MOD_CANDIDATES, VIEW, ADMIN);
-
-                            //timelines
-                            side_menu_parent_open_auth(MOD_TIMELINES, VIEW, ADMIN, 'Timelines', 'calendar');
-                                side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Main Candidate', 'timelines?type=1');
-                                side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Support Candidate', 'timelines?type=2');
-                                side_menu_auth(MOD_TIMELINES, VIEW, ADMIN, 'Timeline Groups', 'timeline_groups');
-                            side_menu_parent_close_auth(MOD_TIMELINES, VIEW, ADMIN);
-
-                            //issue and priorities
-                            side_menu_parent_open_auth(MOD_PRIORITIES, VIEW, ADMIN, 'Issues & Priorities', 'tasks');
-                                side_menu_auth(MOD_PRIORITIES, VIEW, ADMIN, 'All Issues/Priorities', 'priorities');
-                                side_menu_auth(MOD_PRIORITIES, VIEW, ADMIN, 'Add Issue/Priority', 'priorities/add');
-                            side_menu_parent_close_auth(MOD_PRIORITIES, VIEW, ADMIN);
-
-                            //blog
-                            side_menu_parent_open_auth(MOD_BLOG, VIEW, ADMIN, 'Blog', 'book');
-                                side_menu_auth(MOD_BLOG, VIEW, ADMIN, 'Blog Posts', 'posts');
-                                side_menu_auth(MOD_BLOG, VIEW, ADMIN, 'Add Post', 'posts/add');
-                                side_menu_auth(MOD_BLOG_CATEGORIES, VIEW, ADMIN, 'Blog Categories', 'post_categories/index');
-                            side_menu_parent_close_auth(MOD_BLOG, VIEW, ADMIN);
-
-                            //videos
-                            side_menu_parent_open_auth(MOD_VIDEOS, VIEW, ADMIN, 'Videos', 'video-camera');
-                                side_menu_auth(MOD_VIDEOS, VIEW, ADMIN, 'Videos', 'videoz');
-                                side_menu_auth(MOD_VIDEOS, VIEW, ADMIN, 'Add Video', 'videoz/add');
-                            side_menu_parent_close_auth(MOD_VIDEOS, VIEW, ADMIN);
-
-                            //hands-on
-                            side_menu_parent_open_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Hands-On', 'support');
-                                side_menu_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Applications', 'hands_on_applications');
-                                side_menu_auth(MOD_HANDS_ON, VIEW, ADMIN, 'Grant Info', 'hands_on_info/view');
-                            side_menu_parent_close_auth(MOD_HANDS_ON, VIEW, ADMIN);
-
-                            //subscribers
-                            side_menu_parent_open_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'Subscribers', 'users');
-                                side_menu_auth(MOD_SUBSCRIBERS, VIEW, ADMIN, 'All Subscribers', 'subscribers');
-                            side_menu_parent_close_auth(MOD_SUBSCRIBERS, VIEW, ADMIN);
-
+                            
                             //user accounts
                             side_menu_parent_open_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'User Accounts', 'users');
                                 side_menu_auth(MOD_EMPLOYEES, VIEW, ADMIN, 'All Users', 'employees');

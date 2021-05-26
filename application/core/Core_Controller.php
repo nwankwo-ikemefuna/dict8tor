@@ -28,29 +28,8 @@ class Core_Controller extends CI_Controller {
 		//injectable view files in page header
 		$this->tv_file = null;
 
-		//get site info
-		$this->site_info = $this->setting_model->get_site_language_info();
-
 		require_once 'application/config/http_codes.php';
 		require_once 'application/config/consts.php';
-
-		$this->default_language = DEFAULT_LANGUAGE;
-		$this->active_language = $this->session->active_language ?? $this->default_language;
-
-		$this->is_campaign_phase = ($this->site_info->phase == 2);
-		//set language strings
-		$this->setting_model->set_lang_strings();
-		$this->lang_strings = $this->session->language_strings[$this->active_language];
-
-		//get candidate info
-		$this->candidate_info = $this->candidate_model->get_details(1, 'type');
-
-		//hands on 
-		$this->hands_on_info = $this->hands_on_info_model->get_details(1, 'id', [], "hof.published, hof.featured_image ## title, content");
-
-		$this->local_currency_code = CU_NAIRA;
-
-		// $this->s3_upload->listObjects(AWS_S3_CONFIG['upload_dir']);
 	}
 
 

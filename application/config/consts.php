@@ -20,21 +20,20 @@ foreach ($modules as $module) {
 }
 
 //site info
-$site_info = $CI->site_info;
-define('SITE_NAME', $site_info->name);
-define('SITE_SHORT_NAME', $site_info->initials);
-define('SITE_LOGO', get_uploaded_file('pix/logo/'.$site_info->logo));
-define('SITE_LOGO_PORTAL', get_uploaded_file('pix/logo/'.$site_info->logo_portal));
-define('SITE_LOGO_WEB', get_uploaded_file('pix/logo/'.$site_info->logo));
-define('SITE_FAVICON', get_uploaded_file('pix/logo/'.$site_info->favicon));
-define('SITE_LOCATION', $site_info->address);
-define('SITE_TAGLINE', $site_info->tagline);
-define('SITE_DESCRIPTION', $site_info->description);
+define('SITE_NAME', 'Dict8tor');
+define('SITE_SHORT_NAME', 'Dict8tor');
+define('SITE_LOGO', 'assets/common/logo/logo.png');
+define('SITE_LOGO_PORTAL', 'assets/common/logo/logo.png');
+define('SITE_LOGO_WEB', 'assets/common/logo/logo.png');
+define('SITE_FAVICON', 'assets/common/logo/favicon.png');
+define('SITE_LOCATION', 'Lagos, Nigeria');
+define('SITE_TAGLINE', 'Save time by dictating words rather than typing them');
+define('SITE_DESCRIPTION', 'Save time by dictating words rather than typing them');
 define('SITE_AUTHOR', 'Q2R');
 define('SITE_AUTHOR_URL', 'https://q2rweb.com');
 
 //mails
-define('SITE_NOTIF_MAIL', 'info@eroodyte.com');
+define('SITE_NOTIF_MAIL', 'info@dict8tor.com');
 
 //usergroups
 define('ADMIN', 1);
@@ -51,8 +50,6 @@ define('RIGHTS', [
 	EDIT 	=> 'Edit',
 	DEL 	=> 'Delete',
 ]);
-
-define('DEFAULT_LANGUAGE', 'english');
 
 //avatar
 define('AVATAR_GENERIC', 'assets/common/img/avatar/generic.png');
