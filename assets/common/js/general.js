@@ -107,6 +107,11 @@ function inflect(count, word, affix = 's') {
     return count == 1 ? word : word+affix;
 }
 
+function capitalize(str) {
+    if (typeof str !== 'string') return '';
+    return str.trim().charAt(0).toUpperCase() + str.slice(1);
+}
+
 function toggle_elem_prop(elem, targets, prop, invert = false) {
     if ($(elem).prop(prop)) {
         invert ? $(targets).hide() : $(targets).show();

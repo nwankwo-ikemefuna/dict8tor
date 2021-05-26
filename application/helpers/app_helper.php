@@ -350,3 +350,24 @@ function twitter_share_link($url, $text = '', $html, $class = '') {
 function whatsapp_share_link($url, $text = '', $html, $class = '') {
     return '<a href="whatsapp://send?text='.$text.' '.$url.'" data-action="share/whatsapp/share" class="'.$class.'" target="_blank">'.$html.'</a>';
 }
+
+function speech2text($output_container, $output_type='input', $icon='microphone', $link_text='') {
+    $markup = '';
+    $connected = fopen("http://www.google.com:80/", "r");
+    if ($connected) { 
+        $markup = '
+        <div class="speech2text_wrapper">
+            <span>
+                <a href="javascript:;" 
+                    class="speech2text" 
+                    data-output="'.$output_container.'"
+                    data-output_type="'.$output_type.'"
+                    title="Dictate text">
+                    <i class="speech2text_icon fa fa-'.$icon.'"></i> '.$link_text.
+                '</a>
+                <span class="speech2text_speaking"></span>
+            </span>
+        </div>';
+    } 
+    return $markup;
+}

@@ -176,24 +176,12 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = [
-	'blog_category_model',
-	'blog_model', 
-	'candidate_model', 
 	'common_model', 
 	'country_model', 
-	'hands_on_application_model',
-	'hands_on_info_model',
-	'info_model', 
-	'language_string_model', 
 	'lga_model', 
 	'module_model', 
 	'permission_model', 
-	'priority_model', 
-	'setting_model', 
 	'state_model', 
 	'subscriber_model', 
-	'timeline_group_model',
-	'timeline_model', 
 	'user_model',
-	'video_model'
 ];

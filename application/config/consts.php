@@ -28,7 +28,7 @@ define('SITE_LOGO_WEB', 'assets/common/logo/logo.png');
 define('SITE_FAVICON', 'assets/common/logo/favicon.png');
 define('SITE_LOCATION', 'Lagos, Nigeria');
 define('SITE_TAGLINE', 'Save time by dictating words rather than typing them');
-define('SITE_DESCRIPTION', 'Save time by dictating words rather than typing them');
+define('SITE_DESCRIPTION', 'Save time by dictating words rather than typing them.');
 define('SITE_AUTHOR', 'Q2R');
 define('SITE_AUTHOR_URL', 'https://q2rweb.com');
 

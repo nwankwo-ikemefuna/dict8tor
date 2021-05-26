@@ -9,11 +9,6 @@ function get_site_languages() {
     return $languages;
 }
 
-function lang_string($key) {
-    $ci =& get_instance();
-    $str = $ci->lang_strings[$key] ?? '';
-    return $str;
-}
 function get_currency_code() {
     return IN_NIGERIA ? CU_NAIRA : '$';
 }
@@ -22,14 +17,14 @@ function web_share_icons($url, $snippet = '', $wrapper_class = 'share-wrap', $ul
     <div class="<?php echo $wrapper_class; ?>">
         <?php
         if ($show_hint) { ?>
-            <span class="share-title"><?php echo lang_string('share_this'); ?>:</span>
+            <span class="share-title">Tell Your Friends:</span>
             <?php 
         } ?>
         <ul class="<?php echo $ul_class; ?>">
-            <li><?php echo facebook_share_link($url, '<i class="icon-facebook"></i>Facebook</a>', 'sh-facebook'); ?></li>
-            <li><?php echo linkedin_share_link($url, '<i class="icon-linkedin"></i>Linkedin</a>', 'sh-linkedin'); ?></li>
-            <li><?php echo twitter_share_link($url, $snippet, '<i class="icon-twitter"></i>Twitter</a>', 'sh-twitter'); ?></li>
-            <li><?php echo whatsapp_share_link($url, $snippet, '<i class="icon-whatsapp"></i>WhatsApp</a>', 'sh-whatsapp'); ?></li>
+            <li><?php echo facebook_share_link($url, '<i class="fa fa-facebook"></i>Facebook</a>', 'sh-facebook'); ?></li>
+            <li><?php echo linkedin_share_link($url, '<i class="fa fa-linkedin"></i>Linkedin</a>', 'sh-linkedin'); ?></li>
+            <li><?php echo twitter_share_link($url, $snippet, '<i class="fa fa-twitter"></i>Twitter</a>', 'sh-twitter'); ?></li>
+            <li><?php echo whatsapp_share_link($url, $snippet, '<i class="fa fa-whatsapp"></i>WhatsApp</a>', 'sh-whatsapp'); ?></li>
         </ul>
     </div>
     <?php
