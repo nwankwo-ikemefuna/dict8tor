@@ -165,29 +165,6 @@ function fetch_data_ajax(url, data, type = 'POST', success_callback, error_callb
     return promise;
 }
 
-function regenerate_csrf_token() { 
-    //make non-promised based request to regenerate and get new csrf on fail so that subsequent non-chained requests can run unhindered
-    $.ajax({
-        url: base_url+'api/common/regenerate_csrf',
-        type: 'GET',
-        dataType: "json"
-    })
-    .done(function (jres) {
-        var curr_csrf_hash = $('.'+csrf_token_name).val();
-        var csrf_hash = jres[csrf_token_name] || '';
-        // console.log('New token:', csrf_hash);
-        if ( ! csrf_hash.length) {
-            //log for debugging
-            console.error('CSRF: CSRF token not set!');
-            return false;
-        }
-        //update
-        $('.'+csrf_token_name).val(csrf_hash);
-        //ensure the new token has been updated
-        return ($('.'+csrf_token_name).val() != curr_csrf_hash && $('.'+csrf_token_name).val() == csrf_hash);
-    });
-}
-
 function ajax_post_form(form_id, data, url, fm_type, redirect_url = '', success_msg = 'Successful', notice_elem = 'status_msg', status_modal = false, loading_msg = 'Processing... Please wait', clear = false, ajax_container = 'ajax_page_container', ajax_delay = 3, ajax_callback = null, ajax_loading = 1, ajax_loading_text = 'Loading') {
     var ajax_form_processing = $('#'+form_id).find('.ajax_form_processing');
     var promise = new Promise(function(resolve, reject) {
@@ -501,4 +478,27 @@ function load_page_ajax(url, callback = null, delay = 3, container = 'ajax_page_
         }
         
     }, delay*1000);
+}
+
+function regenerate_csrf_token() { 
+    //make non-promised based request to regenerate and get new csrf on fail so that subsequent non-chained requests can run unhindered
+    $.ajax({
+        url: base_url+'api/common/regenerate_csrf',
+        type: 'GET',
+        dataType: "json"
+    })
+    .done(function (jres) {
+        var curr_csrf_hash = $('.'+csrf_token_name).val();
+        var csrf_hash = jres[csrf_token_name] || '';
+        // console.log('New token:', csrf_hash);
+        if ( ! csrf_hash.length) {
+            //log for debugging
+            console.error('CSRF: CSRF token not set!');
+            return false;
+        }
+        //update
+        $('.'+csrf_token_name).val(csrf_hash);
+        //ensure the new token has been updated
+        return ($('.'+csrf_token_name).val() != curr_csrf_hash && $('.'+csrf_token_name).val() == csrf_hash);
+    });
 }

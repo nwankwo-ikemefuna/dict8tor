@@ -8,31 +8,34 @@
 	</div>
 			
 	<hr />
+
 	<div class="row m-t-70">
 		<div class="col-12">
-			<p class="dict8_note_help">Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes.</p>
+			<div class="dict8_note_help">
+				<p>Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes.
+				<a href="javascript:;" data-toggle="collapse" data-target="#dict8_help_more" class="text-info">More help</a>.</p>
+				<div id="dict8_help_more" class="collapse">
+					<ul>
+						<li>Internet connectivity is required.</li>
+						<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome (desktop and Android mobile), Edge, and Safari (desktop and iOS  mobile).</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 		<div class="col-12 col-md-8 main_col">
 			<?php
-			$attrs = [
-				'id' => 'dict8_form',
-				'class' => 'ajax_form',
-				'data-type' => 'none',
-				'data-redirect' => '_void',
-				'data-clear' => 1,
-				'data-msg' => ''
-			];
-			xform_open('api/web/save_note', $attrs); ?>
-			<div class="speech2text_section s2t_summernote">
-				<textarea class="summernote_simple" name="note" id="dict8_note" placeholder="Say your stuff here" required></textarea>
-				<?php echo speech2text('dict8_note', 'textarea'); ?>
-			</div>
-			<?php
+			$attrs = ['id' => 'dict8_form'];
+			xform_open('api/web/note_actions', $attrs); ?>
+				<div class="speech2text_section">
+					<textarea name="note" id="s2t_dict8_note" class="form-control" rows="17"></textarea>
+					<?php echo speech2text('s2t_dict8_note', 'textarea'); ?>
+				</div>
+				<?php
 			xform_notice('status_msg', '', false);
 			?>
-			<button type="button" class="btn btn-secondary btn-sm save_note_btn" data-type="copy"><i class="fa fa-copy"></i> Copy Note</button>
-			<button type="button" class="btn btn-info btn-sm save_note_btn" data-type="export"><i class="fa fa-file-pdf-o"></i> Export to PDF</button>
-			<!-- <button type="submit" class="btn btn-secondary btn-sm save_note_btn" data-type="save"><i class="fa fa-save"></i> Save Note</button> -->
+			<button type="button" class="btn btn-secondary btn-sm" id="copy_note"><i class="fa fa-copy"></i> Copy Note</button>
+			<button type="button" class="btn btn-info btn-sm note_action" data-action="export_pdf" ><i class="fa fa-file-pdf-o"></i> Export to PDF</button>
+			<!-- <button type="button" class="btn btn-secondary btn-sm note_action" data-action="save"><i class="fa fa-save"></i> Save Note</button> -->
 			<?php
 			xform_close();
 			?>

@@ -55,15 +55,7 @@ $route['forbidden'] = 'errors/forbidden';
 $route['translate_uri_dashes'] = FALSE;
 
 //web pages
-$route['about'] = 'web/about';
-$route['videos/(:num)'] = 'web/videos/$1'; //videos index with pagination
-$route['videos'] = 'web/videos';
-$route['issues'] = 'web/issues';
-$route['hands-on'] = 'web/hands_on';
-
-//blog
-$route['post/(:any)/(:any)'] = 'blog/view/$1/$2'; //blog post view
-$route['blog/(:num)'] = 'blog/index/$1'; //blog index with pagination
+$route['note'] = 'web/note';
 
 //auth pages
 $route['login'] = 'account/login';

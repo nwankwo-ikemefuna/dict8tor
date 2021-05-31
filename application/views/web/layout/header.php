@@ -15,6 +15,8 @@
     <link href="<?php echo base_url(); ?>assets/vendors/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Summernote -->
     <link href="<?php echo base_url(); ?>assets/vendors/summernote/summernote-bs4.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Toast -->
+    <link href="<?php echo base_url(); ?>assets/vendors/toast/toast.min.css" rel="stylesheet" type="text/css" media="all"/>
     
     <!-- Custom styles -->
     <link href="<?php echo base_url(); ?>assets/web/custom/css/styles.css" rel="stylesheet" type="text/css" media="all" />

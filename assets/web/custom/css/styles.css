@@ -14,6 +14,9 @@ body {
 .dict8_note_help {
   font-style: italic;
 }
+.save_note_btn {
+  cursor: pointer;
+}
 
 /* social share */
 .share-title {
@@ -104,7 +107,7 @@ body {
 }
 .speech2text_section .speech2text_wrapper {
     position: absolute;
-    top: 6px;
+    top: 10px;
     right: 10px;
     z-index: 999;
 }
@@ -123,7 +126,7 @@ body {
     width: 27px;
     height: 27px;
     position: absolute;
-    top: -10px;
+    top: -8px;
     left: -7px;
     border: 2px solid red;
     border-radius: 50%;

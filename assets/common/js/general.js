@@ -593,3 +593,11 @@ function file_preview_src(ext) {
             break;
     }
 }
+
+function copyToClickboard(str, show_status = false) {
+    navigator.clipboard.writeText(str).then(function () {
+        if (show_status) {
+            show_toast('Copy Note', 'Copied!', 'success');
+        }
+    });
+}

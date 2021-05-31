@@ -248,8 +248,8 @@ function image_thumb($file) {
     return $thumb;
 }
 
-function download_file($file_path) { 
-    force_download($file_path, NULL);
+function download_file($full_path, $custom_filename = '') { 
+    force_download($full_path, NULL, false, $custom_filename);
 }
 
 function current_file_preview($file) {

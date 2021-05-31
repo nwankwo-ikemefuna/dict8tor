@@ -61,7 +61,7 @@ if ( ! function_exists('force_download'))
 	 * @param	bool	whether to try and send the actual file MIME type
 	 * @return	void
 	 */
-	function force_download($filename = '', $data = '', $set_mime = FALSE)
+	function force_download($filename = '', $data = '', $set_mime = FALSE, $custom_filename = '')
 	{
 		if ($filename === '' OR $data === '')
 		{
@@ -130,6 +130,10 @@ if ( ! function_exists('force_download'))
 		if (ob_get_level() !== 0 && @ob_end_clean() === FALSE)
 		{
 			@ob_clean();
+		}
+
+		if ($custom_filename) {
+			$filename = $custom_filename;
 		}
 
 		// Generate the server headers

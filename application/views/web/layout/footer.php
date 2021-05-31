@@ -15,6 +15,7 @@ ajax_overlay_loader(); ?>
 <script src="<?php echo base_url(); ?>assets/vendors/popper.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/summernote/summernote-bs4.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/toast/toast.min.js" type="text/javascript"></script>
 
 <!-- General Custom scripts -->
 <script src="<?php echo base_url(); ?>assets/common/js/speech2text.js"></script>

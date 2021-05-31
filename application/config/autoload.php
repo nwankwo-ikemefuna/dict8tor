@@ -110,6 +110,7 @@ $autoload['helper'] = [
     'captcha',
     'cookie',
     'date', 
+    'download', 
     'form', 
     'inflector', 
     'string', 

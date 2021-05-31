@@ -1,4 +1,7 @@
 var recognition = {};
+let final_transcript = ''; //we need this guy to persist
+let final_output = ''; //we need this guy to persist
+let output_container_id = '';
 $(document).ready(function(){
     try {
         // new speech recognition object
@@ -7,16 +10,17 @@ $(document).ready(function(){
         //configs
         recognition.lang = 'en-GB';
         recognition.continuous = true;
+        // recognition.interimResults = true;
     } catch(err) {
         console.log(err.message);
     }
 }).on("click", ".speech2text", function(){
     var selector = $(this);
     const output_container = selector.data('output');
-    var output_container_id = '#'+output_container;
+    output_container_id = '#'+output_container;
     let output_type = selector.data('output_type') || '';
     if (!output_type.length) {
-        output_type= $(output_container_id).prop('tagName');
+        output_type = $(output_container_id).prop('tagName');
         output_type.toLowerCase();
     }
 
@@ -32,29 +36,48 @@ $(document).ready(function(){
     };
     // This runs when the speech recognition service returns result
     recognition.onresult = function(event) {
+        let transcript = '';
+        let interim_transcript = ''; //local because we don't want it to persist like final transcript
         const total_results = event.results.length;
-        let transcripts = '';
         for (let i = event.resultIndex; i < total_results; i++) {
-            transcripts += event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+                transcript = event.results[i][0].transcript;
+                final_transcript += event.results[i][0].transcript;
+            } else {
+                transcript += event.results[i][0].transcript;
+                interim_transcript += event.results[i][0].transcript;
+            }
         }
 
-        if (['input', 'textarea'].includes(output_type)) { //input elements
-            let current_content = $(output_container_id).val() || '';
-            const caret_pos = $(output_container_id)[0].selectionStart;
-            const updated_content = current_content.substring(0, caret_pos) + (current_content.length ? ' ' : '') + transcripts.trim() + current_content.substring(caret_pos);
-            $(output_container_id).val(capitalize(updated_content));
-        } else if (output_type == 'ckeditor') { //CKEditor
-            const editor_instance = CKEDITOR.instances[output_container];
-            const current_content = editor_instance.getData() || '';
-            const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcripts;
-            editor_instance.setData(capitalize(updated_content));
-        } else if (output_type == 'codemirror') { //Code Mirror
-            const editor_instance = $('.CodeMirror')[0].CodeMirror;
-            const current_content = editor_instance.getValue() || '';
-            const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcripts;
-            editor_instance.setValue(capitalize(updated_content));
-        } else { //other elements
-            $(output_container_id).append(capitalize(transcripts) + ' ');
+        if (recognition.interimResults) {
+            $(output_container_id).find('.final_content').eq(0).html(capitalize(final_transcript));
+            $(output_container_id).find('.interim_content').eq(0).html(interim_transcript);
+            final_output = $(output_container_id).find('.final_content').eq(0).text();
+            final_output += $(output_container_id).find('.interim_content').eq(0).text();
+            $(output_container_id).summernote('code', final_output);
+        } else {
+            if (['input', 'textarea'].includes(output_type)) { //input elements
+                let current_content = $(output_container_id).val() || '';
+                const caret_pos = $(output_container_id)[0].selectionStart;
+                const updated_content = current_content.substring(0, caret_pos) + (current_content.length ? ' ' : '') + transcript.trim() + current_content.substring(caret_pos);
+                $(output_container_id).val(capitalize(updated_content));
+            } else if (output_type == 'summernote') { //Summernote
+                let current_content = $(output_container_id).summernote('code');
+                const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcript;
+                $(output_container_id).summernote('code', capitalize(updated_content));
+            } else if (output_type == 'ckeditor') { //CKEditor
+                const editor_instance = CKEDITOR.instances[output_container];
+                const current_content = editor_instance.getData() || '';
+                const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcript;
+                editor_instance.setData(capitalize(updated_content));
+            } else if (output_type == 'codemirror') { //Code Mirror
+                const editor_instance = $('.CodeMirror')[0].CodeMirror;
+                const current_content = editor_instance.getValue() || '';
+                const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcript;
+                editor_instance.setValue(capitalize(updated_content));
+            } else { //other elements
+                $(output_container_id).append(capitalize(transcript) + ' ');
+            }
         }
 
         //trigger output event handlers
@@ -71,6 +94,7 @@ $(document).ready(function(){
         icon.css('color', 'green');
         speaking_indicator.removeClass('speech2text_pulsate clickable');
         speaking_indicator.prop('title', '');
+        $(output_container_id).find('.final_content').eq(0).html(final_output);
         recognition.stop();
     };
     // start recognition
@@ -82,5 +106,6 @@ $(document).ready(function(){
     icon.css('color', 'green');
     speaking_indicator.removeClass('speech2text_pulsate');
     speaking_indicator.prop('title', '');
+    $(output_container_id).find('.final_content').eq(0).html(final_output);
     recognition.stop();
 });
