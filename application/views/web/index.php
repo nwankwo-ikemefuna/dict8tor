@@ -16,7 +16,7 @@
 				<a href="javascript:;" data-toggle="collapse" data-target="#dict8_help_more" class="text-info">More help</a>.</p>
 				<div id="dict8_help_more" class="collapse">
 					<ul>
-						<li>Microphone permission is required to use <?php echo SITE_NAME; ?>. Select allow when prompted by your browser.</li>
+						<li>Microphone permission is required to use <?php echo SITE_NAME; ?>. Select allow when prompted by your browser...</li>
 						<li>Internet connectivity is required.</li>
 						<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome (desktop and Android mobile), Edge, and Safari (desktop and iOS  mobile).</li>
 					</ul>
