@@ -28,6 +28,9 @@ $(document).ready(function(){
         interim_wrapper.find('span.final_output').empty();
         interim_wrapper.find('span.interim_output').empty();
         $('#s2t_dict8_note').val('');
+        if (typeof final_transcript !== 'undefined') {
+            final_transcript = '';
+        }
         if (localStorage.getItem('s2t_dict8_note') !== null) {
             localStorage.removeItem('s2t_dict8_note');
         }
