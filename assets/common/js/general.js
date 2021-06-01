@@ -544,6 +544,18 @@ function fill_form_fields(form_id, data, exclude = []) {
     });
 }
 
+function truncateWords(str, len = 10) {
+    return str.split(/\s+/).slice(0, len).join(" ");
+}
+
+function copyToClickboard(str, show_status = false) {
+    navigator.clipboard.writeText(str).then(function () {
+        if (show_status) {
+            show_toast('Copy Note', 'Copied!', 'success');
+        }
+    });
+}
+
 function file_preview_src(ext) {
     var path = base_url+'assets/common/img/icons/';
     switch (ext.toLowerCase()) {
@@ -592,12 +604,4 @@ function file_preview_src(ext) {
             return path += 'file.png';
             break;
     }
-}
-
-function copyToClickboard(str, show_status = false) {
-    navigator.clipboard.writeText(str).then(function () {
-        if (show_status) {
-            show_toast('Copy Note', 'Copied!', 'success');
-        }
-    });
 }

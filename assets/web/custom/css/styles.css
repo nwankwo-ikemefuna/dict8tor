@@ -1,9 +1,9 @@
 body {
     background-color: #f9dbb9;
-    color: #000;
+    color: #555;
 }
 .site-wrapper {
-    padding: 50px 0;
+    padding: 50px 0 0;
 }
 .main_col {
     padding-bottom: 50px;
@@ -16,6 +16,23 @@ body {
 }
 .save_note_btn {
   cursor: pointer;
+}
+#saved_notes_section .card-body{
+  max-height: 300px;
+  overflow-y: auto;
+}
+#s2t_dict8_note {
+  border: 5px solid #ddd;
+}
+.saved_note_item {
+  border-bottom: 1px solid #e2e2e2;
+  padding: 10px 5px;
+}
+.saved_note_item:first-child {
+  padding-top: 0;
+}
+.saved_note_item:last-child {
+  border-bottom: none;
 }
 
 /* social share */
@@ -100,6 +117,10 @@ body {
 /* Speech to text */
 .speech2text_section {
 	position: relative;
+}
+.speech2text_interim_wrapper .final_output, 
+.speech2text_interim_wrapper .interim_output {
+	display: none;
 }
 .speech2text_section textarea, 
 .speech2text_section input {

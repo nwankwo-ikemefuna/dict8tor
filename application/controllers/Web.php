@@ -25,6 +25,7 @@ class Web extends Core_controller {
             'with_footer'   => false,
             'download'      => true,
             'output_type'   => 'text',
+            'align'         => 'L', //left
             'file_name'     => strtolower(SITE_NAME.'_note.pdf'),
             'content'       => $this->session->last_dict8_note ?? 'Sample '.SITE_NAME.' Note',
         ];

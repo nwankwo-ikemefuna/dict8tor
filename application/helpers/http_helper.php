@@ -18,7 +18,7 @@ function site_meta($page_title = '', $meta_info = [], $show_analytics = false) {
     <meta property="og:updated_time" content="<?php echo time(); ?>" />
     <meta property="og:image:secure_url" itemprop="image" content="<?php echo $meta_info['image'] ?? SITE_LOGO; ?>?v=<?php echo time(); ?>" />
 
-    <link rel="shortcut icon" type="image/png" href="<?php echo SITE_FAVICON; ?>" />
+    <link rel="shortcut icon" type="image/ico" href="<?php echo SITE_FAVICON; ?>" />
     <?php
 
     if ($show_analytics) { ?>

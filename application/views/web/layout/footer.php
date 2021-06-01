@@ -1,3 +1,8 @@
+    <footer class="m-t-50">
+        <hr />
+        <p class="text-center m-t-20">Crafted by <a href="<?php echo SITE_AUTHOR_URL; ?>" target="_blank"><?php echo SITE_AUTHOR; ?></a></p>
+    </footer>
+
 </div><!-- /.site-wrapper-->
 
 

@@ -21,10 +21,10 @@ function web_share_icons($url, $snippet = '', $wrapper_class = 'share-wrap', $ul
             <?php 
         } ?>
         <ul class="<?php echo $ul_class; ?>">
-            <li><?php echo facebook_share_link($url, '<i class="fa fa-facebook"></i>Facebook</a>', 'sh-facebook'); ?></li>
-            <li><?php echo linkedin_share_link($url, '<i class="fa fa-linkedin"></i>Linkedin</a>', 'sh-linkedin'); ?></li>
-            <li><?php echo twitter_share_link($url, $snippet, '<i class="fa fa-twitter"></i>Twitter</a>', 'sh-twitter'); ?></li>
-            <li><?php echo whatsapp_share_link($url, $snippet, '<i class="fa fa-whatsapp"></i>WhatsApp</a>', 'sh-whatsapp'); ?></li>
+            <li><?php echo facebook_share_link($url, '<i class="fa fa-facebook"></i>Facebook</a>', 'sh-facebook btn-confident '); ?></li>
+            <li><?php echo linkedin_share_link($url, '<i class="fa fa-linkedin"></i>Linkedin</a>', 'sh-linkedin btn-confident '); ?></li>
+            <li><?php echo twitter_share_link($url, $snippet, '<i class="fa fa-twitter"></i>Twitter</a>', 'sh-twitter btn-confident '); ?></li>
+            <li><?php echo whatsapp_share_link($url, $snippet, '<i class="fa fa-whatsapp"></i>WhatsApp</a>', 'sh-whatsapp btn-confident '); ?></li>
         </ul>
     </div>
     <?php

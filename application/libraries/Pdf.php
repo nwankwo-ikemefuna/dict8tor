@@ -60,7 +60,7 @@ class Pdf
         if ($output_type == 'html') {
             $pdf->writeHTML($config['content'], true, false, true, false, '');
         } else {
-            $pdf->Write(0, $config['content'], '', 0, 'C', true, 0, false, false, 0);
+            $pdf->Write(0, $config['content'], '', 0, ($config['align'] ?? 'L'), true, 0, false, false, 0);
         }
 
         //Close and output PDF document

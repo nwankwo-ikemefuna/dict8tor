@@ -1,3 +1,6 @@
+.btn-confident {
+	box-shadow: 2px 2px 2px #888;
+}
 label.form-control-label {
     font-weight: 600 !important;
 }

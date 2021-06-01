@@ -1,6 +1,5 @@
 var recognition = {};
 let final_transcript = ''; //we need this guy to persist
-let final_output = ''; //we need this guy to persist
 let output_container_id = '';
 $(document).ready(function(){
     try {
@@ -10,7 +9,6 @@ $(document).ready(function(){
         //configs
         recognition.lang = 'en-GB';
         recognition.continuous = true;
-        // recognition.interimResults = true;
     } catch(err) {
         console.log(err.message);
     }
@@ -19,9 +17,20 @@ $(document).ready(function(){
     const output_container = selector.data('output');
     output_container_id = '#'+output_container;
     let output_type = selector.data('output_type') || '';
+
     if (!output_type.length) {
         output_type = $(output_container_id).prop('tagName');
         output_type.toLowerCase();
+    }
+
+    //allow interim results?
+    if (selector.data('with_interim') == 1) {
+        recognition.interimResults = true;
+    }
+
+    //update final transcript from current content
+    if ($(output_container_id).val().length) {
+        final_transcript = $(output_container_id).val();
     }
 
     var wrapper = selector.closest('.speech2text_wrapper');
@@ -50,11 +59,20 @@ $(document).ready(function(){
         }
 
         if (recognition.interimResults) {
-            $(output_container_id).find('.final_content').eq(0).html(capitalize(final_transcript));
-            $(output_container_id).find('.interim_content').eq(0).html(interim_transcript);
-            final_output = $(output_container_id).find('.final_content').eq(0).text();
-            final_output += $(output_container_id).find('.interim_content').eq(0).text();
-            $(output_container_id).summernote('code', final_output);
+            const interim_wrapper = $(output_container_id).closest('.speech2text_interim_wrapper');
+            const final_ouput_span = interim_wrapper.find('span.final_output');
+            const interim_ouput_span = interim_wrapper.find('span.interim_output');
+            //set
+            final_ouput_span.text(capitalize(final_transcript));
+            interim_ouput_span.text(interim_transcript);
+            //get
+            const complete_output = final_ouput_span.text() + interim_ouput_span.text();
+            if (output_type == 'summernote') {
+                $(output_container_id).summernote('code', complete_output);
+            } else {
+                $(output_container_id).val(complete_output);
+            }
+            localStorage.setItem('s2t_dict8_note', complete_output);
         } else {
             if (['input', 'textarea'].includes(output_type)) { //input elements
                 let current_content = $(output_container_id).val() || '';
@@ -94,7 +112,6 @@ $(document).ready(function(){
         icon.css('color', 'green');
         speaking_indicator.removeClass('speech2text_pulsate clickable');
         speaking_indicator.prop('title', '');
-        $(output_container_id).find('.final_content').eq(0).html(final_output);
         recognition.stop();
     };
     // start recognition
@@ -106,6 +123,13 @@ $(document).ready(function(){
     icon.css('color', 'green');
     speaking_indicator.removeClass('speech2text_pulsate');
     speaking_indicator.prop('title', '');
-    $(output_container_id).find('.final_content').eq(0).html(final_output);
     recognition.stop();
+}).on("keyup", '#s2t_dict8_note', function(){
+    //stop recognition
+    recognition.stop();
+    //update final output
+    final_transcript = $(this).val();
+    localStorage.setItem('s2t_dict8_note', final_transcript);
+    const interim_wrapper = $(output_container_id).closest('.speech2text_interim_wrapper');
+    interim_wrapper.find('span.final_output').text(final_transcript);
 });

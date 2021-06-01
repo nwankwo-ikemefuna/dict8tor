@@ -17,6 +17,7 @@ class Web extends Core_controller {
                 $this->save_note();
                 break;
             case 'export_pdf':
+                //save note in session
                 $this->session->set_userdata('last_dict8_note', xpost('note'));
                 json_response('Successful');
                 break;

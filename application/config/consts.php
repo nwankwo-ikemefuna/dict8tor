@@ -22,15 +22,15 @@ foreach ($modules as $module) {
 //site info
 define('SITE_NAME', 'Dict8tor');
 define('SITE_SHORT_NAME', 'Dict8tor');
-define('SITE_LOGO', 'assets/common/logo/logo.png');
-define('SITE_LOGO_PORTAL', 'assets/common/logo/logo.png');
-define('SITE_LOGO_WEB', 'assets/common/logo/logo.png');
-define('SITE_FAVICON', 'assets/common/logo/favicon.png');
+define('SITE_LOGO',  base_url('assets/common/img/logo/logo.png'));
+define('SITE_LOGO_PORTAL',  base_url('assets/common/img/logo/logo.png'));
+define('SITE_LOGO_WEB',  base_url('assets/common/img/logo/logo.png'));
+define('SITE_FAVICON', base_url('assets/common/img/logo/favicon.ico'));
 define('SITE_LOCATION', 'Lagos, Nigeria');
-define('SITE_TAGLINE', 'Save time by dictating words rather than typing them');
-define('SITE_DESCRIPTION', 'Save time by dictating words rather than typing them.');
-define('SITE_AUTHOR', 'Q2R');
-define('SITE_AUTHOR_URL', 'https://q2rweb.com');
+define('SITE_TAGLINE', 'Save time by dictating notes rather than typing them');
+define('SITE_DESCRIPTION', 'Save time by dictating notes rather than typing them.');
+define('SITE_AUTHOR', 'Valkay');
+define('SITE_AUTHOR_URL', 'https://linkedin.com/in/ikemefunanwankwo');
 
 //mails
 define('SITE_NOTIF_MAIL', 'info@dict8tor.com');
