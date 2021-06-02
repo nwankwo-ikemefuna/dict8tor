@@ -1,6 +1,7 @@
 var recognition = {};
 let final_transcript = ''; //we need this guy to persist
 let output_container_id = '';
+let last_debounce_ranscript = '';
 $(document).ready(function(){
     try {
         // new speech recognition object
@@ -49,12 +50,18 @@ $(document).ready(function(){
         let interim_transcript = ''; //local because we don't want it to persist like final transcript
         const total_results = event.results.length;
         for (let i = event.resultIndex; i < total_results; i++) {
-            if (event.results[i].isFinal) {
-                transcript = event.results[i][0].transcript;
-                final_transcript += event.results[i][0].transcript;
+            let result = event.results[i];
+            let isFinal = result.isFinal && (result[0].confidence > 0);
+            if (isFinal) {
+                transcript = result[0].transcript;
+                final_transcript += result[0].transcript;
+                if (transcript == last_debounce_ranscript) {
+                    return;
+                }
+                last_debounce_ranscript = transcript;
             } else {
-                transcript += event.results[i][0].transcript;
-                interim_transcript += event.results[i][0].transcript;
+                transcript += result[0].transcript;
+                interim_transcript += result[0].transcript;
             }
         }
 

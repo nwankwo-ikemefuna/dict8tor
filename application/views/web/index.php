@@ -19,7 +19,7 @@
 					<ul>
 						<li>Microphone permission is required to use <?php echo SITE_NAME; ?>. Select allow when prompted by your browser.</li>
 						<li>Internet connectivity is required.</li>
-						<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome (desktop and Android mobile), Edge, and Safari (desktop and iOS  mobile).</li>
+						<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome desktop (recommended for ultimate experience), Chrome Adroid, Android Browser, Edge, Samsung Internet.</li>
 						<li>Copy your notes or export to PDF and download when done. You may also save for later.</li>
 						<li>Your notes are saved in the box even if you refresh this page or close your browser, unless you deliberately clear them.</li>
 					</ul>
