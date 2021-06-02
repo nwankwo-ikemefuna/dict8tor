@@ -24,6 +24,10 @@ class Meta extends Core_controller {
      * The web hook event fires whenever there's a push to remote repository
      */
     public function pull() {
+
+        //ensure is post request
+        if ($this->input->method() !== 'post') die('Invalid request method!');
+
         //ensure exec is enabled on server
         $shell_enabled = is_callable('exec') && false === stripos(ini_get('disable_functions'), 'exec');
         if (!$shell_enabled) die('exec function not enabled on server!');
