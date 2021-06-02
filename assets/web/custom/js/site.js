@@ -1,42 +1,54 @@
 $(document).ready(function(){
+    //switch theme 
+    switchTheme();
     //update current note
     const current_note = localStorage.getItem('s2t_dict8_note') || '';
     updateNote(current_note);
     //render saved notes
     renderSavedNotes();
+}).on("change", "#theme_switcher", function(){
+    const site_theme = $(this).is(':checked') ? 'dark' : 'light';
+    localStorage.setItem('site_theme', site_theme);
+    switchTheme();
 }).on("click", "#copy_note", function(){
     const note = $('#s2t_dict8_note').val();
     copyToClickboard(note);
 }).on("click", "#save_note", function(){
     const note = $('#s2t_dict8_note').val().trim();
+    if (!note.length) {
+        alert('Nothing to save!');
+        return false;
+    }
     const saved_notes_str = localStorage.getItem('saved_dict8_notes') || '';
     let saved_notes_arr = [];
     if (saved_notes_str.length) {
         saved_notes_arr = JSON.parse(saved_notes_str);
-    }
-    if (!saved_notes_arr.includes(note)) {
-        saved_notes_arr.unshift(note);
-        localStorage.setItem('saved_dict8_notes', JSON.stringify(saved_notes_arr));
-        //update saved notes
-        renderSavedNotes();
+        if (!saved_notes_arr.includes(note)) {
+            saved_notes_arr.unshift(note); //push to beginning
+            localStorage.setItem('saved_dict8_notes', JSON.stringify(saved_notes_arr));
+            //update saved notes
+            renderSavedNotes();
+        } else {
+            alert('This note is already saved!');
+        }
     } else {
-        alert('This note is already saved!');
+        return false;
     }
 }).on("click", "#clear_note", function(){
-    if (confirm('Sure to clear notes?')) {
+    if (confirm('Sure to clear notes field?')) {
         const interim_wrapper = $('.speech2text_interim_wrapper');
         interim_wrapper.find('span.final_output').empty();
         interim_wrapper.find('span.interim_output').empty();
         $('#s2t_dict8_note').val('');
         if (typeof final_transcript !== 'undefined') {
-            final_transcript = '';
+            final_transcript = ''; //reset final transcript
         }
         if (localStorage.getItem('s2t_dict8_note') !== null) {
             localStorage.removeItem('s2t_dict8_note');
         }
     }
 }).on("click", ".edit_saved_note", function(){
-    if (confirm('Sure to edit this saved note?')) {
+    if (confirm('Sure to edit this note? You may lose any unsaved notes!')) {
         const index = $(this).data('index');
         const saved_notes_str = localStorage.getItem('saved_dict8_notes') || '';
         const saved_notes_arr = JSON.parse(saved_notes_str);
@@ -44,7 +56,7 @@ $(document).ready(function(){
         updateNote(note);
     }
 }).on("click", ".delete_saved_note", function(){
-    if (confirm('Sure to delete this saved note?')) {
+    if (confirm('Sure to delete this note?')) {
         const index = $(this).data('index');
         const saved_notes_str = localStorage.getItem('saved_dict8_notes') || '';
         const saved_notes_arr = JSON.parse(saved_notes_str);
@@ -75,6 +87,17 @@ $(document).ready(function(){
     post_data_ajax(base_url+'api/web/note_actions', {action, note}, false, success_callback);
 });
 
+function switchTheme() {
+    const site_theme = localStorage.getItem('site_theme') || 'light';
+    if (site_theme == 'dark') {
+        $('body').addClass('dark-theme');
+        $('#theme_switcher').prop('checked', true);
+    } else {
+        $('body').removeClass('dark-theme');
+        $('#theme_switcher').prop('checked', false);
+    }
+}
+
 function renderSavedNotes() {
     //saved notes
     const saved_notes_str = localStorage.getItem('saved_dict8_notes') || '';
@@ -83,7 +106,7 @@ function renderSavedNotes() {
         const container = $('#saved_notes_section #saved_notes');
         container.empty();
         $.each(saved_notes_arr, function(index, note) {
-            if (index >= 25) return false; //last 25 saved notes works great
+            if (index >= 25) return false; //last 25 saved notes works great IMHO
             const truncated_note = truncateWords(note, 7);
             const item = $('<div>', {class: 'saved_note_item'}).text(truncated_note+'...');
             const edit_btn = $('<a>', {class: 'edit_saved_note text-info', 'data-index': index, href: 'javascript:;'}).text('Edit');

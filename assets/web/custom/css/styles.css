@@ -1,9 +1,9 @@
 body {
-    background-color: #f9dbb9;
-    color: #555;
+  background-color: #f9dbb9;
+  color: #555;
 }
 .site-wrapper {
-    padding: 50px 0 0;
+  padding: 50px 0 0;
 }
 .site_name {
   border-bottom: 2px dotted #555;
@@ -41,7 +41,6 @@ body {
 /* social share */
 .share-title {
   font-size: 16px;
-  color: #666;
   display: block;
   letter-spacing: -0.1px;
 }

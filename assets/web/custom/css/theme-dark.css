@@ -1,0 +1,41 @@
+body.dark-theme {
+    background-color: #333;
+    color: #f1f1f1;
+}
+body.dark-theme .site_name {
+    border-bottom: 2px dotted #8c8c8c;
+}
+body.dark-theme hr {
+    background: #8c8c8c;
+}
+body.dark-theme .saved_note_item {
+    border-bottom: 1px solid #8c8c8c;
+}
+body.dark-theme .saved_note_item:last-child {
+    border-bottom: none;
+}
+body.dark-theme .card {
+    background-color: #555;
+    color: #f1f1f1;
+    border: 1px solid #8c8c8c;
+}
+body.dark-theme .card-header {
+    background-color: #464646;
+    border-bottom: 1px solid #8c8c8c;
+}
+body.dark-theme .card-footer {
+    background-color: #464646;
+    border-top: 1px solid #8c8c8c;
+}
+body.dark-theme .btn-confident {
+	box-shadow: 2px 2px 2px #555;
+}
+body.dark-theme .text-info {
+	color: #78d5e4!important;
+}
+body.dark-theme .text-success {
+	color: #51e874!important;
+}
+body.dark-theme .text-danger {
+	color: #fb939d!important
+}

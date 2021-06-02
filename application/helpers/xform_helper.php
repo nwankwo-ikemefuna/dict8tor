@@ -92,6 +92,25 @@ function xform_check($label, $name, $type = 'checkbox', $id = '', $value = '', $
     echo $elem;
 }
 
+function form_custom_switch($label, $name, $type = 'primary', $id = '', $value = '', $checked = false, $required = false, $extra = [], $return = false) {
+    $id_attr = $id ? 'id="'.$id.'"' : '';
+    $checked = $checked ? 'checked' : '';
+    $required = $required ? 'required' : '';
+    $disabled = isset($extra['disabled']) && $extra['disabled'] ? 'disabled' : '';
+    $with_padding_class = isset($extra['with_padding']) && $extra['with_padding'] ? 'switch-with-padding' : '';
+    $elem = '<div class="form-group">
+        <div class="checkbox checkbox-switch switch-'.$type.' '.$with_padding_class.'">
+            <label>
+                <input type="checkbox" name="'.$name.'" value="'.$value.'" '.$id_attr.' '.$checked.' '.$required.' '.$disabled.' />
+                <span></span>
+                '.$label.'
+            </label>
+        </div>
+    </div>';
+    if ($return) return $elem;
+    echo $elem;
+}
+
 function xform_input($name, $type = 'text', $value = '', $required = false, $extra = [], $return = false) {
     //prepend bs class
     if ( ! in_array($type, ['checkbox', 'radio', 'file'])) {
