@@ -11,15 +11,16 @@
 
 	<div class="row m-t-70">
 
-		<div class="col-12">
+		<div class="col-12 col-md-8">
 			<div class="dict8_note_help">
-				<p>Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes.
+				<p>Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes. Start dictating when it turns red <i class="fa fa-microphone" style="color: red;"></i> and pulsating. Click on it again to pause/stop dictating.
 				<a href="javascript:;" data-toggle="collapse" data-target="#dict8_help_more" class="text-info with_arrow_double_updown">More help <i class="fa fa-angle-double-down arrow_double_updown"></i></a></p>
 				<div id="dict8_help_more" class="collapse">
 					<ul>
 						<li>Microphone permission is required to use <?php echo SITE_NAME; ?>. Select allow when prompted by your browser.</li>
 						<li>Internet connectivity is required.</li>
 						<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome desktop (recommended for best experience), Chrome Adroid, Android Browser, Edge, Samsung Internet.</li>
+						<li>To add punctuations (such as period, comma, colon, semicolon, question mark, quotes, apostrophe, etc), space or any special character, stop dictating and type the character.</li>
 						<li>Copy your notes or export to PDF and download when done. You may also save for later.</li>
 						<li>Your notes are saved in the box even if you refresh this page or close your browser, unless you deliberately clear them.</li>
 					</ul>
