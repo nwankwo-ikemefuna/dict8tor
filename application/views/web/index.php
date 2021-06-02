@@ -13,7 +13,7 @@
 
 		<div class="col-12">
 			<div class="dict8_note_help">
-				<p>Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes.
+				<p>Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes....xxx
 				<a href="javascript:;" data-toggle="collapse" data-target="#dict8_help_more" class="text-info with_arrow_double_updown">More help <i class="fa fa-angle-double-down arrow_double_updown"></i></a></p>
 				<div id="dict8_help_more" class="collapse">
 					<ul>
