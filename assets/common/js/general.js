@@ -47,6 +47,19 @@ jQuery(document).ready(function ($) {
         this.value = this.value.replace(/[^0-9a-zA-Z]/g, '');
     });
 
+    //Allow only numbers in digit-only fields
+    $(document).on('click', '.with_arrow_double_updown', function () { 
+        const arrow_updown = $(this).find('.arrow_double_updown');
+        if (arrow_updown.length) {
+            if (arrow_updown.hasClass('fa-angle-double-down')) {
+                arrow_updown.removeClass('fa-angle-double-down').addClass('fa-angle-double-up');
+            } else {
+                arrow_updown.removeClass('fa-angle-double-up').addClass('fa-angle-double-down');
+            }
+        }
+        return false;
+    });
+
     $(document).on('change', '.file_input', function(){ 
         if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
         {

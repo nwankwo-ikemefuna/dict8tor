@@ -14,7 +14,7 @@
 		<div class="col-12">
 			<div class="dict8_note_help">
 				<p>Click on the green microphone icon <i class="fa fa-microphone" style="color: green;"></i> to dictate your notes.
-				<a href="javascript:;" data-toggle="collapse" data-target="#dict8_help_more" class="text-info">More help</a>.</p>
+				<a href="javascript:;" data-toggle="collapse" data-target="#dict8_help_more" class="text-info with_arrow_double_updown">More help <i class="fa fa-angle-double-down arrow_double_updown"></i></a></p>
 				<div id="dict8_help_more" class="collapse">
 					<ul>
 						<li>Microphone permission is required to use <?php echo SITE_NAME; ?>. Select allow when prompted by your browser.</li>
