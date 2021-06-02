@@ -5,6 +5,9 @@ body {
 .site-wrapper {
     padding: 50px 0 0;
 }
+.site_name {
+  border-bottom: 2px dotted #555;
+}
 .main_col {
     padding-bottom: 50px;
 }

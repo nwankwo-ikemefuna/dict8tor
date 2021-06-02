@@ -28,7 +28,7 @@ define('SITE_LOGO_WEB',  base_url('assets/common/img/logo/logo.png'));
 define('SITE_FAVICON', base_url('assets/common/img/logo/favicon.ico'));
 define('SITE_LOCATION', 'Lagos, Nigeria');
 define('SITE_TAGLINE', 'Save time by dictating notes rather than typing them');
-define('SITE_DESCRIPTION', 'Save time by dictating notes rather than typing them.');
+define('SITE_DESCRIPTION', SITE_NAME.' helps you save time and boost productivity by letting you dictate your notes rather than typing them. An easy-to-use tool for individuals including but not limited to students, office secretaries, typists, transcriptionists and stenographers, and for all kinds of business needs.');
 define('SITE_AUTHOR', 'Valkay');
 define('SITE_AUTHOR_URL', 'https://linkedin.com/in/ikemefunanwankwo');
 

@@ -2,7 +2,7 @@
 
 	<div class="row">
 		<div class="col-12 text-center">
-			<h2><?php echo SITE_NAME; ?></h2>
+			<h2><span class="site_name"><?php echo SITE_NAME; ?></span></h2>
 			<p><?php echo SITE_DESCRIPTION; ?></p>
 		</div>
 	</div>

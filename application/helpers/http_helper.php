@@ -1,5 +1,5 @@
 <?php 
-function site_meta($page_title = '', $meta_info = [], $show_analytics = false) { 
+function site_meta($page_title = '', $meta_info = [], $show_analytics = true) { 
     ?>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title><?php echo $page_title; ?> :: <?php echo SITE_NAME; ?></title>
@@ -23,12 +23,12 @@ function site_meta($page_title = '', $meta_info = [], $show_analytics = false) {
 
     if ($show_analytics) { ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174509101-1"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2S1MVGK4Y"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'UA-174509101-1');
+            gtag('config', 'G-R2S1MVGK4Y');
         </script>
         <?php
     }

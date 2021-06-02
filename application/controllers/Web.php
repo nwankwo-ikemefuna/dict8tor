@@ -9,7 +9,7 @@ class Web extends Core_controller {
 
 
     public function index() {
-        $this->web_header(SITE_NAME.' - '.SITE_TAGLINE, 'home');
+        $this->web_header(SITE_NAME.' - '.SITE_TAGLINE, 'home', ['image' => SITE_LOGO]);
         $this->load->view('web/index');
         $this->web_footer('home');
     }
