@@ -59,7 +59,7 @@ class Meta extends Core_controller {
             'whoami', //who's doing it?
             'git add .',
             'git commit -m "Saved local"',
-            'git pull origin ' . $this->git_branch
+            'git pull origin ' . $this->git_branch . ' --no-edit'
         ];
         //execute the commands...
         $outputs = '';
