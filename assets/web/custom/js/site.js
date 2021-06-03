@@ -23,18 +23,16 @@ $(document).ready(function(){
     let saved_notes_arr = [];
     if (saved_notes_str.length) {
         saved_notes_arr = JSON.parse(saved_notes_str);
-        if (!saved_notes_arr.includes(note)) {
-            saved_notes_arr.unshift(note); //push to beginning
-            localStorage.setItem('saved_dict8_notes', JSON.stringify(saved_notes_arr));
-            //update saved notes
-            renderSavedNotes();
-            //jump to saved notes section
-            $(location).attr('href', '#saved_notes_section');
-        } else {
-            alert('This note is already saved!');
-        }
+    } 
+    if (!saved_notes_arr.includes(note)) {
+        saved_notes_arr.unshift(note); //push to beginning
+        localStorage.setItem('saved_dict8_notes', JSON.stringify(saved_notes_arr));
+        //update saved notes
+        renderSavedNotes();
+        //jump to saved notes section
+        $(location).attr('href', '#saved_notes_section');
     } else {
-        return false;
+        alert('This note is already saved!');
     }
 }).on("click", "#clear_note", function(){
     if (confirm('Sure to clear notes field?')) {
