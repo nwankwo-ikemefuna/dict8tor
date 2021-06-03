@@ -54,7 +54,11 @@ $(document).ready(function(){
             let isFinal = result.isFinal && (result[0].confidence > 0);
             if (isFinal) {
                 transcript = result[0].transcript;
-                final_transcript += (final_transcript.length ? '. ' : '') + capitalize2(result[0].transcript);
+                if (isMobile()) {
+                    final_transcript += capitalize2(result[0].transcript) + '. ';
+                } else {
+                    final_transcript += capitalize2(result[0].transcript) + '.';
+                }
                 if (transcript == last_debounce_transcript) {
                     return;
                 }
