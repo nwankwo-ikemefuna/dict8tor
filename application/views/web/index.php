@@ -6,7 +6,7 @@
 		<ul>
 			<li>Microphone permission is required to use <?php echo SITE_NAME; ?>. Select allow when prompted by your browser.</li>
 			<li>Internet connectivity is required.</li>
-			<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome desktop (recommended for best experience), Chrome mobile, Android browser, Edge and Samsung Internet. It may also work on Safari (desktop and mobile).</li>
+			<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome desktop v33.0+(recommended for best experience) and Chrome Android v33.0+. It may also work on the following browsers: Edge desktop v79.0+, Safari desktop v14.1+, Safari iOS v14.5+, Samsung Internet v2.0+.</li>
 			<li>For accurate results, ensure your environment is noise-free.</li>
 			<li>To add punctuations (such as period, comma, colon, semicolon, question mark, quotes, apostrophe, etc), space or any special character, stop dictating and type the character.</li>
 			<li>Copy your notes or export to PDF and download when done. You may also save for later (<a href="#saved_notes_section" class="text-info">see here</a>).</li>
