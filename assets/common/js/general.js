@@ -569,6 +569,11 @@ function copyToClickboard(str, show_status = false) {
     });
 }
 
+function isMobile() {
+    const is_mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    return is_mobile;
+}
+
 function file_preview_src(ext) {
     var path = base_url+'assets/common/img/icons/';
     switch (ext.toLowerCase()) {

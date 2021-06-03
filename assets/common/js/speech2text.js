@@ -54,7 +54,7 @@ $(document).ready(function(){
             let isFinal = result.isFinal && (result[0].confidence > 0);
             if (isFinal) {
                 transcript = result[0].transcript;
-                final_transcript += capitalize2(result[0].transcript + '.');
+                final_transcript += capitalize2(result[0].transcript + '.') + (isMobile() ? ' ' : '');
                 if (transcript == last_debounce_transcript) {
                     return;
                 }
