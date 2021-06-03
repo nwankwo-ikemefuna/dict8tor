@@ -118,6 +118,7 @@ $autoload['helper'] = [
     'typography', 
     'url',
     //custom: application/helpers
+    'adsense', 
     'app', 
     'bootstrap', 
     'crud', 

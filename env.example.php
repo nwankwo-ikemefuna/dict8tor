@@ -42,3 +42,12 @@ define('AWS_S3_CONFIG', [
 	'secret_key' 	=> 'my-secret-key',
 	'upload_dir' 	=> 'project-name', //eg qsm
 ]);
+
+//Google Adsense
+define('ADSENSE_CONFIG', [
+	'publisher_id' 		=> 'ca-pub-2022130965708164',
+	'enabled' 			=> true,
+	'top_banner' 		=> true,
+	'sidebar_square' 	=> true,
+	'sidebar_vertical' 	=> true,
+]);

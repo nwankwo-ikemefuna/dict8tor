@@ -24,9 +24,24 @@
     <link href="<?php echo base_url(); ?>assets/web/custom/css/styles.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url(); ?>assets/web/custom/css/theme-dark.css" rel="stylesheet" type="text/css" media="all" />
 
-    <script data-ad-client="ca-pub-2022130965708164" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <?php echo adsense_publisher_script(); ?>
 
 </head>
 <body>
 
 <div class="site-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2><span class="site_name"><?php echo SITE_NAME; ?></span></h2>
+                <p><?php echo SITE_DESCRIPTION; ?></p>
+            </div>
+            <div class="col-12 text-center">
+                <?php echo form_custom_switch('Dark Mode', '', 'success', 'theme_switcher', 1, false, false, ['with_padding' => true]); ?>
+            </div>
+        </div>
+                
+        <hr />
+
+        <div class="row m-t-70">
+            <div class="col-12 col-md-8 main_col">

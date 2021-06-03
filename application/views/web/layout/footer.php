@@ -1,3 +1,9 @@
+        </div><!-- /.col-md-8.main_col-->
+        <div class="col-12 col-md-4 right_col">
+            <?php require 'sidebar_right.php'; ?>
+        </div>
+    </div><!-- /.row-->
+    
     <footer class="m-t-50">
         <hr />
         <p class="text-center m-t-20">Crafted by <a href="<?php echo SITE_AUTHOR_URL; ?>" target="_blank"><?php echo SITE_AUTHOR; ?></a></p>
