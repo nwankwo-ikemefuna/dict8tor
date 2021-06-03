@@ -24,6 +24,8 @@
     <link href="<?php echo base_url(); ?>assets/web/custom/css/styles.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url(); ?>assets/web/custom/css/theme-dark.css" rel="stylesheet" type="text/css" media="all" />
 
+    <script data-ad-client="ca-pub-2022130965708164" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 <body>
 
