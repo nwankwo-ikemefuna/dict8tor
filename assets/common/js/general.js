@@ -570,8 +570,10 @@ function copyToClickboard(str, show_status = false) {
 }
 
 function isMobile() {
-    const is_mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    return is_mobile;
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+}
+function isIOS() {
+    return /iPhone|iPad|iPod|Macbook/i.test(navigator.userAgent);
 }
 
 function file_preview_src(ext) {

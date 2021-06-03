@@ -21,6 +21,7 @@
     <!-- Custom styles -->
     <link href="<?php echo base_url(); ?>assets/common/css/bs-switch.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url(); ?>assets/common/css/helper.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo base_url(); ?>assets/web/custom/css/speech2text.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url(); ?>assets/web/custom/css/styles.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url(); ?>assets/web/custom/css/theme-dark.css" rel="stylesheet" type="text/css" media="all" />
 
