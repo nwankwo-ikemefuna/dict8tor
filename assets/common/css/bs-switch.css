@@ -15,7 +15,7 @@
 .checkbox-inline.checkbox-switch span {
     width: 35px;
     border-radius: 20px;
-    height: 18px;
+    height: 20px;
     border: 1px solid #dbdbdb;
     background-color: #555;
     border-color: #555;
@@ -24,10 +24,7 @@
     display: inline-block;
     vertical-align: middle;
     margin-right: 5px;
-}
-.checkbox.checkbox-switch.switch-with-padding label span,
-.checkbox-inline.checkbox-switch.switch-with-padding span {
-    padding-bottom: 20px;
+    text-align: left;
 }
 .checkbox.checkbox-switch label span:before,
 .checkbox-inline.checkbox-switch span:before {

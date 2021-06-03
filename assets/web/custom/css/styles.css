@@ -1,6 +1,7 @@
 body {
   background-color: #f9dbb9;
   color: #555;
+  font-size: .95rem;
 }
 .site-wrapper {
   padding: 50px 0 0;
@@ -10,6 +11,9 @@ body {
 }
 .main_col {
     padding-bottom: 50px;
+}
+.right_col {
+  font-size: .9rem;
 }
 .right_col .custom_ad {
     margin-bottom: 30px;
@@ -29,13 +33,19 @@ body {
 }
 .saved_note_item {
   border-bottom: 1px solid #e2e2e2;
-  padding: 10px 5px;
+  padding: 5px;
 }
 .saved_note_item:first-child {
   padding-top: 0;
 }
 .saved_note_item:last-child {
   border-bottom: none;
+}
+.dark_mode_section > .dark_mode_wrapper {
+  text-align: center;
+}
+.dark_mode_section {
+  text-align: initial !important;
 }
 
 /* social share */

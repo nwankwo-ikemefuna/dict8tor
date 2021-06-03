@@ -28,6 +28,8 @@ $(document).ready(function(){
             localStorage.setItem('saved_dict8_notes', JSON.stringify(saved_notes_arr));
             //update saved notes
             renderSavedNotes();
+            //jump to saved notes section
+            $(location).attr('href', '#saved_notes_section');
         } else {
             alert('This note is already saved!');
         }
@@ -54,6 +56,8 @@ $(document).ready(function(){
         const saved_notes_arr = JSON.parse(saved_notes_str);
         const note = saved_notes_arr[index];
         updateNote(note);
+        //jump to form section
+        $(location).attr('href', '#dict8_form');
     }
 }).on("click", ".delete_saved_note", function(){
     if (confirm('Sure to delete this note?')) {

@@ -5,6 +5,9 @@
 			<h2><span class="site_name"><?php echo SITE_NAME; ?></span></h2>
 			<p><?php echo SITE_DESCRIPTION; ?></p>
 		</div>
+		<div class="col-12 text-center">
+			<?php echo form_custom_switch('Dark Mode', '', 'success', 'theme_switcher', 1, false, false, ['with_padding' => true]); ?>
+		</div>
 	</div>
 			
 	<hr />
@@ -21,14 +24,11 @@
 						<li><?php echo SITE_NAME; ?> works on the following browsers: Chrome desktop (recommended for best experience), Chrome mobile, Android browser, Edge and Samsung Internet. It may also work on Safari (desktop and mobile).</li>
 						<li>For accurate results, ensure your environment is noise-free.</li>
 						<li>To add punctuations (such as period, comma, colon, semicolon, question mark, quotes, apostrophe, etc), space or any special character, stop dictating and type the character.</li>
-						<li>Copy your notes or export to PDF and download when done. You may also save for later.</li>
+						<li>Copy your notes or export to PDF and download when done. You may also save for later (<a href="#saved_notes_section" class="text-info">see here</a>).</li>
 						<li>Your last notes will remain in the box even if you refresh this page or close your browser, unless you deliberately clear them.</li>
 					</ul>
 				</div>
 			</div>
-		</div>
-		<div class="col-12 col-md-4 m-b-20">
-			<?php echo form_custom_switch('Dark Mode', '', 'success', 'theme_switcher', 1, false, false, ['with_padding' => true]); ?>
 		</div>
 	</div>
 
@@ -70,7 +70,7 @@
 
 			<div class="card m-b-20" id="saved_notes_section" style="display: none;">
 				<div class="card-header">
-					<h5 class="card-title">My Saved Notes</h5>
+					<h5 class="mb-0">My Saved Notes</h5>
 				</div>
 				<div class="card-body">
 					<div id="saved_notes"></div>
