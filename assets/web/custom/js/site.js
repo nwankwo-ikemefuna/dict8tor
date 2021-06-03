@@ -11,7 +11,7 @@ $(document).ready(function(){
     localStorage.setItem('site_theme', site_theme);
     switchTheme();
 }).on("click", "#copy_note", function(){
-    const note = $('#s2t_dict8_note').val();
+    const note = $('#s2t_dict8_note').val().trim();
     copyToClickboard(note);
 }).on("click", "#save_note", function(){
     const note = $('#s2t_dict8_note').val().trim();
@@ -52,8 +52,16 @@ $(document).ready(function(){
         }
     }
 }).on("click", ".edit_saved_note", function(){
-    if (confirm('Sure to edit this note? You may lose any unsaved notes!')) {
-        const index = $(this).data('index');
+    const note = $('#s2t_dict8_note').val().trim();
+    const index = $(this).data('index');
+    if (note.length) {
+        if (confirm('Sure to edit this note? You may lose any unsaved notes!')) {
+            editNote(index);
+        }
+    } else {
+        editNote(index);
+    }
+    function editNote(index) {
         const saved_notes_str = localStorage.getItem('saved_dict8_notes') || '';
         const saved_notes_arr = JSON.parse(saved_notes_str);
         const note = saved_notes_arr[index];

@@ -54,11 +54,7 @@ $(document).ready(function(){
             let isFinal = result.isFinal && (result[0].confidence > 0);
             if (isFinal) {
                 transcript = result[0].transcript;
-                if (isMobile()) {
-                    final_transcript += result[0].transcript;
-                } else {
-                    final_transcript += capitalize2(result[0].transcript + '.');
-                }
+                final_transcript += (final_transcript.length ? '. ' : '') + capitalize2(result[0].transcript);
                 if (transcript == last_debounce_transcript) {
                     return;
                 }
@@ -74,7 +70,7 @@ $(document).ready(function(){
             const final_ouput_span = interim_wrapper.find('span.final_output');
             const interim_ouput_span = interim_wrapper.find('span.interim_output');
             //set
-            final_ouput_span.text(capitalize2(final_transcript));
+            final_ouput_span.text(capitalize(final_transcript));
             interim_ouput_span.text(interim_transcript);
             //get
             const complete_output = final_ouput_span.text() + interim_ouput_span.text();
