@@ -35,6 +35,10 @@ $(document).ready(function(){
         alert('This note is already saved!');
     }
 }).on("click", "#clear_note", function(){
+    const note = $('#s2t_dict8_note').val().trim();
+    if (!note.length) {
+        return false;
+    }
     if (confirm('Sure to clear notes field?')) {
         const interim_wrapper = $('.speech2text_interim_wrapper');
         interim_wrapper.find('span.final_output').empty();

@@ -1,7 +1,7 @@
 var recognition = {};
 let final_transcript = ''; //we need this guy to persist
 let output_container_id = '';
-let last_debounce_ranscript = '';
+let last_debounce_transcript = '';
 $(document).ready(function(){
     try {
         // new speech recognition object
@@ -54,11 +54,11 @@ $(document).ready(function(){
             let isFinal = result.isFinal && (result[0].confidence > 0);
             if (isFinal) {
                 transcript = result[0].transcript;
-                final_transcript += result[0].transcript;
-                if (transcript == last_debounce_ranscript) {
+                final_transcript += capitalize2(result[0].transcript + '.');
+                if (transcript == last_debounce_transcript) {
                     return;
                 }
-                last_debounce_ranscript = transcript;
+                last_debounce_transcript = transcript;
             } else {
                 transcript += result[0].transcript;
                 interim_transcript += result[0].transcript;
@@ -70,7 +70,7 @@ $(document).ready(function(){
             const final_ouput_span = interim_wrapper.find('span.final_output');
             const interim_ouput_span = interim_wrapper.find('span.interim_output');
             //set
-            final_ouput_span.text(capitalize(final_transcript));
+            final_ouput_span.text(capitalize2(final_transcript));
             interim_ouput_span.text(interim_transcript);
             //get
             const complete_output = final_ouput_span.text() + interim_ouput_span.text();
@@ -85,23 +85,23 @@ $(document).ready(function(){
                 let current_content = $(output_container_id).val() || '';
                 const caret_pos = $(output_container_id)[0].selectionStart;
                 const updated_content = current_content.substring(0, caret_pos) + (current_content.length ? ' ' : '') + transcript.trim() + current_content.substring(caret_pos);
-                $(output_container_id).val(capitalize(updated_content));
+                $(output_container_id).val(capitalize2(updated_content));
             } else if (output_type == 'summernote') { //Summernote
                 let current_content = $(output_container_id).summernote('code');
                 const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcript;
-                $(output_container_id).summernote('code', capitalize(updated_content));
+                $(output_container_id).summernote('code', capitalize2(updated_content));
             } else if (output_type == 'ckeditor') { //CKEditor
                 const editor_instance = CKEDITOR.instances[output_container];
                 const current_content = editor_instance.getData() || '';
                 const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcript;
-                editor_instance.setData(capitalize(updated_content));
+                editor_instance.setData(capitalize2(updated_content));
             } else if (output_type == 'codemirror') { //Code Mirror
                 const editor_instance = $('.CodeMirror')[0].CodeMirror;
                 const current_content = editor_instance.getValue() || '';
                 const updated_content = current_content.trim() + (current_content.trim().length ? ' ' : '') + transcript;
-                editor_instance.setValue(capitalize(updated_content));
+                editor_instance.setValue(capitalize2(updated_content));
             } else { //other elements
-                $(output_container_id).append(capitalize(transcript) + ' ');
+                $(output_container_id).append(capitalize2(transcript) + ' ');
             }
         }
 
@@ -120,6 +120,11 @@ $(document).ready(function(){
         speaking_indicator.removeClass('speech2text_pulsate clickable');
         speaking_indicator.prop('title', '');
         recognition.stop();
+    };
+    //on error
+    recognition.onerror = function() {
+        recognition.stop();
+        alert('Something is not right! Check your internet connection or reload this page and try again.');
     };
     // start recognition
     recognition.start();
@@ -140,3 +145,7 @@ $(document).ready(function(){
     const interim_wrapper = $(output_container_id).closest('.speech2text_interim_wrapper');
     interim_wrapper.find('span.final_output').text(final_transcript);
 });
+
+function capitalize2(s) {
+    return s.replace(/\S/, function(m) { return m.toUpperCase(); });
+}

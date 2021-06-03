@@ -141,7 +141,7 @@ body {
 .speech2text_section .speech2text_wrapper {
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 25px;
     z-index: 999;
 }
 .speech2text_section.s2t_summernote .speech2text_wrapper {
