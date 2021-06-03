@@ -55,7 +55,7 @@ $(document).ready(function(){
             if (isFinal) {
                 transcript = result[0].transcript;
                 final_transcript += capitalize2(result[0].transcript + '.');
-                if (transcript == last_debounce_transcript) {
+                if (interim_transcript == last_debounce_transcript) {
                     final_transcript += ' ';
                     return;
                 }
