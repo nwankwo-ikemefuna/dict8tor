@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 function adsense_publisher_script() {
-    if (!ADSENSE_CONFIG['enabled']) return '';
     return '<script data-ad-client="'.ADSENSE_CONFIG['publisher_id'].'" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>';
 }
 
